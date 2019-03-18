@@ -45,31 +45,7 @@ module.exports = {
         github: {
           account: 'yuchanns',
           link: 'https://github.com/yuchanns',
-        },
-        // facebook: {
-        //   account: 'meteorlxy.cn',
-        //   link: 'https://www.facebook.com/meteorlxy.cn',
-        // },
-        // linkedin: {
-        //   account: 'meteorlxy',
-        //   link: 'http://www.linkedin.com/in/meteorlxy',
-        // },
-        // twitter: {
-        //   account: 'meteorlxy_cn',
-        //   link: 'https://twitter.com/meteorlxy_cn',
-        // },
-        // weibo: {
-        //   account: '@焦炭君_Meteor',
-        //   link: 'https://weibo.com/u/2039655434',
-        // },
-        // zhihu: {
-        //   account: 'meteorlxy.cn',
-        //   link: 'https://www.zhihu.com/people/meteorlxy.cn',
-        // },
-        // douban: {
-        //   account: '159342708',
-        //   link: 'https://www.douban.com/people/159342708',
-        // },
+        }
       },
     },
 
@@ -85,8 +61,7 @@ module.exports = {
       { text: 'Home', link: '/', exact: true },
       { text: 'Posts', link: '/posts/', exact: false },
       { text: 'Snippets', link: '/snippets/', exact: false },
-      { text: 'Awesome', link: '/awesome/', exact: false },
-      { text: 'Github', link: 'https://github.com/yuchanns', exact: false },
+      { text: 'Awesome', link: '/awesome/', exact: false }
     ],
 
     comments: {
