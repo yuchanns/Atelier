@@ -28,6 +28,15 @@
         Vuepress
       </a>
     </p>
+    <p>
+      <a 
+        href="http://www.miitbeian.gov.cn/"
+        target="_blank"
+        style="color: #666"
+      >
+          闽ICP备19005068号
+      </a>
+    </p>
   </footer>
 </template>
 
