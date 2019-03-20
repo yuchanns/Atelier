@@ -7,6 +7,7 @@ category: python
 ---
 <!-- more -->
 [[toc]]
+
 在部署网站的时候我发现django的urls并不支持二级域名的配置，而在实际工作环境中，我们经常会遇到需要使用二级域名的情况。比如网站的pc版面和手机版面，域名分别是 www.mysite.com 和 m.mysite.com 。虽然可以通过 mysite.com/home/ 和 mysite.com/wap/ 这样的方式进行访问，但这并不是一个很好的解决方案。
 接着我在github上发现一个"django-hosts"插件可以为django提供这个功能，经过漫长的折腾之后总算配置成功。
 github地址：https://github.com/jazzband/django-hosts

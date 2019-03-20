@@ -10,6 +10,9 @@ module.exports = {
       lang: 'zh-CN',
     },
   },
+  plugins: [
+    'flowchart',
+  ],
 
   head: [
     ['link', { rel: 'icon', href: '/yuchanns.png' }],

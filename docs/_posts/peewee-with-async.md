@@ -8,6 +8,7 @@ category: python
 ---
 <!-- more -->
 [[toc]]
+
 在[《peewee用法考察》](https://www.yuchanns.xyz/posts/2018/12/12/usage-of-peewee.html)中，我初步掌握peewee的一些常用操作。而做这些准备，是为了在tornado中使用。
 tornado是一个异步网络IO非阻塞框架，这意味着涉及到IO阻塞操作，我们都应该以异步的形式去进行。而peewee本身并不是异步的，因此我们还需要引入另外一些库才能更好的契合tornado。
 

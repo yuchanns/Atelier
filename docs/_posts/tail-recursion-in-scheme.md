@@ -11,7 +11,9 @@ category: lisp
 
 ![The Scheme
 Programming Language](https://www.scheme.com/tspl4/canned/medium-cover.png)
+
 [[toc]]
+
 ## 尾递归的定义
 
 `尾递归`是函数式编程中，递归函数的一种优化手段。

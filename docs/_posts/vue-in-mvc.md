@@ -9,10 +9,9 @@ category: python
 ---
 [[toc]]
 
-当我们手上有前后端不分离的传统mvc框架下的项目，又想要摆脱繁琐的Dom操作地狱，就可以使用[vuejs](https://cn.vuejs.org)。在github上我看到很多前后端不分离的项目源码中对于`vuejs`的整合都是直接在项目根目录放置一个frontend文件夹，内置`vue-cli`生成的开发脚手架，在`webpack`下以`es6`语法的形式编写，再将编译生成的`dist`页面放到后端mvc的view中。
+当我们手上有前后端不分离的传统mvc框架下的项目，又想要摆脱繁琐的Dom操作地狱，就可以使用[vuejs](https://cn.vuejs.org)。<!-- more -->在github上我看到很多前后端不分离的项目源码中对于`vuejs`的整合都是直接在项目根目录放置一个frontend文件夹，内置`vue-cli`生成的开发脚手架，在`webpack`下以`es6`语法的形式编写，再将编译生成的`dist`页面放到后端mvc的view中。
 
 有时候（当编写小项目的时候）我觉得这样也显得过于复杂和巨大，幸好`vuejs`支持直接用`<script>`引入使用。本文记录的便是我在这种背景下，利用模板引擎的特性对`vuejs`的使用心得。
-<!-- more -->
 ## 准备工作
 本文所使用的web框架基于`python3.7`，使用到的库包括：
 * aiohttp

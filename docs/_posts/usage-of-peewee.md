@@ -8,6 +8,7 @@ category: python
 ---
 <!-- more -->
 [[toc]]
+
 <!-- ![peewee](http://docs.peewee-orm.com/en/latest/_images/peewee3-logo.png) -->
 最近尝试使用tornado。由于tornado组件较为简洁，还需引入一些其他类库结合使用。在ORM方面，我选择了轻量小巧的peewee。本文即对peewee的用法进行初步考察，记录自用。
 主要参考内容：

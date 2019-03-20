@@ -9,6 +9,7 @@ category: php
 ---
 <!-- more -->
 [[toc]]
+
 ## 准备工作
 **注：本文使用xshell连接虚拟机中的ubuntu进行环境部署**
 * 安装[ubuntu 16.04](https://www.ubuntu.com/download/desktop)。
