@@ -4,7 +4,7 @@
       <div class="center">
         <ClientOnly>
             <vueCanvasNest
-              :config="{color:'0,0,0', count: 50, opacity: 0.7}"
+              :config="{color:'0,0,0', count: 10, opacity: 0.7}"
               :el="'.center'"
             />
         </ClientOnly>
