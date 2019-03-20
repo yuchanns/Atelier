@@ -2,7 +2,7 @@
   <div id="vuepress-theme-meteorlxy">
     <ClientOnly>
       <vueCanvasNest
-        :config="{color:'88,173,178', count: 500, opacity: 0.9}"
+        :config="{color:'88,173,178', count: 50, opacity: 0.7}"
         :el="'#vuepress-theme-meteorlxy'"
       />
     </ClientOnly>
