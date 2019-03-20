@@ -1,11 +1,5 @@
 <template>
   <div id="vuepress-theme-meteorlxy">
-    <ClientOnly>
-      <vueCanvasNest
-        :config="{color:'88,173,178', count: 50, opacity: 0.7}"
-        :el="'#vuepress-theme-meteorlxy'"
-      />
-    </ClientOnly>
     <TheHeader />
 
     <TheMain />
@@ -26,9 +20,6 @@ export default {
     TheHeader,
     TheMain,
     TheFooter,
-  },
-  mounted () {
-    this.$options.components.vueCanvasNest = require('vue-canvas-nest').default
   },
 }
 </script>
