@@ -2,12 +2,6 @@
   <div class="banner">
     <div class="container">
       <div class="center">
-        <ClientOnly>
-            <vueCanvasNest
-              :config="{color:'0,0,0', count: 10, opacity: 0.7}"
-              :el="'.center'"
-            />
-        </ClientOnly>
         <slot />
       </div>
     </div>
@@ -17,9 +11,6 @@
 <script>
 export default {
   name: 'TheHeaderBanner',
-  mounted () {
-    this.$options.components.vueCanvasNest = require('vue-canvas-nest').default
-  },
 }
 </script>
 
