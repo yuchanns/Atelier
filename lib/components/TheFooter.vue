@@ -28,7 +28,7 @@
         Vuepress
       </a>
     </p>
-    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv"></span>位访问者</span>
     <p>
       <a 
         href="http://beian.miit.gov.cn/"
