@@ -43,7 +43,6 @@
 
 <script>
 import IconSns from './IconSns.vue'
-import 'busuanzi/bsz.pure.mini'
 
 export default {
   name: 'TheFooter',
@@ -57,6 +56,9 @@ export default {
       return this.$site.themeConfig.personalInfo.sns || null
     },
   },
+  mounted () {
+    require('busuanzi/bsz.pure.mini')
+  }
 }
 </script>
 
