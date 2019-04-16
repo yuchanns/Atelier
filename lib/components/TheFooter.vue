@@ -31,7 +31,7 @@
     <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
     <p>
       <a 
-        href="http://www.miitbeian.gov.cn/"
+        href="http://beian.miit.gov.cn/"
         target="_blank"
         style="color: #666"
       >
