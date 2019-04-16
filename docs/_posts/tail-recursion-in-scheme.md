@@ -9,8 +9,7 @@ category: lisp
 本文为`SCIP`课堂作业思考总结。
 <!-- more -->
 
-![The Scheme
-Programming Language](https://www.scheme.com/tspl4/canned/medium-cover.png)
+![The Scheme Programming Language](https://www.scheme.com/tspl4/canned/medium-cover.png)
 
 [[toc]]
 
