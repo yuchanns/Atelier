@@ -12,6 +12,7 @@ module.exports = {
   },
   plugins: [
     'flowchart',
+    'busuanzi',
   ],
 
   head: [

@@ -28,6 +28,7 @@
         Vuepress
       </a>
     </p>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
     <p>
       <a 
         href="http://www.miitbeian.gov.cn/"
@@ -42,6 +43,7 @@
 
 <script>
 import IconSns from './IconSns.vue'
+import 'busuanzi/bsz.pure.mini'
 
 export default {
   name: 'TheFooter',
