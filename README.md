@@ -6,7 +6,7 @@ My Blog
 
 Powered by [Vuepress](https://vuepress.vuejs.org/)
 
-Themed by [vuepress-theme-meteorlxy](vuepress-theme-meteorlxy)
+Themed by [vuepress-theme-meteorlxy](https://vuepress-theme-meteorlxy.meteorlxy.cn/)
 
 ## Develop
 ```
