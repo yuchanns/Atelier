@@ -67,11 +67,12 @@ module.exports = {
       { text: 'Awesome', link: '/awesome/', exact: false }
     ],
 
-    comments: {
-      owner: 'yuchanns',
-      repo: 'yuchanns',
-      clientId: 'b2f9320aa657a856626c',
-      clientSecret: 'a572d895f1daa956cb872ad9015e2ff80941c632',
-    },
+//     comments: {
+//       owner: 'yuchanns',
+//       repo: 'yuchanns',
+//       clientId: 'b2f9320aa657a856626c',
+//       clientSecret: 'a572d895f1daa956cb872ad9015e2ff80941c632',
+//     },
+    comments: false,
   },
 }
