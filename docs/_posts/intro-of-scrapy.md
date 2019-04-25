@@ -1,7 +1,6 @@
 ---
 title: Scrapy入门
 date: 2019-02-11 10:30:56
-top: 2
 tags:
  - scrapy
  - 爬虫

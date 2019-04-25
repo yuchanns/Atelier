@@ -1,7 +1,6 @@
 ---
 title: vue在传统mvc框架下的使用
 date: 2019-03-17 16:41:27
-top: 2
 tags:
   - vuejs
   - aiohttp
