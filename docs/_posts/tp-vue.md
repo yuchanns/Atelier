@@ -1,5 +1,5 @@
 ---
-title: 基于后端渲染的thinkphp-vue
+title: 基于php后端渲染的thinkphp-vue
 date: 2019-05-04 00:40:51
 tags:
   - vuejs
