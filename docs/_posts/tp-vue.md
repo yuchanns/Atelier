@@ -20,6 +20,7 @@ category: php
 框架版本为thinkphp5.1和vue@2.6.10。
 
 php版本要求7.0+。
+<!-- more -->
 ## 快速开始
 ```bash
 git clone git@github.com:yuchanns/tp-vue.git
