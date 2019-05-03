@@ -27,8 +27,8 @@ cd tp-vue
 composer install
 php think run
 ```
-![](/images/D4D6AA3E5AD3D93A183057EE37760100)
-![](/images/FF12CEDB54EED136986CA7CA542FC74B)
+![](/images/D4D6AA3E5AD3D93A183057EE37760100.jpg)
+![](/images/FF12CEDB54EED136986CA7CA542FC74B.jpg)
 ## 使用方法
 ### 继承模板
 你的主页面需要使用继承的方式进行编写：
