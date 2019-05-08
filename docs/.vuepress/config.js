@@ -12,6 +12,12 @@ module.exports = {
   },
   plugins: [
     'flowchart',
+    ['mathjax', {
+      target: 'svg',
+      macros: {
+        '*': '\\times',
+      },
+    }],
   ],
 
   head: [
@@ -48,7 +54,7 @@ module.exports = {
         github: {
           account: 'yuchanns',
           link: 'https://github.com/yuchanns',
-        }
+        },
       },
     },
 
@@ -64,7 +70,7 @@ module.exports = {
       { text: 'Home', link: '/', exact: true },
       { text: 'Posts', link: '/posts/', exact: false },
       { text: 'Snippets', link: '/snippets/', exact: false },
-      { text: 'Awesome', link: '/awesome/', exact: false }
+      { text: 'Awesome', link: '/awesome/', exact: false },
     ],
 
     comments: {
