@@ -11,6 +11,7 @@ category: php
 ![Thinkphp logo](https://box.kancloud.cn/5a0aaa69a5ff42657b5c4715f3d49221) 
 <img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo">
 <img width="100" src="https://twig.symfony.com/images/logo.png" alt="Twig logo">
+<!-- more -->
 # tp-vue
 ## 介绍
 基于**php后端渲染**的thinkphp+vue框架。
@@ -20,7 +21,6 @@ category: php
 框架版本为thinkphp5.1和vue@2.6.10。
 
 php版本要求7.0+。
-<!-- more -->
 ## 快速开始
 ```bash
 git clone git@github.com:yuchanns/tp-vue.git
