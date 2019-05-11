@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  title: 'yuchanns\'Atelier',
+  title: '(yuchanns (Atelier))',
 
   description: 'focus on python|php',
 
