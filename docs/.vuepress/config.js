@@ -11,7 +11,6 @@ module.exports = {
     },
   },
   plugins: [
-    'flowchart',
     ['mathjax', {
       target: 'svg',
       macros: {
@@ -19,6 +18,11 @@ module.exports = {
       },
     }],
   ],
+  markdown: {
+    extendMarkdown: md => {
+      md.use(require('./components/markdown-it-controls/index'))
+    },
+  },
 
   head: [
     ['link', { rel: 'icon', href: '/yuchanns.png' }],
