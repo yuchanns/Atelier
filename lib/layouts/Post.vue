@@ -65,8 +65,5 @@ export default {
       return {}
     },
   },
-  mounted () {
-    //
-  },
 }
 </script>
