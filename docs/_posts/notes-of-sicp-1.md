@@ -4,6 +4,7 @@ date: 2019-05-05 14:14:00
 tags:
   - scheme
   - sicp
+  - 魔法书
 category: 学习笔记
 ---
 随兴做的一些有关第一章的学习记录。
@@ -177,6 +178,58 @@ category: 学习笔记
 ```
 
 有趣的是，上文解题过程中，将过程f包裹起来加上一层simpson-term外壳，进行额外处理然后返回的行为，就是所谓的**装饰器模式**（*Decorator Pattern*）。
+
+--- 
+以下草稿，分析过程待补完...
+### 1.30 将sum重写为线性迭代的过程
+* 什么是线性递归和线性递归（概念）？
+* 两者区别？
+
+```scheme
+(define (sum term a next b)
+	(define (iter a result)
+		(if (> a b)
+		  result
+			(iter (next a) (+ result (term a)))))
+	(iter a 0))
+```
+### 1.31 抽象出product过程用来定义factorial（阶乘）
+```scheme
+; 线性迭代写法
+(define (product term a next b)
+  (define (iter a result)
+    (if (> a b)
+      result
+      (iter (next a) (* result (term a)))))
+  (iter a 1))
+  
+; 线性递归写法
+(define (product term a next b)
+  (if (> a b)
+    1
+    (* (term a)
+       (product term (next a) next b))))
+```
+按照公式$\frac{π}{4}=\frac{2\cdot4\cdot4\cdot6\cdot6\cdot8\cdot\cdot\cdot}{3\cdot3\cdot5\cdot5\cdot7\cdot7\cdot\cdot\cdot}$计算π的近似值？
+### 1.32 抽象出sum和product的公共模式accumulate
+```scheme
+; 线性迭代写法
+(define (accumulate combiner null-value term a next b)
+	(define (iter a result)
+		(if (> a b)
+			result
+			(iter (next a) (combiner result (term a)))))
+	(iter a null-value))
+
+； 线性递归写法
+(define (accumulate combiner null-value term a next b)
+	(if (> a b)
+		null-value
+		(combiner (term a)
+					 (accumulate combiner null-value term (next a) next b))))
+```
+### 练习1.33 引入过滤器概念，实现更一般版本的filter-accumulate抽象过程
+提示：判断奇偶就是一种过滤过程
 
 ---
 to be continued.
