@@ -221,7 +221,7 @@ category: 学习笔记
 			(iter (next a) (combiner result (term a)))))
 	(iter a null-value))
 
-； 线性递归写法
+; 线性递归写法
 (define (accumulate combiner null-value term a next b)
 	(if (> a b)
 		null-value
