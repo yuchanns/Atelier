@@ -48,7 +48,7 @@ module.exports = {
     },
     personalInfo: {
       nickname: 'yuchanns',
-      description: 'A non professional programmer which attempt to be professional',
+      description: 'Either you or time plays trick on the other one',
       email: 'airamusume@gmail.com',
       location: 'Shenzhen, China',
 
