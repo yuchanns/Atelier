@@ -10,6 +10,9 @@ module.exports = {
       lang: 'zh-CN',
     },
   },
+
+  clientRootMixin: path.resolve(__dirname, 'mixin/mixin.js'),
+
   plugins: [
     ['mathjax', {
       target: 'svg',
@@ -30,7 +33,7 @@ module.exports = {
     ['meta', { name: 'baidu-site-verification', content: 'OeVj0fzw4S' }],
   ],
 
-  theme: path.resolve(__dirname, '../../lib'),
+  theme: 'meteorlxy',
 
   themeConfig: {
     lang: {
