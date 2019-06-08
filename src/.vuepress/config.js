@@ -65,10 +65,21 @@ module.exports = {
       },
     },
 
-    headerBackground: {
-      // url: '/assets/img/bg.jpg',
-
-      useGeo: true,
+    header: {
+      background: {
+        url: [
+          '/assets/img/1.jpg',
+          '/assets/img/2.jpg',
+          '/assets/img/3.jpg',
+          '/assets/img/4.jpg',
+          '/assets/img/5.jpg',
+          '/assets/img/6.jpg',
+          '/assets/img/7.jpg',
+          '/assets/img/8.jpg',
+        ],
+        useGeo: false,
+      },
+      showTitle: true,
     },
 
     lastUpdated: true,
