@@ -11,6 +11,5 @@ top: 1
 随兴做的一些有关第二章的学习记录。
 <!-- more -->
 ## 数据抽象导引
-试试内嵌代码和php的实现
 
-<iframe src="https://tool.lu/coderunner/embed/6LL.html" width="650" height="550" frameborder="0" mozallowfullscreen webkitallowfullscreen allowfullscreen></iframe>
+<iframe height="400px" width="100%" src="https://repl.it/@yuchanns/Introduction-to-Data-Abstraction?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
