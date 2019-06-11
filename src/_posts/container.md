@@ -7,6 +7,13 @@ category: php
 ---
 对于传统的php-fpm进程来说，每一个请求都是一次短暂的php框架生命周期。实例化一个类，业务处理，自动销毁，一切都是家常便饭。
 <!-- more -->
+
+::: tip
+在线演示
+:::
+
+<iframe height="400px" width="100%" src="https://repl.it/@yuchanns/PHPContainer?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ## 理由
 当我们使用swoole这种内存常驻型的扩展，就可以使用单例模式来代替每一轮请求使用到的对象的创建-销毁。
 
