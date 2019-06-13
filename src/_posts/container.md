@@ -2,6 +2,7 @@
 title: 容器与单例和原型
 date: 2019-05-28 23:27:00
 tags:
+  - design pattern
   - swoole
 category: php
 ---
