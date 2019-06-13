@@ -240,6 +240,8 @@ class Container
     private static $instance = null;
 
     private $singletons = [];
+    
+    private $prototypes = [];
 
     public static function getInstance()
     {
@@ -260,10 +262,10 @@ class Container
             }
             return $this->singletons[$name];
         }
-        if (!isset($this->prototype[$name])) {
-            $this->prototype[$name] = new $name($args);
+        if (!isset($this->prototypes[$name])) {
+            $this->prototypes[$name] = new $name($args);
         }
-        return clone $this->prototype[$name];
+        return clone $this->prototypes[$name];
     }
 }
 ```
