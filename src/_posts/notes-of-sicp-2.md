@@ -12,4 +12,4 @@ top: 1
 <!-- more -->
 ## 数据抽象导引
 
-<iframe height="400px" width="100%" src="https://repl.it/@yuchanns/Introduction-to-Data-Abstraction?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe src="https://paiza.io/projects/e/n7msTZ-BLfrmmdddeMKuLQ?theme=solarized_light" width="100%" height="500" scrolling="no" seamless="seamless"></iframe>
