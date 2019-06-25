@@ -47,7 +47,7 @@ class dbContext
     function destroy()
     {
         $cid = \co::getCid();
-        if(!isset($this->container[$cid])){
+        if(isset($this->container[$cid])){
             unset($this->container[$cid]);
         }
     }
