@@ -68,14 +68,14 @@ module.exports = {
     header: {
       background: {
         url: [
-          '/assets/img/1.jpg',
-          '/assets/img/2.jpg',
-          '/assets/img/3.jpg',
-          '/assets/img/4.jpg',
-          '/assets/img/5.jpg',
-          '/assets/img/6.jpg',
-          '/assets/img/7.jpg',
-          '/assets/img/8.jpg',
+          '/assets/img/1.jpeg',
+          '/assets/img/2.jpeg',
+          '/assets/img/3.jpeg',
+          '/assets/img/4.jpeg',
+          '/assets/img/5.jpeg',
+          '/assets/img/6.jpeg',
+          '/assets/img/7.jpeg',
+          '/assets/img/8.jpeg',
         ],
         useGeo: false,
       },
