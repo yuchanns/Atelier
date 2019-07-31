@@ -12,9 +12,9 @@ module.exports = {
       audio: [{
         name: 'Cyberangel',
         artist: 'Hanser',
-        url: 'assets/music/Cyberangle.flac',
+        url: 'https://www.yuchanns.xyz/assets/music/Cyberangle.flac',
         cover: 'https://avatars3.githubusercontent.com/u/25029451',
-        lrc: 'assets/music/Cyberangle.lrc',
+        lrc: 'https://www.yuchanns.xyz/assets/music/Cyberangle.lrc',
       }],
       mini: true,
       fixed: true,
