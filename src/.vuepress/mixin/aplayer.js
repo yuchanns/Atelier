@@ -5,6 +5,7 @@ module.exports = {
     const footer = document.getElementsByTagName('footer')[0]
     footer.appendChild(bsz)
     const APlayer = require('aplayer')
+    // eslint-disable-next-line no-unused-vars
     const ap = new APlayer({
       container: document.getElementById('aplayer'),
       lrcType: 3,
