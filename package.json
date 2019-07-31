@@ -6,6 +6,7 @@
   },
   "peerDependencies": {},
   "dependencies": {
+    "aplayer": "^1.10.1",
     "busuanzi": "^2.3.0",
     "vuepress": "^1.0.0",
     "vuepress-plugin-mathjax": "^1.2.4",

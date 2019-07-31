@@ -31,6 +31,7 @@ module.exports = {
     ['link', { rel: 'icon', href: '/yuchanns.png' }],
     ['meta', { name: 'google-site-verification', content: 'h0GK-apopUhINJJe5Jp3XopZswk6EK_JQT_fVMrs6A0' }],
     ['meta', { name: 'baidu-site-verification', content: 'OeVj0fzw4S' }],
+    ['link', { rel: 'stylesheet', href: '/assets/css/APlayer.min.css' }],
   ],
 
   theme: 'meteorlxy',
