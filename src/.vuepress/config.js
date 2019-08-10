@@ -38,21 +38,21 @@ module.exports = {
 
   themeConfig: {
     lang: {
-      home: '首页',
-      posts: '文章',
-      category: '分类',
-      categories: '分类',
-      allCategories: '全部',
-      tag: '标签',
-      tags: '标签',
-      createdAt: '发布时间',
-      updatedAt: '最后修改',
-      prevPost: '上一篇',
-      nextPost: '下一篇',
+      home: 'yuchanns\'Atelier',
+      posts: 'Recipes',
+      category: 'category',
+      categories: 'categories',
+      allCategories: 'all',
+      tag: 'tag',
+      tags: 'tags',
+      createdAt: 'create',
+      updatedAt: 'last',
+      prevPost: 'prev',
+      nextPost: 'next',
     },
     personalInfo: {
       nickname: 'yuchanns',
-      description: 'Either you or time plays trick on the other one',
+      description: 'The best time to plant a tree was 20 years ago. The second best time is now.',
       email: 'airamusume@gmail.com',
       location: 'Shenzhen, China',
 
@@ -89,7 +89,8 @@ module.exports = {
       { text: 'Home', link: '/', exact: true },
       { text: 'Posts', link: '/posts/', exact: false },
       { text: 'Snippets', link: '/snippets/', exact: false },
-      { text: 'Awesome', link: '/awesome/', exact: false },
+      // { text: 'Awesome', link: '/awesome/', exact: false },
+      { text: 'YuC\'s', link: 'http://yuc.wiki/', exact: false },
     ],
 
     comments: {
