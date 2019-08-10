@@ -38,7 +38,7 @@ module.exports = {
 
   themeConfig: {
     lang: {
-      home: 'yuchanns\'Atelier',
+      home: 'Atelier',
       posts: 'Recipes',
       category: 'category',
       categories: 'categories',
@@ -78,7 +78,7 @@ module.exports = {
           '/assets/img/7.jpeg',
           '/assets/img/8.jpeg',
         ],
-        useGeo: true,
+        useGeo: false,
       },
       showTitle: true,
     },
@@ -88,8 +88,8 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/', exact: true },
       { text: 'Posts', link: '/posts/', exact: false },
-      { text: 'Snippets', link: '/snippets/', exact: false },
-      // { text: 'Awesome', link: '/awesome/', exact: false },
+      // { text: 'Snippets', link: '/snippets/', exact: false },
+      { text: 'Awesome', link: '/awesome/', exact: false },
       { text: 'YuC\'s', link: 'http://yuc.wiki/', exact: false },
     ],
 
