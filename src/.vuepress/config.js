@@ -78,7 +78,7 @@ module.exports = {
           '/assets/img/7.jpeg',
           '/assets/img/8.jpeg',
         ],
-        useGeo: false,
+        useGeo: true,
       },
       showTitle: true,
     },
