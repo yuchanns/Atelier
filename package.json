@@ -8,6 +8,7 @@
   "dependencies": {
     "aplayer": "^1.10.1",
     "busuanzi": "^2.3.0",
+    "element-ui": "^2.11.1",
     "vuepress": "^1.0.0",
     "vuepress-plugin-mathjax": "^1.2.4",
     "vuepress-theme-meteorlxy": "^1.0.1"
