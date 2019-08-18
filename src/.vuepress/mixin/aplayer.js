@@ -1,14 +1,6 @@
 module.exports = {
-  mounted () {
-    const aplayer = document.createElement('div')
-    aplayer.setAttribute('id', 'aplayer')
-    const footer = document.getElementsByTagName('footer')[0]
-    footer.appendChild(aplayer)
-    const APlayer = require('aplayer')
-    // eslint-disable-next-line no-unused-vars
-    const ap = new APlayer({
-      container: document.getElementById('aplayer'),
-      lrcType: 3,
+  data () {
+    return {
       audio: [
         {
           name: 'Cyberangel',
@@ -44,10 +36,12 @@ module.exports = {
           cover: '/assets/music/GirlsintheMirror.jpg',
         },
       ],
-      fixed: true,
-    })
-    setTimeout(function () {
-      ap.play()
-    }, 3000)
+    }
+  },
+  mounted () {
+    const aplayer = document.createElement('div')
+    aplayer.innerHTML = '<aplayer :audio="audio" :lrcType="3" :fixed="true" />'
+    const footer = document.getElementsByTagName('footer')[0]
+    footer.appendChild(aplayer)
   },
 }

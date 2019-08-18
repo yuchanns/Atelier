@@ -31,7 +31,6 @@ module.exports = {
     ['link', { rel: 'icon', href: '/yuchanns.png' }],
     ['meta', { name: 'google-site-verification', content: 'h0GK-apopUhINJJe5Jp3XopZswk6EK_JQT_fVMrs6A0' }],
     ['meta', { name: 'baidu-site-verification', content: 'OeVj0fzw4S' }],
-    ['link', { rel: 'stylesheet', href: '/assets/css/APlayer.min.css' }],
   ],
 
   theme: 'meteorlxy',
@@ -98,6 +97,9 @@ module.exports = {
       repo: 'Atelier',
       clientId: '779fd70f4ac32b536176',
       clientSecret: '3ca68e15fd0ff7e5f0fd2679e7aa2dc56fb54009',
+    },
+    pagination: {
+      perPage: 10,
     },
   },
 }
