@@ -29,7 +29,7 @@ Scrapy版本：`1.6`
 使用pip安装即可`pip install scrapy`
 
 顺便一提，在本地环境开发学习python的时候，常常会有切换python版本的需要。因此，我通常使用虚拟环境来管理python的版本。我使用版本管理软件是[Miniconda](https://conda.io/en/latest/miniconda.html)。安装方法不多说（你可以选择bash安装、deb安装、源码编译等多种方式）。简要说明使用方法：
-```shell
+```sh
 # 切换到32位虚拟环境
 set CONDA_FORCE_32BIT=1
 
@@ -48,11 +48,11 @@ source deactivate
 
 ## 创建爬虫项目
 和大部分框架一样，首先使用下列命令创建一个新的爬虫项目。本文以[我个人博客](https://www.yuchanns.xyz)为爬虫目标：
-```shell
+```sh
 scrapy startproject yuchanns
 ```
 然后我们得到如下项目结构，注释说明了对应的用途：
-```shell
+```sh
 .
 ├── scrapy.cfg               # scrapy配置文件
 └── yuchanns                 # 项目模块，放置你的爬虫代码
@@ -212,7 +212,7 @@ class PostSpider(scrapy.Spider):
 
 ```
 再次爬取，我们可以在控制台看到打印出我们处理收集的数据：
-```shell
+```sh
 [{'category': 'lisp',
  'date': '2019-02-10',
  'tags': 'scheme,尾递归',

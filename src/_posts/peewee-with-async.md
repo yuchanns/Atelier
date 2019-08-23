@@ -20,7 +20,7 @@ tornado是一个异步网络IO非阻塞框架，这意味着涉及到IO阻塞操
 注意：目前支持tornado3.0+的peewee-async属于预发行版本，需要添加-pre参数下载。
 > Version 0.6.0a is published as pre-release, mind the "a" in version identifier. That means in order to install it you should specify --pre flag for pip.
 
-```shell
+```sh
 pip install -pre peewee-async
 pip install aiomysql
 ```

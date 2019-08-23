@@ -135,7 +135,7 @@ server{
 }
 ```
 
-```uwsgi
+```sh
 # /python/uwsgi/uwsgi9001.ini
 
 [uwsgi]

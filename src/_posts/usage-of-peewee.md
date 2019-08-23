@@ -65,12 +65,12 @@ CREATE TABLE `integral` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='积分操作记录表'
 ```
 python连接mysql，需要pymysql或mysql-connector-python。
-```shell
+```sh
 pip install pymysql peewee
 ```
 ### 生成映射模型
 peewee分别提供**根据模型生成表**和**根据表生成模型**的功能。但peewee等orm要考虑兼容多种数据库，因此模型生成表的过程中只能使用所有数据库公有的字段类型，不能使用mysql的tinyint、char等类型，所以不考虑根据模型生成表。使用[pwiz](http://docs.peewee-orm.com/en/latest/peewee/playhouse.html#pwiz)命令生成模型：
-```shell
+```sh
 python -m pwiz -e mysql -H localhost -p3306 -uroot -P peewee > models.py
 ```
 获得以下model文件：
@@ -165,7 +165,7 @@ if __name__ == '__main__':
 
 ```
 运行peewee_test.py，查看控制台输出信息，我们得知第一种添加方法不会返回插入的自增pk（此时自增pk为uid=10000），而是成功返回1，失败返回0；
-```shell
+```sh
 python peewee_test.py
 ('INSERT INTO `user` (`avartar`, `gender`, `password`, `uname`) VALUES (%s, %s, %s, %s)', ['https://avatars2.githubusercontent.com/u/25029451', '1', 'e10adc3949ba59abbe56e057f20f883e', 'John'])
 uid=1
@@ -185,7 +185,7 @@ def create():
 **注意**第二种方法中我打印uid使用格式化操作符是%s而不是%d，因为返回值是一个User对象
 查看控制台输出信息，可知第二种方法会返回自增pk；
 
-```shell
+```sh
 python peewee_test.py
 ('INSERT INTO `user` (`avartar`, `gender`, `password`, `uname`) VALUES (%s, %s, %s, %s)', ['https://avatars2.githubusercontent.com/u/25029451', '1', 'e10adc3949ba59abbe56e057f20f883e', 'Jack'])
 uid=10001
@@ -203,7 +203,7 @@ def create():
     print('uid=%d' % uid)
 ```
 查看控制台输出信息，第三种方法也会返回自增pk。
-```shell
+```sh
 python peewee_test.py
 ('INSERT INTO `user` (`avartar`, `gender`, `password`, `uname`) VALUES (%s, %s, %s, %s)', ['https://avatars2.githubusercontent.com/u/25029451', '1', 'e10adc3949ba59abbe56e057f20f883e', 'Micheal'])
 uid=10002
@@ -229,7 +229,7 @@ def create():
     print('uid=%d' % uid)
 ```
 控制台输出返回批量插入过程中第一条数据的自增pk；
-```shell
+```sh
 python peewee_test.py
 ('INSERT INTO `user` (`avartar`, `uname`, `gender`, `password`) VALUES (%s, %s, %s, %s), (%s, %s, %s, %s), (%s, %s, %s, %s)', ['https://avatars2.githubusercontent.com/u/25029451', 'Catherine', '2', 'e10adc3949ba59abbe56e057f20f883e', 'https://avatars2.githubusercontent.com/u/25029451', 'Jane', '2', 'e10adc3949ba59abbe56e057f20f883e', 'https://avatars2.githubusercontent.com/u/25029451', 'Mary', '2', 'e10adc3949ba59abbe56e057f20f883e'])
 uid=10003
@@ -252,7 +252,7 @@ def create():
         User.insert_many(data_chunk, field).execute()
 ```
 控制台输出的信息表明了chunked的实质：
-```shell
+```sh
 python peewee_test.py
 ('INSERT INTO `user` (`avartar`, `uname`, `gender`, `password`) VALUES (%s, %s, %s, %s), (%s, %s, %s, %s)', ['https://avatars2.githubusercontent.com/u/25029451', 'Zoe', '2', 'e10adc3949ba59abbe56e057f20f883e', 'https://avatars2.githubusercontent.com/u/25029451', 'Lucy', '2', 'e10adc3949ba59abbe56e057f20f883e'])
 ('INSERT INTO `user` (`avartar`, `uname`, `gender`, `password`) VALUES (%s, %s, %s, %s), (%s, %s, %s, %s)', ['https://avatars2.githubusercontent.com/u/25029451', 'Kara', '2', 'e10adc3949ba59abbe56e057f20f883e', 'https://avatars2.githubusercontent.com/u/25029451', 'Rex', '1', 'e10adc3949ba59abbe56e057f20f883e'])
@@ -273,7 +273,7 @@ def retrieve():
     print('用户名为：%s' % result.uname)
 ```
 控制台输出：
-```shell
+```sh
 python peewee_test.py
 ('SELECT `t1`.`uid`, `t1`.`addtime`, `t1`.`avartar`, `t1`.`balance`, `t1`.`gender`, `t1`.`integral`, `t1`.`logintime`, `t1`.`password`, `t1`.`uname` FROM `user` AS `t1` WHERE (`t1`.`uname` = %s) LIMIT %s OFFSET %s', ['Jack', 1, 0])
 直接打印：10001
@@ -311,7 +311,7 @@ def retrieve():
     print('\n'.join(['%s:%s' % item for item in result.__data__.items()]))
 ```
 事实上，很多时候工作中遇到的单一查询都是只需要其中几个字段的数据，因此比起get()我用的更多的将会是select().get()。
-```shell
+```sh
 python peewee_test.py
 ('SELECT `t1`.`uname` FROM `user` AS `t1` WHERE (`t1`.`uid` = %s) LIMIT %s OFFSET %s', [10001, 1, 0])
 uname:Jack
@@ -332,7 +332,7 @@ def retrieve():
     for row in query:
         print(row)
 ```
-```shell
+```sh
 python peewee_test.py
 ('SELECT `t1`.`uname`, `t1`.`uid` FROM `user` AS `t1` WHERE (`t1`.`gender` = %s) ORDER BY `t1`.`addtime` DESC LIMIT %s OFFSET %s', ['1', 2, 1])
 ('SELECT `t1`.`uname`, `t1`.`uid` FROM `user` AS `t1` WHERE (`t1`.`gender` = %s) ORDER BY `t1`.`addtime` DESC LIMIT %s OFFSET %s', ['1', 2, 1])
@@ -376,7 +376,7 @@ def retrieve():
         print(row)
 ```
 我们应该知道，模糊查询的时候使用右模糊查询可以有效地利用索引加快查询速度。
-```shell
+```sh
 python peewee_test.py
 ('SELECT `t1`.`uname`, `t1`.`uid` FROM `user` AS `t1` WHERE (`t1`.`uname` LIKE BINARY %s)', ['J%'])
 {'uname': 'Jack', 'uid': 10001}
@@ -431,7 +431,7 @@ def update():
     user.uid = 1006
     user.save()
 ```
-```shell
+```sh
 python peewee_test.py
 ('UPDATE `user` SET `gender` = %s WHERE (`uid` = %s)', ['1', 1006])
 
@@ -446,7 +446,7 @@ def update():
         gender='2'
     ).where(User.uname == 'Zoe').execute()
 ```
-```shell
+```sh
 python peewee_test.py
 ('UPDATE `user` SET `gender` = %s WHERE (`uname` = %s)', ['2', 'Zoe'])
 
@@ -498,7 +498,7 @@ def transaction():
             print('更新成功')
 ```
 如果其中有一步操作失败，则整个事务自动回滚。
-```shell
+```sh
 python peewee_test.py
 ('SELECT `t1`.`uid`, `t1`.`balance` FROM `user` AS `t1` WHERE (`t1`.`uname` = %s) LIMIT %s OFFSET %s', ['Jack', 1, 0])
 ('UPDATE `user` SET `balance` = %s WHERE (`uid` = %s)', [Decimal('100.00'), 10001])
@@ -527,7 +527,7 @@ def retrieve2():
             row.user.uname, row.change, row.total, row.addtime
         ))
 ```
-```shell
+```sh
 python peewee_test.py
 ('SELECT `t1`.`uname`, `t2`.`change`, `t2`.`total`, `t2`.`addtime` FROM `balance` AS `t2` RIGHT OUTER JOIN `user` AS `t1` ON (`t1`.`uid` = `t2`.`uid`) WHERE (`t2`.`uid` = %s) ORDER BY `t2`.`addtime` DESC', [10001])
 Jack:100.00:200.00:2018-12-12 17:24:32
@@ -561,7 +561,7 @@ def retrieve2():
         print('%d:%.2f:%.2f:%s' % (row.id, row.change, row.total, row.addtime))
 ```
 没错，union_all的操作看起来仿佛将两个元组连接一样(实际上源码 &#95;&#95;add&#95;&#95; = union_all)。如果对此感到不习惯，也可以用方法union_all()来代替。值得注意的是，在方法order_by()中，不能直接写入'addtime desc'这样的字符串，因为peewee不会将其解析为sql语句。你需要使用SQL类将其转化为sql语句才能使排序生效([参考自StackOverflow](https://stackoverflow.com/questions/29960042/how-to-ordering-sql-result-in-union-peewee-orm))。
-```shell
+```sh
 python peewee_test.py
 ('SELECT `t1`.`b_id` AS `id`, `t1`.`change`, `t1`.`total`, `t1`.`addtime` FROM `balance` AS `t1` UNION ALL SELECT `t2`.`i_id` AS `id`, `t2`.`change`, `t2`.`total`, `t2`.`addtime` FROM `integral` AS `t2` ORDER BY addtime desc LIMIT %s OFFSET %s', [2, 1])
 1:300.00:300.00:2018-12-13 10:16:27

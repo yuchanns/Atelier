@@ -15,30 +15,30 @@ category: php
 * 安装[ubuntu 16.04](https://www.ubuntu.com/download/desktop)。
 * 如果是在虚拟机中安装，则给系统安装ssh：
 
-```shell
+```sh
 sudo apt-get install openssh-server
 ```
 * 开放部分端口：
 
-```shell
+```sh
 sudo iptables -I INPUT -p tcp --dport 22 -j ACCEPT  # 用于通过xshell和系统远程通信
 sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT  # 用于外部访问Webserver
 sudo iptables-save  # 保存设置使防火墙规则生效
 ```
 * 如果是在虚拟机中安装，查看本机IP地址：
 
-```shell
+```sh
 ifconfig
 ```
 ## 安装环境
 * 首先切换成管理员身份便于后续安装：
 
-```shell
+```sh
 sudo -i
 ```
 * 添加并更新源：
 
-```shell
+```sh
 apt-get install python-software-properties  # 安装apt源管理工具
 add-apt-repository ppa:nginx/stable  # 添加nginx稳定版安装源
 add-apt-repository ppa:ondrej/php  # 添加php安装源
@@ -47,18 +47,18 @@ apt-get install vim tree  # 顺便安装一下vim编辑器和tree
 ```
 * 安装mysql：
 
-```shell
+```sh
 apt-get install mysql-server
 ```
 安装过程中会要求设置mysql root账号的密码。
 * 安装php：
 
-```shell
+```sh
 apt-get install php5.6 php5.6-fpm php5.6-mysql php5.6-curl php5.6-memcache  # 这里我选择了php5.6版本
 ```
 * 设置*/etc/php/5.6/fpm/php.ini*使其支持pathinfo模式（主要是为了兼容Thinkphp框架）
 
-```shell
+```sh
 # /etc/php/5.6/fpm/php.ini
 
 # 搜索到;cgi.fix_pathinfo=1，去掉前面的分号并把值改为0
@@ -66,13 +66,13 @@ cgi.fix_pathinfo=0
 ```
 * 安装nginx：
 
-```shell
+```sh
 apt-get install nginx
 ```
 ## 配置环境
 * 设置网站根目录：
 
-```shell
+```sh
 mkdir /www  # 根据自身需求选择网站根目录，我习惯设置在/www里面
 chmod -R 755 /www  # 所有者拥有读写执行权限，其他人拥有读执行权限
 ```
@@ -126,14 +126,14 @@ fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 ```
 输入：
 
-```shell
+```sh
 service nginx reload
 ```
 重启nginx。如果重启失败，说明配置文件的语法存在错误。可以查询error.log日志检查错误的地方，进行修改。
 * 配置项目网站
 复制一份*/etc/nginx/sites-enabled/default*到同目录下，建议命名与项目名称相同，便于管理：
 
-```shell
+```sh
 cd /etc/nginx/sites-enabled
 cp default mysite
 ```
@@ -149,13 +149,13 @@ server {
 ```
 重启php-fpm和nginx：
 
-```shell
+```sh
 service php5.6-fpm reload
 service nginx reload
 ```
 * 如果是在虚拟机中部署，需要在Windows的hosts文件中添加以下内容才能访问到服务器的项目：
 
-```hosts
+```sh
 # 虚拟机IP 网站域名
 192.168.199.134 mysite.com
 ```

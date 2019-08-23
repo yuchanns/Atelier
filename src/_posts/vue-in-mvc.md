@@ -20,7 +20,7 @@ category: python
 你也可以随便选择一个web框架，无论是`django`或者`flask`或者`tornado`，甚至是`php`也没问题，只需要模板引擎支持`模板继承`以及`导入上下文`的功能就行。本文只是出于搭设便捷的目的做出选择。
 ### 安装环境
 使用`miniconda3`创建一个虚拟环境并安装库：
-```shell
+```sh
 conda create -n aiohttp python=3.7
 source activate aiohttp
 (aiohttp) pip install aiohttp aiohttp-jinja2 uvloop
@@ -28,7 +28,7 @@ source activate aiohttp
 当然`aiohttp-jinja2`还依赖于`jinja2`这个库，不过这些关联依赖都会由pip自行解决，用户不必关心细节。
 ### framework结构
 这里仅使用典型性而简洁的mvc框架结构：
-```shell
+```sh
 .
 ├── handlers
 │   ├── __init__.py

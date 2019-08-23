@@ -76,7 +76,7 @@ connection[5] closed
 
 ```
 **telnet客户端记录**：
-```she
+```sh
 $ telnet 127.0.0.1 9501
 Trying 127.0.0.1...
 Connected to localhost.

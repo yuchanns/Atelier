@@ -44,6 +44,6 @@ module.exports = {
     })
     setTimeout(function () {
       ap.play()
-    }, 3000)
+    }, 5000)
   },
 }
