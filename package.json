@@ -7,7 +7,9 @@
   "peerDependencies": {},
   "dependencies": {
     "@moefe/vue-aplayer": "^2.0.0-beta.5",
+    "aplayer": "^1.10.1",
     "busuanzi": "^2.3.0",
+    "cplayer": "^3.2.0",
     "element-ui": "^2.11.1",
     "vuepress": "^1.0.0",
     "vuepress-plugin-mathjax": "^1.2.4",

@@ -1,6 +1,6 @@
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-// import APlayer from '@moefe/vue-aplayer'
+import 'aplayer/dist/APlayer.min.css'
 
 export default ({
   Vue,
@@ -9,5 +9,4 @@ export default ({
   siteData
 }) => {
   Vue.use(ElementUI)
-  // Vue.use(APlayer)
 }

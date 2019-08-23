@@ -68,14 +68,15 @@ module.exports = {
     header: {
       background: {
         url: [
-          '/assets/img/1.jpeg',
-          '/assets/img/2.jpeg',
-          '/assets/img/3.jpeg',
-          '/assets/img/4.jpeg',
-          '/assets/img/5.jpeg',
-          '/assets/img/6.jpeg',
-          '/assets/img/7.jpeg',
-          '/assets/img/8.jpeg',
+          // '/assets/img/1.jpeg',
+          // '/assets/img/2.jpeg',
+          // '/assets/img/3.jpeg',
+          // '/assets/img/4.jpeg',
+          // '/assets/img/5.jpeg',
+          // '/assets/img/6.jpeg',
+          // '/assets/img/7.jpeg',
+          // '/assets/img/8.jpeg',
+          '/assets/img/houkai3.jpeg',
         ],
         useGeo: false,
       },
