@@ -22,11 +22,15 @@
 
 * [当然我在扯淡](http://www.yinwang.org/)
 
+* [酷壳](https://coolshell.cn/)
+
 * [峰云就她了](http://xiaorui.cc/)
 
 * [Manjusaka](https://manjusaka.itscoder.com/)
 
 * [鸟窝](https://colobu.com/)
+
+* [Chrisyue's Blog](https://www.chrisyue.com/)
 
 * [标点符](https://www.biaodianfu.com/)
 
