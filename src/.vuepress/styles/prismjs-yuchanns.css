@@ -21,6 +21,7 @@ pre[class*="language-"] {
 
 div[class*="language-"] {
 	background: transparent url(/images/code-bk.png) repeat scroll 0% 0%;
+	font-size: 18px;
 }
 
 div[class*="language-"] .highlight-lines {
@@ -28,7 +29,7 @@ div[class*="language-"] .highlight-lines {
 }
 
 div[class*="language-"].line-numbers-mode .line-numbers-wrapper {
-	top: 40px;
+	top: 42px;
 }
 
 div[class*="language-"].line-numbers-mode::after {
