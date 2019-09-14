@@ -22,6 +22,7 @@ module.exports = {
     }],
   ],
   markdown: {
+    lineNumbers: true,
     extendMarkdown: md => {
       md.use(require('./components/markdown-it-controls/index'))
     },

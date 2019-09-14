@@ -19,12 +19,29 @@ pre[class*="language-"] {
 	hyphens: none;
 }
 
+div[class*="language-"] {
+	background: transparent url(/images/code-bk.png) repeat scroll 0% 0%;
+}
+
 div[class*="language-"] .highlight-lines {
-  padding-top: 1.1rem;
+	padding-top: 1.1rem;
+}
+
+div[class*="language-"].line-numbers-mode .line-numbers-wrapper {
+	top: 40px;
+}
+
+div[class*="language-"].line-numbers-mode::after {
+	background-color: transparent;
+	border-right: 0;
+}
+
+div[class*="language-"].line-numbers-mode .highlight-lines .highlighted::before {
+	background-color: transparent;
 }
 
 div[class*="language-"] .highlight-lines .highlighted {
-  background-color: rgba(28, 19, 71);
+	background: rgba(255,255,255,0.063);
 }
 
 /* Code blocks */
@@ -38,7 +55,7 @@ pre[class*="language-"] {
 
 code[class*="language-"] {
 	background: black;
-	color: white;
+	color: #f8f8f2;
 	box-shadow: -.3em 0 0 .3em black, .3em 0 0 .3em black;
 }
 
