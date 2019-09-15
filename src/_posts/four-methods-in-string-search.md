@@ -138,13 +138,13 @@ class StringsHelper
 
 那么常数n应该是多少呢？
 
-答案是越大越好。以golang来说，使用的是**1618274**。
+答案是越大越好。以golang来说，使用的是**16777619**。
 
 下面我们对代码进行修改。**注意**，由于php一般不支持大整数运算，因此需要使用bc系列函数辅助。bc系列的函数通过将数字转为字符串来确保精度，避免计算结果以科学计数法表示。
 ```php
 class StringsHelper
 {
-    const NUMBER = '1618274';  // 以字符串形式表示
+    const NUMBER = '16777619';  // 以字符串形式表示
 
     public static function rkStrSearch($str1, $str2)
     {
