@@ -187,9 +187,6 @@ echo "rk cost: " . getMicrotime($t2 - $t1) . 'μs' . PHP_EOL;  // rk cost: 57.93
 ```
 
 需要注意，虽然时间复杂度相同，理论上最佳状态rk算法会比bf算法快很多。而从PHP中我们没有得出这样的结果的原因是，使用bc系列函数进行大数值计算会有一定的损耗。
-## KMP算法
-
-<iframe src="//player.bilibili.com/player.html?aid=3246487&cid=5123036&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 650px;"> </iframe>
 
 ## 参考
 https://blog.cyeam.com/golang/2015/01/15/go_index
