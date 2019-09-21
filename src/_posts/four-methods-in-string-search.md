@@ -7,7 +7,7 @@ category: 学习笔记
 ---
 最近在看golang基础，在字符串操作的部分，包含了关于判断一个字符串是否包含在另一个字符串中的标准方法，好奇之下研究了源码是怎么实现的，于是有了这篇文章。
 <!-- more -->
-
+![茴香豆](/images/huixiangdou.jpg)
 当然，本文的代码是以php写成的。
 
 字符串搜索的常见四种算法有：
@@ -187,11 +187,3 @@ echo "rk cost: " . getMicrotime($t2 - $t1) . 'μs' . PHP_EOL;  // rk cost: 57.93
 ```
 
 需要注意，虽然时间复杂度相同，理论上最佳状态rk算法会比bf算法快很多。而从PHP中我们没有得出这样的结果的原因是，使用bc系列函数进行大数值计算会有一定的损耗。
-
-## 参考
-https://blog.cyeam.com/golang/2015/01/15/go_index
-
-http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html
-
-https://www.cnblogs.com/yusenwu/p/4779762.html
-

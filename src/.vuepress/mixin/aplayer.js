@@ -1,13 +1,6 @@
 module.exports = {
-  mounted () {
-    const aplayer = document.createElement('div')
-    aplayer.setAttribute('id', 'aplayer')
-    const footer = document.getElementsByTagName('footer')[0]
-    footer.appendChild(aplayer)
-    const APlayer = require('aplayer')
-    const ap = new APlayer({
-      container: document.getElementById('aplayer'),
-      lrcType: 0,
+  data () {
+    return {
       audio: [
         {
           name: 'Beautiful Dreams',
@@ -52,6 +45,19 @@ module.exports = {
           cover: 'https://p3.music.126.net/Vls3tRRSmLjYNX8_jJsjyw==/2532175280692526.jpg?param=300y300',
         },
       ],
+    }
+  },
+  mounted () {
+    const aplayer = document.createElement('div')
+    aplayer.setAttribute('id', 'aplayer')
+    const footer = document.getElementsByTagName('footer')[0]
+    footer.appendChild(aplayer)
+    const APlayer = require('aplayer')
+    let _ = require('lodash')
+    const ap = new APlayer({
+      container: document.getElementById('aplayer'),
+      lrcType: 0,
+      audio: _.shuffle(this.audio),
       fixed: true,
     })
     setTimeout(function () {
