@@ -10,6 +10,18 @@ module.exports = {
       lrcType: 0,
       audio: [
         {
+          name: 'Beautiful Dreams',
+          artist: 'Vivienne',
+          url: 'https://music.163.com/song/media/outer/url?id=744728.mp3',
+          cover: 'https://p3.music.126.net/QN94YMkikhvQN4132VnQVw==/109951163516679812.jpg?param=300y300',
+        },
+        {
+          name: 'Different Kind of Love',
+          artist: 'Vivienne',
+          url: 'https://music.163.com/song/media/outer/url?id=450041327.mp3',
+          cover: 'https://p3.music.126.net/kcGhHJs0wk6Q0MIICCwvTw==/18503681185518261.jpg?param=300y300',
+        },
+        {
           name: 'ミック.ジャガーに微笑みを',
           artist: '中森明菜',
           url: 'https://music.163.com/song/media/outer/url?id=4910560.mp3',
@@ -27,12 +39,12 @@ module.exports = {
           url: 'https://music.163.com/song/media/outer/url?id=442562811.mp3',
           cover: 'https://p3.music.126.net/z-KAhHeB8AnWi4bBOnpLsA==/3299634402086878.jpg?param=300y300',
         },
-        {
-          name: '千年の虹',
-          artist: '阿兰',
-          url: 'https://music.163.com/song/media/outer/url?id=22817060.mp3',
-          cover: 'https://p3.music.126.net/wgbcjy8sIDTVQ4UKMjRtPw==/858718581317063.jpg?param=300y300',
-        },
+        // {
+        //   name: '千年の虹',
+        //   artist: '阿兰',
+        //   url: 'https://music.163.com/song/media/outer/url?id=22817060.mp3',
+        //   cover: 'https://p3.music.126.net/wgbcjy8sIDTVQ4UKMjRtPw==/858718581317063.jpg?param=300y300',
+        // },
         {
           name: 'やさしくしないで',
           artist: '杉恵ゆりか',
