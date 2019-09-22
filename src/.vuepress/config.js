@@ -93,7 +93,7 @@ module.exports = {
       poweredByTheme: true,
 
       // 添加自定义 footer (支持 HTML)
-      custom: '<span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv" style="color: #F56C6C"></span>位访问者</span><div style="margin: 0.3em 0">Since Year 2018 - <span id="present"></span></div>',
+      custom: '<div style="margin: 0.2em 0"><a href="https://app.netlify.com/sites/yuchanns/deploys" ref="nofollow"><img src="https://api.netlify.com/api/v1/badges/d5cbefe0-4b3d-437a-8064-0181fbe0dd23/deploy-status"></img></a> <a href="https://circleci.com/gh/yuchanns/Atelier" ref="nofollow"><img src="https://circleci.com/gh/yuchanns/Atelier.svg?style=svg"></img></a></div><span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv" style="color: #F56C6C"></span>位访问者</span><div style="margin: 0.3em 0">Since Year 2018 - <span id="present"></span></div>',
     },
 
     lastUpdated: true,
