@@ -85,6 +85,17 @@ module.exports = {
       showTitle: true,
     },
 
+    footer: {
+      // 是否显示 Powered by VuePress
+      poweredBy: true,
+
+      // 是否显示使用的主题
+      poweredByTheme: true,
+
+      // 添加自定义 footer (支持 HTML)
+      custom: '<span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv" style="color: #F56C6C"></span>位访问者</span><div style="margin: 0.3em 0">Since Year 2018 - <span id="present"></span></div>',
+    },
+
     lastUpdated: true,
 
     nav: [
