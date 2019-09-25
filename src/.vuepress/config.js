@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  title: '(yuchanns (Atelier))',
+  title: '🍃(yuchanns (Atelier))',
 
   description: 'focus on python|php',
 
@@ -100,8 +100,9 @@ module.exports = {
 
     nav: [
       { text: 'Home', link: '/', exact: true },
-      { text: 'Posts', link: '/posts/', exact: false },
-      // { text: 'Snippets', link: '/snippets/', exact: false },
+      // { text: 'Posts', link: '/posts/', exact: false },
+      { text: 'Golang', link: '/posts/categories/golang', exact: false },
+      { text: 'Wizard', link: '/posts/tags/魔法书', exact: false },
       { text: 'Awesome', link: '/awesome/', exact: false },
       { text: 'YuC\'s', link: 'http://yuc.wiki/', exact: false },
     ],

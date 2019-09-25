@@ -105,9 +105,11 @@ code[class*="language-"] {
 .token.selector,
 .token.attr-name,
 .token.string,
-.token.char,
-.token.builtin {
+.token.char {
 	color: rgba(220, 219, 116) !important;
+}
+.token.builtin {
+	color: rgba(118, 154, 165) !important;
 }
 
 .token.entity,
