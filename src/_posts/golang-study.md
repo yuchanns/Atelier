@@ -6,6 +6,84 @@ category: golang
 阅读《Go语言学习笔记》随手摘抄——
 <!-- more -->
 
+<details>
+<summary>kmpIndex by golang</summary>
+
+```go
+package main
+
+import (
+	"bytes"
+	"errors"
+	"fmt"
+	"time"
+)
+
+func getNext(s string, next []int) {
+	j, i := -1, 0
+	length := len(s)
+	next[0] = -1
+	for i < (length - 1) {
+		if j == -1 || s[i] == s[j] {
+			i++
+			j++
+			if s[i] == s[j] {
+				next[i] = next[j]
+			} else {
+				next[i] = j
+			}
+		} else {
+			j = next[j]
+		}
+	}
+}
+
+func kmpIndex(s, sub string) (int, error) {
+	fmt.Println("Comparing: ", s, " with ", sub)
+	length := len(s)
+	slength := len(sub)
+	next := make([]int, slength)
+	getNext(sub, next)
+	i, j := 0, 0
+	var a, b bytes.Buffer
+	a.Grow(length)
+	b.Grow(length)
+	for (i < length) && (j < slength) {
+		if j != -1 {
+			a.WriteString(string(s[i]))
+			b.WriteString(string(sub[j]))
+			fmt.Println("Comparing: ", a.String(), " with ", b.String())
+		}
+		if j == -1 || s[i] == sub[j] {
+			if j == -1 {
+				a.Reset()
+				b.Reset()
+			}
+			j++
+			i++
+		} else {
+			j = next[j]
+		}
+		time.Sleep(time.Second)
+	}
+	if j == slength {
+		return i - j, nil
+	}
+	return 0, errors.New("Not found")
+}
+
+func main() {
+	result, err := kmpIndex("ABABCABCABABA", "ABABA")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Match completed on index:", result)
+	}
+}
+
+```
+</details>
+
 * 退化赋值操作：前提条件：至少有一个新变量被定义，且必须是同一作用域
   ```go
   func main() {
