@@ -33,4 +33,9 @@ category: golang
   )
   ```
 
+* **Goproxy**
+  * 用于进行仓库代理，加快国内下载速度
+  * 在GOPATH中被禁用，在GOPATH之外非go.mod中需要配合`GO111MODULE=on`开启，在go.mod文件夹中默认开启
+  * 国内一般可使用`export GOPROXY=https://goproxy.io`
+
 * **使用GDB调试**
