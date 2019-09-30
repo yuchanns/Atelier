@@ -161,3 +161,11 @@ pre > code.diff-highlight.diff-highlight .token.inserted:not(.prefix) {
 	background-color: rgba(0, 255, 128, .3) !important;
 	display: inline !important;
 }
+
+.content strong {
+	font-weight: 600 !important;
+	color: #fff !important;
+	background: linear-gradient(to right, #F92672, #0cf) !important;
+	border-width: 0.25em 0px !important;
+	padding: 2px 4px !important;
+}
