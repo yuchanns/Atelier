@@ -52,7 +52,7 @@ module.exports = {
     },
     personalInfo: {
       nickname: 'yuchanns',
-      description: 'Plus Ultra!',
+      description: 'You\'re written in my memory.<br>I can\'t erase this.<br>The thought of being\'s fleeting.<br>Chasing a dream.',
       email: 'airamusume@gmail.com',
       location: 'Shenzhen, China',
 
