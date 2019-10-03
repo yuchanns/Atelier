@@ -3,6 +3,8 @@ title: 《Go语言学习笔记》要点随记（一）
 date: 2019-09-26 00:56:00
 category: golang
 ---
+![go语言学习笔记](/images/golang-study.jpg)
+
 阅读《Go语言学习笔记》随手摘抄——
 <!-- more -->
 
