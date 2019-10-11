@@ -22,6 +22,8 @@
 
 * [当然我在扯淡](http://www.yinwang.org/)
 
+* [Stefno](https://www.cnblogs.com/qcrao-2018/)
+
 * [酷壳](https://coolshell.cn/)
 
 * [峰云就她了](http://xiaorui.cc/)
