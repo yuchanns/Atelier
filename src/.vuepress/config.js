@@ -1,9 +1,9 @@
 const path = require('path')
 
 module.exports = {
-  title: '🍃(yuchanns (Atelier))',
+  title: 'yuchanns\' Atelier',
 
-  description: 'focus on python|php',
+  description: 'Github Oriented Programming',
 
   locales: {
     '/': {
@@ -24,12 +24,13 @@ module.exports = {
   markdown: {
     lineNumbers: false,
     extendMarkdown: md => {
-      md.use(require('./components/markdown-it-controls/index'))
+      md.use(require('./plugins/markdown-it/traffic-lights'))
     },
   },
 
   head: [
-    ['link', { rel: 'icon', href: '/yuchanns.png' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/favicon/android-chrome-192x192.png', sizes: '192x192' }],
+    ['link', { rel: 'shortcut icon', href: '/favicon/favicon.ico' }],
     ['meta', { name: 'google-site-verification', content: 'h0GK-apopUhINJJe5Jp3XopZswk6EK_JQT_fVMrs6A0' }],
     ['meta', { name: 'baidu-site-verification', content: 'OeVj0fzw4S' }],
   ],
@@ -93,7 +94,7 @@ module.exports = {
       poweredByTheme: true,
 
       // 添加自定义 footer (支持 HTML)
-      custom: '<div style="margin: 0.2em 0"><a href="https://app.netlify.com/sites/yuchanns/deploys" ref="nofollow"><img src="https://api.netlify.com/api/v1/badges/d5cbefe0-4b3d-437a-8064-0181fbe0dd23/deploy-status"></img></a> <a href="https://circleci.com/gh/yuchanns/Atelier" ref="nofollow"><img src="https://circleci.com/gh/yuchanns/Atelier.svg?style=svg"></img></a></div><span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv" style="color: #F56C6C"></span>位访问者</span><div style="margin: 0.3em 0">Since Year 2018 - <span id="present"></span></div><div><a href="http://beian.miit.gov.cn">粤ICP备19127765号</a></div><a href="https://github.com/yuchanns"><img width="149" height="149" src="/images/forkme_left_gray_6d6d6d.png" style="position: fixed; top: -7px; left: -7px; border: 0; z-index: 999;" alt="Fork me on GitHub"></a>',
+      custom: '<div style="margin: 0.2em 0"><a href="https://app.netlify.com/sites/yuchanns/deploys" ref="nofollow"><img src="https://api.netlify.com/api/v1/badges/d5cbefe0-4b3d-437a-8064-0181fbe0dd23/deploy-status"></img></a> <a href="https://circleci.com/gh/yuchanns/Atelier" ref="nofollow"><img src="https://circleci.com/gh/yuchanns/Atelier.svg?style=svg"></img></a></div><span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv" style="color: #F56C6C"></span>位访问者</span><div style="margin: 0.3em 0">Since Year 2018 - <span id="present"></span></div><div><a href="http://beian.miit.gov.cn">粤ICP备19127765号</a></div>',
     },
 
     lastUpdated: true,

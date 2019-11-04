@@ -7,7 +7,7 @@ category: 学习笔记
 ---
 最近在看golang基础，在字符串操作的部分，包含了关于判断一个字符串是否包含在另一个字符串中的标准方法，好奇之下研究了源码是怎么实现的，于是有了这篇文章。
 <!-- more -->
-![茴香豆](/images/huixiangdou.jpg)
+<lazy-image src="/images/huixiangdou.jpg" />
 当然，本文的代码是以php写成的。
 
 字符串搜索的常见四种算法有：

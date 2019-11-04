@@ -8,7 +8,7 @@ category: php
 最近工作中需要服务端合成名片，顺手记录一下过程。
 <!-- more -->
 
-![使用intervention/image合成的效果图](/images/poster.jpeg)
+<lazy-image src="/images/poster.jpeg" />
 
 获取源代码$\Rightarrow$[how-to-create-posters](https://github.com/yuchanns/how-to-create-posters)
 
