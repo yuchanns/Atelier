@@ -1,17 +1,13 @@
-const path = require('path')
+// const path = require('path')
 
 module.exports = {
   title: 'yuchanns\' Atelier',
 
   description: 'Github Oriented Programming',
 
-  locales: {
-    '/': {
-      lang: 'zh-CN',
-    },
-  },
+  lang: 'zh-CN',
 
-  clientRootMixin: path.resolve(__dirname, 'mixin/mixin.js'),
+  // clientRootMixin: path.resolve(__dirname, 'mixin/mixin.js'),
 
   plugins: [
     ['mathjax', {
@@ -69,18 +65,6 @@ module.exports = {
 
     header: {
       background: {
-        url: [
-          // '/assets/img/1.jpeg',
-          // '/assets/img/2.jpeg',
-          // '/assets/img/3.jpeg',
-          // '/assets/img/4.jpeg',
-          // '/assets/img/5.jpeg',
-          // '/assets/img/6.jpeg',
-          // '/assets/img/7.jpeg',
-          // '/assets/img/8.jpeg',
-          // '/assets/img/houkai3.jpeg',
-          // '/assets/img/godkiana.jpeg',
-        ],
         useGeo: true,
       },
       showTitle: true,
@@ -94,7 +78,7 @@ module.exports = {
       poweredByTheme: true,
 
       // 添加自定义 footer (支持 HTML)
-      custom: '<div style="margin: 0.2em 0"><a href="https://app.netlify.com/sites/yuchanns/deploys" ref="nofollow"><img src="https://api.netlify.com/api/v1/badges/d5cbefe0-4b3d-437a-8064-0181fbe0dd23/deploy-status"></img></a> <a href="https://circleci.com/gh/yuchanns/Atelier" ref="nofollow"><img src="https://circleci.com/gh/yuchanns/Atelier.svg?style=svg"></img></a></div><span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv" style="color: #F56C6C"></span>位访问者</span><div style="margin: 0.3em 0">Since Year 2018 - <span id="present"></span></div><div><a href="http://beian.miit.gov.cn">粤ICP备19127765号</a></div>',
+      custom: '<a href="http://beian.miit.gov.cn">粤ICP备19127765号</a>',
     },
 
     lastUpdated: true,
