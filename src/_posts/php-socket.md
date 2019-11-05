@@ -471,8 +471,8 @@ function json($arr) {
 ```
 </details>
 
-<lazy-image src="/images/A1CCC7E8-4613-45DD-ABCF-B70ECD6E143D.png" />
-<lazy-image src="/images/43C29F14-A6A3-4863-9117-6B2141787E8B.png" />
+-><lazy-image src="/images/A1CCC7E8-4613-45DD-ABCF-B70ECD6E143D.png" /><-
+-><lazy-image src="/images/43C29F14-A6A3-4863-9117-6B2141787E8B.png" /><-
 ## 总结
 * http实际上是tcp的封装，本质还是tcp连接。
 * 使用系统调用select可以对io进行复用，只处理有活动的连接

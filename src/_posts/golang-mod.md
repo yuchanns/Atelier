@@ -1,5 +1,6 @@
 ---
 title: Go创建项目
+draft: true
 date: 2019-09-30 01:08:00
 category: golang
 ---

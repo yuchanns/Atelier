@@ -5,7 +5,7 @@ category: golang
 ---
 阅读《Go语言学习笔记》随手摘抄——
 <!-- more -->
-<lazy-image src="/images/golang-study.jpg" />
+-><lazy-image src="/images/golang-study.jpg" /><-
 
 [[TOC]]
 

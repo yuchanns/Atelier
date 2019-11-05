@@ -7,7 +7,7 @@ category: 学习笔记
 ---
 最近赶项目进度，几乎没什么精力学习研究了，但是就算加班也不能阻止我发文！
 <!-- more -->
-<lazy-image src="/images/huixiangdou.jpg" />
+-><lazy-image src="/images/huixiangdou.jpg" /><-
 :::tip 前言
 KMP算法是什么，为什么叫这个名字，我就不再重复了，反正网上一搜一大把。原理也一搜一大把。
 
@@ -16,7 +16,7 @@ KMP算法是什么，为什么叫这个名字，我就不再重复了，反正�
 我不知道我写的这个是不是很好理解，但是我至少说服自己可以这么理解。
 :::
 
-<lazy-video src="//player.bilibili.com/player.html?aid=3246487&cid=5123036&page=1" />
+-><lazy-video src="//player.bilibili.com/player.html?aid=3246487&cid=5123036&page=1" /><-
 
 关于KMP算法原理的讲解，我查了不少资料，包括公式化解释的严奶奶的《数据结构》<sup>[[1]](https://wenku.baidu.com/view/3ecafcd3a58da0116c1749eb.html)</sup>、阮一峰的《字符串匹配的KMP算法》<sup>[[2]](http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html)</sup>，当然还有《算法导论》第32章第4节（😅虽然这本书买了挺久的但是厚厚的没怎么看）。至于**Knuth**等原作者的原论文我没去找。
 
@@ -295,7 +295,7 @@ function getNextHyper($string)
 }
 ```
 ## 最终成品
-<v-lazy-image src="/images/kmpalgorithm.gif" />
+-><v-lazy-image src="/images/kmpalgorithm.gif" /><-
 ```php
 <?php
 /**

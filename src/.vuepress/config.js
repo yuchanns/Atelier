@@ -1,11 +1,16 @@
 // const path = require('path')
+const headerconfig = require('./config/header')
 
 module.exports = {
   title: 'yuchanns\' Atelier',
 
   description: 'Github Oriented Programming',
 
-  lang: 'zh-CN',
+  locales: {
+    '/': {
+      lang: 'zh-CN',
+    },
+  },
 
   // clientRootMixin: path.resolve(__dirname, 'mixin/mixin.js'),
 
@@ -34,19 +39,10 @@ module.exports = {
   theme: 'meteorlxy',
 
   themeConfig: {
-    lang: {
+    lang: Object.assign(require('vuepress-theme-meteorlxy/lib/langs/zh-CN'), {
       home: 'Atelier',
       posts: 'Recipes',
-      category: 'category',
-      categories: 'categories',
-      allCategories: 'all',
-      tag: 'tag',
-      tags: 'tags',
-      createdAt: 'createdAt',
-      updatedAt: 'updatedAt',
-      prevPost: 'prev',
-      nextPost: 'next',
-    },
+    }),
     personalInfo: {
       nickname: 'yuchanns',
       description: 'You\'re written in my memory.<br>I can\'t erase this.<br>The thought of being\'s fleeting.<br>Chasing a dream.',
@@ -63,12 +59,7 @@ module.exports = {
       },
     },
 
-    header: {
-      background: {
-        useGeo: true,
-      },
-      showTitle: true,
-    },
+    header: headerconfig,
 
     footer: {
       // 是否显示 Powered by VuePress
