@@ -24,6 +24,7 @@ module.exports = {
   ],
   markdown: {
     lineNumbers: false,
+    toc: { includeLevel: [2] },
     extendMarkdown: md => {
       md.use(require('./plugins/markdown-it/traffic-lights'))
     },
