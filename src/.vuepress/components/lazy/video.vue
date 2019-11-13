@@ -1,15 +1,24 @@
 <template>
   <lazy-component
     tag="div"
-    class="container">
-    <iframe :src="src" frameborder="0" allowfullscreen class="video"></iframe>
+    class="container"
+  >
+    <iframe
+      :src="src"
+      frameborder="0"
+      allowfullscreen
+      class="video"
+    />
   </lazy-component>
 </template>
 <script>export default {
-  name: 'video-iframe',
-  props: [
-    'src'
-  ]
+  name: 'VideoIframe',
+  props: {
+    src: {
+      type: String,
+      default: '',
+    },
+  },
 }
 </script>
 <style lang="stylus" scoped>

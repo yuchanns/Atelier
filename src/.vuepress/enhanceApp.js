@@ -8,7 +8,7 @@ export default ({
   Vue,
   options,
   router,
-  siteData
+  siteData,
 }) => {
   Vue.use(ElementUI)
   Vue.use(VLazyImagePlugin)

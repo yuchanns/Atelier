@@ -1,12 +1,15 @@
 <template>
-  <v-lazy-image :src='src' />
+  <v-lazy-image :src="src" />
 </template>
 
 <script>
 export default {
-  props: [
-    'src'
-  ]
+  props: {
+    src: {
+      type: String,
+      default: '',
+    },
+  },
 }
 </script>
 

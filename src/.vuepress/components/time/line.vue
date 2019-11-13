@@ -3,11 +3,19 @@
     <template v-for="(title, key) in timeTitles">
       <timeline-title
         :key="key"
-        bg-color="#E50743">{{ title }}</timeline-title>
+        bg-color="#E50743"
+      >
+        {{ title }}
+      </timeline-title>
       <timeline-item
-        :bg-color="colors[key%6]"
-        v-for="(item, key) in timeItems[title]"
-        :key="title.toString() + key"><router-link :to="item.path">{{ item.title }}</router-link></timeline-item>
+        :bg-color="colors[tkey%6]"
+        v-for="(item, tkey) in timeItems[title]"
+        :key="title.toString() + tkey"
+      >
+        <router-link :to="item.path">
+          {{ item.title }}
+        </router-link>
+      </timeline-item>
     </template>
   </timeline>
 </template>
@@ -23,7 +31,7 @@ export default {
   components: {
     Timeline,
     TimelineItem,
-    TimelineTitle
+    TimelineTitle,
   },
 
   data () {
@@ -35,21 +43,22 @@ export default {
         '#3FA62E',
         '#3BB4D7',
         '#2F4D9E',
-        '#71378A'
-      ]
+        '#71378A',
+      ],
     }
   },
 
   computed: {
     posts () {
-      return this.$posts.sort((p1, p2) => {
+      const posts = this.$posts
+      return posts.sort((p1, p2) => {
         return compareDesc(p1.createdAt, p2.createdAt)
       })
     },
     year () {
       return {
         end: getYear(this.posts[0].createdAt),
-        start: getYear(this.posts[this.posts.length - 1].createdAt)
+        start: getYear(this.posts[this.posts.length - 1].createdAt),
       }
     },
     timeTitles () {
@@ -66,8 +75,8 @@ export default {
       })
 
       return timelines
-    }
-  }
+    },
+  },
 }
 </script>
 
