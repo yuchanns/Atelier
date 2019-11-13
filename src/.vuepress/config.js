@@ -110,11 +110,12 @@ module.exports = {
     lastUpdated: true,
 
     nav: [
-      { text: 'Home', link: '/', exact: true },
-      // { text: 'Posts', link: '/posts/', exact: false },
-      { text: 'Golang', link: '/posts/categories/golang', exact: false },
-      { text: 'Wizard', link: '/posts/tags/魔法书', exact: false },
-      { text: 'Awesome', link: '/awesome/', exact: false },
+      { text: 'HOME', link: '/', exact: true },
+      { text: 'PHP', link: '/posts/categories/php', exact: false },
+      { text: 'PYTHON', link: '/posts/categories/python', exact: false },
+      { text: 'GOLANG', link: '/posts/categories/golang', exact: false },
+      { text: 'WIZARD', link: '/posts/tags/魔法书', exact: false },
+      { text: 'AWESOME', link: '/awesome/', exact: false },
       { text: 'YuC\'s', link: 'http://yuc.wiki/', exact: false },
     ],
 
