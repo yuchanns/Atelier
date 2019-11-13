@@ -1,4 +1,4 @@
-// const path = require('path')
+const path = require('path')
 const headerconfig = require('./config/header')
 
 module.exports = {
@@ -12,7 +12,9 @@ module.exports = {
     },
   },
 
-  // clientRootMixin: path.resolve(__dirname, 'mixin/mixin.js'),
+  clientRootMixin: path.resolve(__dirname, 'mixin/mixin.js'),
+
+  evergreen: true,
 
   plugins: [
     ['mathjax', {
@@ -24,6 +26,13 @@ module.exports = {
     ['vuepress-plugin-code-copy', true],
     'reading-progress',
     'vuepress-plugin-baidu-autopush',
+    'vuepress-plugin-seo',
+    ['vuepress-plugin-sitemap', {
+      hostname: 'https://www.yuchanns.xyz',
+    }],
+    [ 'feed', {
+      canonical_base: 'https://www.yuchanns.xyz',
+    }],
   ],
 
   markdown: {
@@ -95,7 +104,7 @@ module.exports = {
       poweredByTheme: true,
 
       // 添加自定义 footer (支持 HTML)
-      custom: '<a href="http://beian.miit.gov.cn">粤ICP备19127765号</a>',
+      custom: '<div style="margin-bottom: 0.5em;display: inline-block"><span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv"></span>位访问者</span></div><br/><span id="year"></span> <a href="http://beian.miit.gov.cn">粤ICP备19127765号</a>',
     },
 
     lastUpdated: true,

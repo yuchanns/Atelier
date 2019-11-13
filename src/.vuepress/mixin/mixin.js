@@ -1,11 +1,9 @@
-const busuanzi = require('./busuanzi')
-// const aplayer = require('./aplayer')
-// const baidu = require('./baidu')
+const aplayer = require('./aplayer')
+const getyear = require('./getyear')
 
 export default {
   mixins: [
-    busuanzi,
-    // aplayer,
-    // baidu,
+    aplayer,
+    getyear,
   ],
 }
