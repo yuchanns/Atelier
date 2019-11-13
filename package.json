@@ -14,7 +14,9 @@
     "v-lazy-image": "^1.3.2",
     "vue-lazyload": "^1.3.3",
     "vuepress": "^1.0.4",
+    "vuepress-plugin-code-copy": "^1.0.4",
     "vuepress-plugin-mathjax": "^1.2.4",
+    "vuepress-plugin-reading-progress": "^1.0.7",
     "vuepress-theme-meteorlxy": "^1.7.1"
   },
   "devDependencies": {
@@ -26,6 +28,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^5.0.0",
     "husky": "^3.0.9",
-    "lint-staged": "^8.1.0"
+    "lint-staged": "^8.1.0",
+    "vuepress-plugin-baidu-autopush": "^1.0.1"
   }
 }

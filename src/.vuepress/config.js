@@ -21,7 +21,11 @@ module.exports = {
         '*': '\\times',
       },
     }],
+    ['vuepress-plugin-code-copy', true],
+    'reading-progress',
+    'vuepress-plugin-baidu-autopush',
   ],
+
   markdown: {
     lineNumbers: false,
     toc: { includeLevel: [2] },

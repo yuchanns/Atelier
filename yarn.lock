@@ -8290,6 +8290,16 @@ vuepress-mergeable@^1.0.2:
   dependencies:
     deconstruct-merge "^1.1.0"
 
+vuepress-plugin-baidu-autopush@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-baidu-autopush/-/vuepress-plugin-baidu-autopush-1.0.1.tgz#e5042170f05a585c4a38f876e01ff4706cd82fbe"
+  integrity sha512-KVQkrmMgPY+GG8dtI2wcRxUv1n2h5DM8aFs75ltsSlFBSS9C/vfLb2LmywXAsoCXk2EHya2p66cpn7BxofK+Mw==
+
+vuepress-plugin-code-copy@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-code-copy/-/vuepress-plugin-code-copy-1.0.4.tgz#14da382d4e0f973bb20422483ed9349ea62834bf"
+  integrity sha512-8tERv9oB2kgRz0kdBTLaH+DM36TfcRjwPO5pFXWuDDm8ACcXebZMMnL0PTda7NrZ2wnOTAjWxDlQioIDrD6Q9g==
+
 vuepress-plugin-container@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vuepress-plugin-container/-/vuepress-plugin-container-1.1.2.tgz#3bcf10d335a657c7eb9938b1499d6a7c37625456"
@@ -8326,6 +8336,11 @@ vuepress-plugin-nprogress@^1.1.0:
   integrity sha512-z9Wbh9j0Muv54xdel4Ybc1BCuyXHAwO5U0NrKNBjd2WHQFavozOcxTgr4SVDbAHOKEJPTy8uUgY72mm7p8mfZQ==
   dependencies:
     nprogress "^0.2.0"
+
+vuepress-plugin-reading-progress@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-reading-progress/-/vuepress-plugin-reading-progress-1.0.7.tgz#9a278866b5280e447226579945eded3055ba48ce"
+  integrity sha512-XFnD42/Xt4ZQ3G0j1ViF2WmBJM7f+zYJLKfD2ZEkIq3Ar38c3FKR/LU94aENaWRGnfDMDmAMEYjLrcmR4uq49g==
 
 vuepress-plugin-redirect@^1.1.2:
   version "1.1.2"
