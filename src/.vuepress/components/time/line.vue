@@ -3,18 +3,19 @@
     <template v-for="(title, key) in timeTitles">
       <timeline-title
         :key="key"
-        bg-color="#E50743"
+        :hollow="true"
       >
-        {{ title }}
+        <strong>{{ title }}</strong>
       </timeline-title>
       <timeline-item
-        :bg-color="colors[tkey%6]"
+        :line-color="colors[tkey%7]"
+        :hollow="true"
         v-for="(item, tkey) in timeItems[title]"
         :key="title.toString() + tkey"
       >
         <router-link
           :to="item.path"
-          :style="{'color': colors[5-tkey%6]}"
+          :style="{'color': colors[tkey%7]}"
         >
           {{ item.title }}
         </router-link>
@@ -41,6 +42,7 @@ export default {
     return {
       num: 0,
       colors: [
+        '#E50743',
         '#F9870F',
         '#E8ED30',
         '#3FA62E',
@@ -87,4 +89,10 @@ export default {
 .content
   ul
     padding-left 0
+
+.content
+  strong
+    color $accentColor
+    background none
+    font-size 50px
 </style>
