@@ -7,7 +7,7 @@
       <timeline-item
         :bg-color="colors[key%6]"
         v-for="(item, key) in timeItems[title]"
-        :key="title.toString() + key">{{ item.title }}</timeline-item>
+        :key="title.toString() + key"><router-link :to="item.path">{{ item.title }}</router-link></timeline-item>
     </template>
   </timeline>
 </template>
