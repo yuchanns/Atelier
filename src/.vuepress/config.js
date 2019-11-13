@@ -67,7 +67,7 @@ module.exports = {
     }),
     personalInfo: {
       nickname: 'yuchanns',
-      description: 'You\'re written in my memory.<br>I can\'t erase this.<br>The thought of being\'s fleeting.<br>Chasing a dream.',
+      description: '面向GitHub编程',
       email: 'airamusume@gmail.com',
       location: 'Shenzhen, China',
 
