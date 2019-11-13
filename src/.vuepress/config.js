@@ -4,7 +4,7 @@ const headerconfig = require('./config/header')
 module.exports = {
   title: 'yuchanns\' Atelier',
 
-  description: 'Github Oriented Programming',
+  description: '一介码农的炼金工坊。爱代码、爱学习、爱交流。php|scheme|python|golang',
 
   locales: {
     '/': {
