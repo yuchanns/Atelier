@@ -116,6 +116,7 @@ module.exports = {
       { text: 'GOLANG', link: '/posts/categories/golang', exact: false },
       { text: 'WIZARD', link: '/posts/tags/魔法书', exact: false },
       { text: 'AWESOME', link: '/awesome/', exact: false },
+      { text: 'TIMELINE', link: '/timeline/', exact: false },
       { text: 'YuC\'s', link: 'http://yuc.wiki/', exact: false },
     ],
 
