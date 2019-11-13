@@ -12,7 +12,10 @@
         v-for="(item, tkey) in timeItems[title]"
         :key="title.toString() + tkey"
       >
-        <router-link :to="item.path">
+        <router-link
+          :to="item.path"
+          :style="{'color': colors[5-tkey%6]}"
+        >
           {{ item.title }}
         </router-link>
       </timeline-item>
