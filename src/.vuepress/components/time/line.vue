@@ -15,7 +15,7 @@
       >
         <router-link
           :to="item.path"
-          :style="{'color': colors[tkey%7]}"
+          :style="{'background-color': colors[tkey%7], 'color': '#fff'}"
         >
           {{ item.title }}
         </router-link>
@@ -95,4 +95,10 @@ export default {
     color $accentColor
     background none
     font-size 50px
+
+.timeline-item
+  a
+    border-radius 6px
+    padding 4px 6px
+    font-weight 600
 </style>
