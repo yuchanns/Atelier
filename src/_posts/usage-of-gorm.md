@@ -5,7 +5,7 @@ category: golang
 tags:
   - gorm
 ---
-记录了业务场景下常用的功能
+记录了gorm在业务场景下常用的功能<span style="color: red">...持续更新中</span>
 <!-- more -->
 -><lazy-image src="/images/golang_tutorial_coverage.jpg" /><-
 
