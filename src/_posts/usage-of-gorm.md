@@ -5,7 +5,7 @@ category: golang
 tags:
   - gorm
 ---
-记录了gorm在业务场景下常用的功能<span style="color: red">...持续更新中</span>
+记录了gorm在业务场景下简单常用的功能
 <!-- more -->
 -><lazy-image src="/images/golang_tutorial_coverage.jpg" /><-
 
@@ -208,6 +208,7 @@ AfterSave
 // 更新钩子
 func (o *Order) BeforeUpdate(scope gorm.Scope) (err error) {
     scope.SetColumn("UpdatedAt", time.Now().Unix())
+    scope.Set("gorm:save_associations", false) // 更新的时候不进行关联更新
     if _, ok := scope.FieldByName("Status"); ok {
         for _, status := range statusScope {
             if status == o.Status {
@@ -328,5 +329,84 @@ func QueryPreload(DB *gorm.DB) *model.Order {
 // query result is &{ID:1 OrderNo:1203664661971472384 UserId:1088 TotalPrice:9000 Postage:1000 Status:0 IsDeleted:0 CreatedAt:1575810993 UpdatedAt:1575810993 DeletedAt:0 OrderItems:[0xc0001de000 0xc0001de0a0] CreatedTime:2019-12-08 21:16:33 UpdatedTime:2019-12-08 21:16:33}
 // the order items are &{ID:1 Order:0xc0000ce120 OrderId:1 SID:2 UserId:1088 GID:20 Name:FoodA Num:2 Price:2000 Status:0 IsDeleted:0 CreatedAt:1575810993 UpdatedAt:1575810993 DeletedAt:0 CreatedTime:2019-12-08 21:16:33 UpdatedTime:2019-12-08 21:16:33} and &{ID:2 Order:0xc0000ce120 OrderId:1 SID:2 UserId:1088 GID:21 Name:FoodB Num:1 Price:5000 Status:0 IsDeleted:0 CreatedAt:1575810993 UpdatedAt:1575810993 DeletedAt:0 CreatedTime:2019-12-08 21:16:33 UpdatedTime:2019-12-08 21:16:33}
 ```
----
-未完待续...
+## 更新数据
+* 使用**Update**方法时，如果存在`UpdatedAt`字段，gorm会强制覆盖值为**time.Time**类型，优先级比钩子更高。
+* 使用**Save**方法可以避免`UpdatedAt`被强制覆盖，通过**Select**方法设置允许更新的字段；否则会更新所有字段
+```go
+func UpdateAutoComplete(order *model.Order, DB *gorm.DB) (err error) {
+	//DB.Set("gorm:save_associations", false).Model(&order).Unscoped().Update("Status", model.OrderPayed) // 不支持字段为int类型的UpdatedAt自动更新
+	//DB.Model(&order).Updates(model.Order{Status: model.OrderTransporting, IsDeleted: 0}) // 不支持字段为int类型的UpdatedAt自动更新
+	//DB.Model(&order).Unscoped().UpdateColumns(model.Order{Status: model.OrderTransporting, IsDeleted: 0})
+	// 推荐写法：支持字段为int类型的UpdatedAt自动更新
+    order.Status = model.OrderPayed
+    // 允许Status和UpdatedAt字段更新
+	err = DB.Unscoped().Select("Status", "UpdatedAt").Save(&order).Error
+	return
+}
+```
+## 事务
+* 使用**Begin**开启事务获取带事务状态的`*gorm.DB`
+* 使用**Commit**和**Rollback**进行提交回滚
+* 可以使用闭包实现自动开闭事务
+```go
+func Transaction(order *model.Order, DB *gorm.DB) {
+	tx := DB.Begin()
+	InsertGoods(tx) // 注意传递的是tx而不是DB
+	tx.Unscoped().Delete(order)
+	tx.Rollback() // 回滚使上面的插入与删除无效
+}
+```
+## 高级查询
+### Join
+```go
+type OrderJoin struct {
+	ID      uint64
+	Name    string
+	OrderNo string
+}
+
+func Join(DB *gorm.DB) []*OrderJoin {
+	var orderJoins []*OrderJoin
+	DB.Table("order_item").Joins("left join `order` on order.id = order_item.order_id").
+		Select("order_item.id, name, order_no").Find(&orderJoins)
+	return orderJoins
+}
+```
+### Group
+有关Rows结构体查看[标准库文档](https://golang.org/pkg/database/sql/#Rows)
+```go
+func Group(DB *gorm.DB) []map[string]interface{} {
+	rows, _ := DB.Table("order_item").Select("order_id").Group("order_id").Rows()
+	defer rows.Close() // rows是go标准库sql的结构体Rows的实例，存储着查询结果集
+	m := make(map[string]interface{})
+	var orderId string
+	var list []map[string]interface{}
+	for rows.Next() {
+        rows.Scan(&orderId) // 必须一一对应查询出来的字段，否则会失败
+        // 上面若查询Select("id, order_id")则使用row.Scan(&id, &orderId)接收
+		m["order_id"] = orderId
+		list = append(list, m)
+		fmt.Printf("row is %+v\n", m)
+	}
+	return list
+}
+```
+### Count
+```go
+func Count(DB *gorm.DB) (count int) {
+	DB.Model(model.OrderItem{}).Unscoped().Where("order_id = ?", 1).Count(&count)
+	return
+}
+```
+### 子查询
+使用**SubQuery**生成子查询语句
+```go
+func SubQuery(DB *gorm.DB) (orderItemSub model.OrderItem) {
+	DB.Where("order_id = ?", DB.Table("order").Select("id").
+		Where("id = ?", 1).SubQuery()).
+		Unscoped().Find(&orderItemSub)
+	return
+}
+```
+## 数据库连接和通道的结合使用
+待补充...
