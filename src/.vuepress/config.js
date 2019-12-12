@@ -84,7 +84,7 @@ module.exports = {
       email: 'airamusume@gmail.com',
       location: 'Shenzhen, China',
 
-      avatar: 'https://avatars3.githubusercontent.com/u/25029451',
+      avatar: '/images/bronya.gif',
 
       sns: {
         github: {
