@@ -1,10 +1,10 @@
-const aplayer = require('./aplayer')
+// const aplayer = require('./aplayer')
 const getyear = require('./getyear')
 const bsz = require('./busuanzi')
 
 export default {
   mixins: [
-    aplayer,
+    // aplayer,
     getyear,
     bsz,
   ],
