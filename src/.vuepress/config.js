@@ -48,6 +48,7 @@ module.exports = {
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
     ['meta', { name: 'google-site-verification', content: 'h0GK-apopUhINJJe5Jp3XopZswk6EK_JQT_fVMrs6A0' }],
     ['meta', { name: 'baidu-site-verification', content: 'OeVj0fzw4S' }],
+    ['meta', { name: 'keywords', content: 'Atelier,yuchanns,PHP,Python,Golang,Go,Go语言,Scheme,Lisp,码农,程序猿,炼金工坊,vuepress'}],
   ],
 
   chainWebpack: (config, isServer) => {
