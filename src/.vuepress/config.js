@@ -107,6 +107,14 @@ module.exports = {
       custom: '<div style="margin-bottom: 0.5em;display: inline-block"><span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv"></span>位访问者</span></div><br/><span id="year"></span> <a href="http://beian.miit.gov.cn">粤ICP备19127765号</a>',
     },
 
+    infoCard: {
+      headerBackground: {
+        // url: '/assets/img/bg.jpg',
+
+        useGeo: false,
+      },
+    },
+
     lastUpdated: true,
 
     nav: [

@@ -11,6 +11,7 @@
     "aplayer": "^1.10.1",
     "busuanzi": "^2.3.0",
     "element-ui": "^2.11.1",
+    "global": "^4.4.0",
     "lodash": "^4.17.15",
     "v-lazy-image": "^1.3.2",
     "vue-cute-timeline": "^1.2.8",
@@ -32,6 +33,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "husky": "^3.0.9",
     "lint-staged": "^8.1.0",
+    "svgo": "^1.3.2",
     "vuepress-plugin-baidu-autopush": "^1.0.1",
     "vuepress-plugin-feed": "^0.1.7",
     "vuepress-plugin-seo": "^0.1.2"
