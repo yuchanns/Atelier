@@ -409,5 +409,3 @@ func SubQuery(DB *gorm.DB) (orderItemSub model.OrderItem) {
 	return
 }
 ```
-## 数据库连接和通道的结合使用
-待补充...
