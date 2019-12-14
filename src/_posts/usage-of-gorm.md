@@ -153,6 +153,10 @@ AfterFind
 func (o *Order) AfterFind() {
     o.CreatedTime = time.Unix(o.CreatedAt, 0).Format("2006-01-02 15:04:05")
     o.UpdatedTime = time.Unix(o.UpdatedAt, 0).Format("2006-01-02 15:04:05")
+    // 通过指针传递使主订单和子订单相互引用
+    for _, orderItem := range o.OrderItems {
+		orderItem.Order = o
+	}
 }
 ```
 :::tip 新增钩子
@@ -312,10 +316,7 @@ func QueryPreload(DB *gorm.DB) *model.Order {
     DB.Where("id = ?", 1).Preload("OrderItems", func(db *gorm.DB) *gorm.DB {
         return db.Unscoped()
     }).Unscoped().Find(&order)
-    // 通过指针传递使主订单和子订单相互引用
-    for _, orderItem := range order.OrderItems {
-        orderItem.Order = &order
-    }
+    // 由于上面的AfterFind方法中将order指针放到orderItems数组中，所以也可以从orderItems中得到order
     return &order
 }
 
