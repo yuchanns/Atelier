@@ -48,7 +48,7 @@ module.exports = {
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
     ['meta', { name: 'google-site-verification', content: 'h0GK-apopUhINJJe5Jp3XopZswk6EK_JQT_fVMrs6A0' }],
     ['meta', { name: 'baidu-site-verification', content: 'OeVj0fzw4S' }],
-    ['meta', { name: 'keywords', content: 'Atelier,yuchanns,PHP,Python,Golang,Go,Go语言,Scheme,Lisp,码农,程序猿,炼金工坊,vuepress'}],
+    ['meta', { name: 'keywords', content: 'Atelier,yuchanns,PHP,Python,Golang,Go,Go语言,Scheme,Lisp,码农,程序猿,炼金工坊,vuepress' }],
   ],
 
   chainWebpack: (config, isServer) => {
@@ -105,7 +105,7 @@ module.exports = {
       poweredByTheme: true,
 
       // 添加自定义 footer (支持 HTML)
-      custom: '<div style="margin-bottom: 0.5em;display: inline-block"><span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv"></span>位访问者</span></div><br/><span id="year"></span> <a href="http://beian.miit.gov.cn">粤ICP备19127765号</a>',
+      custom: '<div style="margin-bottom: 0.5em;display: inline-block"><span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv">-</span>位访问者</span></div><br/><span id="year"></span> <a href="http://beian.miit.gov.cn">粤ICP备19127765号</a>',
     },
 
     infoCard: {

@@ -1,5 +1,7 @@
 module.exports = {
   mounted () {
-    require('busuanzi/bsz.pure.mini')
+    setTimeout(function () {
+      require('busuanzi/bsz.pure.mini')
+    }, 5000)
   },
 }
