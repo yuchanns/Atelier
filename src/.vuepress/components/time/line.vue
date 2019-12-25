@@ -8,14 +8,14 @@
         <strong>{{ title }}</strong>
       </timeline-title>
       <timeline-item
-        :line-color="colors[tkey%7]"
+        :line-color="colors[(timeItems[title].length - tkey - 1)%7]"
         :hollow="true"
         v-for="(item, tkey) in timeItems[title]"
         :key="title.toString() + tkey"
       >
         <router-link
           :to="item.path"
-          :style="{'background-color': colors[tkey%7], 'color': '#fff'}"
+          :style="{'background-color': colors[(timeItems[title].length - tkey - 1)%7], 'color': '#fff'}"
         >
           {{ item.title }}
         </router-link>
