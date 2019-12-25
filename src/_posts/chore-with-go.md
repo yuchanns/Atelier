@@ -125,10 +125,10 @@ func getPubKey() (pub *rsa.PublicKey, err error) {
 
 func Encrypt(data *map[string]interface{}) (encrypted string, err error) {
 	var (
-		jsonByte        []byte
-		encrypt         []byte
-		maxEncodeLength = 117
-		pub             *rsa.PublicKey
+		jsonByte []byte
+		encrypt  []byte
+		pub      *rsa.PublicKey
+		sliceLen = maxEncodeLength
 	)
 
 	pub, err = getPubKey()
@@ -141,14 +141,16 @@ func Encrypt(data *map[string]interface{}) (encrypted string, err error) {
 		return
 	}
 
-	encrypts := make([][]byte, len(jsonByte)/maxEncodeLength+1)
+	jsonByteLen := len(jsonByte)
 
-	for i := 0; i < maxEncodeLength; i = i + maxEncodeLength {
-		length := len(jsonByte) - i
+	encrypts := make([][]byte, jsonByteLen/maxEncodeLength+1)
+
+	for i := 0; i < jsonByteLen; i = i + sliceLen {
+		length := jsonByteLen - i
 		if length < maxEncodeLength {
-			maxEncodeLength = length
+			sliceLen = length
 		}
-		encrypt, err = rsa.EncryptPKCS1v15(rand.Reader, pub, jsonByte[i:maxEncodeLength])
+		encrypt, err = rsa.EncryptPKCS1v15(rand.Reader, pub, jsonByte[i:i+sliceLen])
 		if err != nil {
 			return
 		}
