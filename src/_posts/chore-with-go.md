@@ -12,11 +12,18 @@ tags:
 
 ## 编写测试用例
 在同文件目录下，创建以_test为后缀的文件。引入testing包，编写测试函数。
+
+接着进行测试模块编译`go test -c -o test_xxx /path/to/package`
 :::tip
 测试功能函数：`TestXXX`
 
+进行功能测试：`./test_xxx -test.v -test.run TestXXX`
+
 测试性能函数：`BenchmarkXXX`
+
+进行性能测试：`./test_xxx -test.v -test.bench BenchmarkXXX`
 :::
+
 例：
 
 ```go
