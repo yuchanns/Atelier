@@ -98,6 +98,7 @@ export default {
 
 .timeline-item
   a
+    box-shadow 4px 4px 10px #555
     border-radius 6px
     padding 4px 6px
     font-weight 600
