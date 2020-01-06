@@ -10,8 +10,8 @@ module.exports = {
   head: [
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
     ['meta', { name: 'keywords', content: 'Atelier,yuchanns,PHP,Python,Golang,Go,Go语言,Scheme,Lisp,码农,程序猿,炼金工坊,vuepress' }],
-    ['meta', { name: 'google-site-verification', content: 'h0GK-apopUhINJJe5Jp3XopZswk6EK_JQT_fVMrs6A0' }],
-    ['meta', { name: 'baidu-site-verification', content: 'OeVj0fzw4S' }],
+    ['meta', { name: 'google-site-verification', content: 'K1weNq67k6Udp1q4Jr7AZahSmfHcaYXBnYHHCxPgh_I' }],
+    ['meta', { name: 'baidu-site-verification', content: 'YIQSNieN3r' }],
   ],
 
   locales: {
