@@ -1,49 +1,6 @@
-@import './prismjs-yuchanns.styl'
-
-.content
-	img
-		box-shadow 0 0 10px #555
-		border-radius 6px
-	h2
-		&>a.header-anchor
-			font-size 100px
-			position relative
-			top -60px
-			left 60px
-			opacity .1
-		&:hover
-			&>a.header-anchor
-				opacity .3
-	strong 
-		font-weight 600 
-		color #fff 
-		background $accentColor
-		border-width 0.25em 0px 
-		border-radius 6px
-		padding 2px 4px 
-		margin 4px 
-		a
-			color #fff
-
-.table-of-contents
-	&>ul
-		list-style none
-		&>li
-			margin-bottom 10px
-			counter-increment a
-			&:before
-				content counter(a)
-				border-radius 5px
-				margin-right 14px
-				background-color $accentColor
-				color #fff
-				width 25px
-				padding 4px 0
-				text-align center
-				display inline-block
-				font-weight 700
-
-.filter
-	&-tags
-	&-categories
-		display none
+.text-align-center
+  text-align center
+.content__default
+  img
+    box-shadow 0 0 10px #555
+    border-radius 6px

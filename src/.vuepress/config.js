@@ -1,18 +1,24 @@
-const path = require('path')
-const headerconfig = require('./config/header')
+const markdownItCenterText = require('markdown-it-center-text')
 
 module.exports = {
-  title: 'yuchanns\' Atelier',
+  title: 'C-Sekai',
 
-  description: '一介码农的炼金工坊。爱代码、爱学习、爱交流。php|scheme|python|golang',
+  description: '代码爱好者，半吊子码农',
+
+  theme: 'yuchanns',
+
+  head: [
+    ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
+    ['meta', { name: 'keywords', content: 'Atelier,yuchanns,PHP,Python,Golang,Go,Go语言,Scheme,Lisp,码农,程序猿,炼金工坊,vuepress' }],
+    ['meta', { name: 'google-site-verification', content: 'h0GK-apopUhINJJe5Jp3XopZswk6EK_JQT_fVMrs6A0' }],
+    ['meta', { name: 'baidu-site-verification', content: 'OeVj0fzw4S' }],
+  ],
 
   locales: {
     '/': {
-      lang: 'zh-CN',
-    },
+      lang: 'en-US'
+    }
   },
-
-  clientRootMixin: path.resolve(__dirname, 'mixin/mixin.js'),
 
   evergreen: true,
 
@@ -23,33 +29,19 @@ module.exports = {
         '*': '\\times',
       },
     }],
-    ['vuepress-plugin-code-copy', true],
-    'reading-progress',
-    'vuepress-plugin-baidu-autopush',
-    'vuepress-plugin-seo',
-    ['vuepress-plugin-sitemap', {
-      hostname: 'https://www.yuchanns.xyz',
+    ['vuepress-plugin-zooming', {
+      selector: '.content__default img'
     }],
-    [ 'feed', {
-      canonical_base: 'https://www.yuchanns.xyz',
+    'reading-progress',
+    ['vuepress-plugin-sitemap', {
+      hostname: 'https://yuchanns.org',
     }],
   ],
 
   markdown: {
     lineNumbers: false,
-    toc: { includeLevel: [2] },
-    extendMarkdown: md => {
-      md.use(require('./plugins/markdown-it/traffic-lights'))
-    },
+    extendMarkdown: md => md.use(markdownItCenterText)
   },
-
-  head: [
-    ['link', { rel: 'icon', type: 'image/png', href: '/android-chrome-192x192.png', sizes: '192x192' }],
-    ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
-    ['meta', { name: 'google-site-verification', content: 'h0GK-apopUhINJJe5Jp3XopZswk6EK_JQT_fVMrs6A0' }],
-    ['meta', { name: 'baidu-site-verification', content: 'OeVj0fzw4S' }],
-    ['meta', { name: 'keywords', content: 'Atelier,yuchanns,PHP,Python,Golang,Go,Go语言,Scheme,Lisp,码农,程序猿,炼金工坊,vuepress' }],
-  ],
 
   chainWebpack: (config, isServer) => {
     if (isServer === false) {
@@ -59,84 +51,55 @@ module.exports = {
           vue: {
             test: /[\\/]node_modules[\\/](vue|vue-router|vssue)[\\/]/,
             name: 'vendor.vue',
-            chunks: 'all',
+            chunks: 'all'
           },
           commons: {
             test: /[\\/]node_modules[\\/]/,
             priority: -10,
             name: 'vendor.commons',
-            chunks: 'all',
-          },
-        },
+            chunks: 'all'
+          }
+        }
       })
     }
   },
 
-  theme: 'meteorlxy',
-
   themeConfig: {
-    lang: Object.assign(require('vuepress-theme-meteorlxy/lib/langs/zh-CN'), {
-      home: 'Atelier',
-      posts: 'Recipes',
-    }),
-    personalInfo: {
-      nickname: 'yuchanns',
-      description: '面向GitHub编程',
-      email: 'airamusume@gmail.com',
-      location: 'Shenzhen, China',
-
-      avatar: '/images/bronya.gif',
-
-      sns: {
-        github: {
-          account: 'yuchanns',
-          link: 'https://github.com/yuchanns',
-        },
-      },
+    lang: {
+      home: '首页',
+      navigation: '导航',
+      categories: '分类',
+      tags: '标签',
+      archive: '归档',
+      prev: '上一篇',
+      next: '下一篇',
+      more: '更多',
+      createdAt: '创建于'
     },
 
-    header: headerconfig,
-
-    footer: {
-      // 是否显示 Powered by VuePress
-      poweredBy: true,
-
-      // 是否显示使用的主题
-      poweredByTheme: true,
-
-      // 添加自定义 footer (支持 HTML)
-      custom: '<div style="margin-bottom: 0.5em;display: inline-block"><span id="busuanzi_container_site_pv">你是第<span id="busuanzi_value_site_pv">-</span>位访问者</span></div><br/><span id="year"></span> <a href="http://beian.miit.gov.cn">粤ICP备19127765号</a>',
-    },
-
-    infoCard: {
-      headerBackground: {
-        // url: '/assets/img/bg.jpg',
-
-        useGeo: false,
-      },
-    },
-
-    lastUpdated: true,
-
-    nav: [
-      { text: 'HOME', link: '/', exact: true },
-      { text: 'PHP', link: '/posts/categories/php', exact: false },
-      { text: 'PYTHON', link: '/posts/categories/python', exact: false },
-      { text: 'GOLANG', link: '/posts/categories/golang', exact: false },
-      { text: 'WIZARD', link: '/posts/tags/魔法书', exact: false },
-      { text: 'AWESOME', link: '/awesome/', exact: false },
-      { text: 'TIMELINE', link: '/timeline/', exact: false },
-      { text: 'YuC\'s', link: 'http://yuc.wiki/', exact: false },
-    ],
-
-    comments: {
-      owner: 'yuchanns',
-      repo: 'Atelier',
-      clientId: '779fd70f4ac32b536176',
-      clientSecret: '3ca68e15fd0ff7e5f0fd2679e7aa2dc56fb54009',
-    },
     pagination: {
-      perPage: 10,
+      lengthPerPage: 5
     },
-  },
+
+    sns: {
+      github: {
+        account: 'yuchanns',
+        link: 'https://github.com/yuchanns'
+      },
+      twitter: {
+        account: 'airamusume',
+        link: 'https://twitter.com/airamusume'
+      },
+    },
+
+    categories: {
+      Vue: { color: '#2c3e50', logo: '/images/vue.png', desc: 'Vue.js is a JavaScript framework for building interactive web applications.' },
+      Document: { color: '#e34c26', desc: 'Document is a guidebook for users.' },
+      golang: { color: '#00ADD8', desc: 'go语言学习使用笔记', logo: '/images/categories/golang.jpeg' },
+      python: { color: '#3572A5', desc: '人生苦短，我选py！', logo: '/images/categories/python.png' },
+      php: { color: '#4F5D95', desc: '世界上最好的语言！', logo: '/images/categories/php.png' },
+      学习笔记: { color: '#e34c26', desc: 'study of sicp' },
+      lisp: { color: '#c065db', desc: '学着玩儿！', logo: '/images/categories/lisp.png' }
+    }
+  }
 }
