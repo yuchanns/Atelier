@@ -16,8 +16,8 @@ module.exports = {
 
   locales: {
     '/': {
-      lang: 'en-US'
-    }
+      lang: 'en-US',
+    },
   },
 
   evergreen: true,
@@ -30,7 +30,7 @@ module.exports = {
       },
     }],
     ['vuepress-plugin-zooming', {
-      selector: '.content__default img'
+      selector: '.content__default img',
     }],
     'reading-progress',
     ['vuepress-plugin-sitemap', {
@@ -40,7 +40,7 @@ module.exports = {
 
   markdown: {
     lineNumbers: false,
-    extendMarkdown: md => md.use(markdownItCenterText)
+    extendMarkdown: md => md.use(markdownItCenterText),
   },
 
   chainWebpack: (config, isServer) => {
@@ -51,44 +51,38 @@ module.exports = {
           vue: {
             test: /[\\/]node_modules[\\/](vue|vue-router|vssue)[\\/]/,
             name: 'vendor.vue',
-            chunks: 'all'
+            chunks: 'all',
           },
           commons: {
             test: /[\\/]node_modules[\\/]/,
             priority: -10,
             name: 'vendor.commons',
-            chunks: 'all'
-          }
-        }
+            chunks: 'all',
+          },
+        },
       })
     }
   },
 
   themeConfig: {
     lang: {
-      home: '首页',
-      navigation: '导航',
-      categories: '分类',
-      tags: '标签',
-      archive: '归档',
       prev: '上一篇',
       next: '下一篇',
-      more: '更多',
-      createdAt: '创建于'
+      createdAt: '创建于',
     },
 
     pagination: {
-      lengthPerPage: 5
+      lengthPerPage: 10,
     },
 
     sns: {
       github: {
         account: 'yuchanns',
-        link: 'https://github.com/yuchanns'
+        link: 'https://github.com/yuchanns',
       },
       twitter: {
         account: 'airamusume',
-        link: 'https://twitter.com/airamusume'
+        link: 'https://twitter.com/airamusume',
       },
     },
 
@@ -99,7 +93,7 @@ module.exports = {
       python: { color: '#3572A5', desc: '人生苦短，我选py！', logo: '/images/categories/python.png' },
       php: { color: '#4F5D95', desc: '世界上最好的语言！', logo: '/images/categories/php.png' },
       学习笔记: { color: '#e34c26', desc: 'study of sicp' },
-      lisp: { color: '#c065db', desc: '学着玩儿！', logo: '/images/categories/lisp.png' }
-    }
-  }
+      lisp: { color: '#c065db', desc: '学着玩儿！', logo: '/images/categories/lisp.png' },
+    },
+  },
 }
