@@ -1,7 +1,7 @@
 const markdownItCenterText = require('markdown-it-center-text')
 
 module.exports = {
-  title: 'C-Sekai',
+  title: 'yuchanns\'Atelier',
 
   description: '代码爱好者，半吊子码农',
 
@@ -9,6 +9,7 @@ module.exports = {
 
   head: [
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'keywords', content: 'Atelier,yuchanns,PHP,Python,Golang,Go,Go语言,Scheme,Lisp,码农,程序猿,炼金工坊,vuepress' }],
     ['meta', { name: 'google-site-verification', content: 'K1weNq67k6Udp1q4Jr7AZahSmfHcaYXBnYHHCxPgh_I' }],
     ['meta', { name: 'baidu-site-verification', content: 'YIQSNieN3r' }],
@@ -36,6 +37,10 @@ module.exports = {
     ['vuepress-plugin-sitemap', {
       hostname: 'https://yuchanns.org',
     }],
+    ['@vuepress/pwa', {
+      serviceWorker: true,
+      updatePopup: true
+    }]
   ],
 
   markdown: {

@@ -1,0 +1,8 @@
+{
+  "name": "yuchanns'Atelier",
+  "short_name": "yuchanns",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#31AFB4"
+}
