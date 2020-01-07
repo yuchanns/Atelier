@@ -1,6 +1,6 @@
 # [C-Sekai](https://yuchanns.org)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d5cbefe0-4b3d-437a-8064-0181fbe0dd23/deploy-status)](https://app.netlify.com/sites/yuchanns/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b3d515fb-fee0-4c4c-bffa-f84b150a7430/deploy-status)](https://app.netlify.com/sites/yuchannslv5/deploys)
 [![CircleCI](https://circleci.com/gh/yuchanns/Atelier.svg?style=svg)](https://circleci.com/gh/yuchanns/Atelier)
 
 My Blog
