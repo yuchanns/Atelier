@@ -17,7 +17,7 @@ module.exports = {
 
   locales: {
     '/': {
-      lang: 'en-US',
+      lang: 'zh-CN',
     },
   },
 
