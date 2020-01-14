@@ -3,6 +3,7 @@ title: gorm使用笔记
 date: 2019-12-08 23:28:00
 category: golang
 tags:
+  - orm
   - gorm
 ---
 记录了gorm在业务场景下简单常用的功能

@@ -1,4 +1,5 @@
 const markdownItCenterText = require('markdown-it-center-text')
+const markdownItFootnote = require('markdown-it-footnote')
 
 module.exports = {
   title: 'yuchanns\'Atelier',
@@ -45,7 +46,10 @@ module.exports = {
 
   markdown: {
     lineNumbers: false,
-    extendMarkdown: md => md.use(markdownItCenterText),
+    extendMarkdown: md => {
+      md.use(markdownItCenterText)
+      md.use(markdownItFootnote)
+    },
   },
 
   chainWebpack: (config, isServer) => {
@@ -105,6 +109,7 @@ module.exports = {
       php: { color: '#4F5D95', desc: '世界上最好的语言！', logo: '/images/categories/php.png' },
       学习笔记: { color: '#e34c26', desc: 'study of sicp' },
       lisp: { color: '#c065db', desc: '学着玩儿！', logo: '/images/categories/lisp.png' },
+      简单易懂的现代魔法: { color: '#4C0168', desc: '编程，即现代魔法；程序员，即现代法师。想要发挥出火球术的威力，还需探究和分析好法术的实现原理', logo: '/images/categories/codingwizard.png' },
     },
   },
 }
