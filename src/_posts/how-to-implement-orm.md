@@ -27,7 +27,30 @@ tags:
 [[toc]]
 
 ## 定义
+摘自维基百科[^5]
 
+:::tip Object-relational mapping
+对象关系映射(ORM)是一种将数据进行跨语言系统转换以兼容适配的编程技术。它实际上创建了语言层面的虚拟数据库对象，使得用户可以用操作对象的方式来访问和修改数据(对象属性)而不必关心sql底层的转换。
+:::
+
+这一概念是随着面向对象编程而兴起的。orm使用方便，它的存在极大地降低了业务代码编写过程中使用者与数据库交互的负担。
+
+下面的伪代码展示了直接操作sql和通过orm间接交互的代码片段区别：
+```js
+// 直接操作
+sql = "SELECT id, name, gender, age FROM persons WHERE name = yuchanns"
+rows = db.exec(sql)
+age = rows[0]["age"]
+sql = "UPDATE persons SET age = 27 WHERE name = yuchanns"
+rowsAff = db.exec(sql)
+
+// 通过orm
+orm.getByName("yuchanns").find(&person)
+age = person.age
+person.age = 27
+rowsAff = orm.save(&person)
+```
+可以看到，使用了orm之后我们就节省了书写sql交互语句的功夫，直接以符合人类思考方式的面向对象方式轻松操纵数据~~并且降低了门槛，不需要学习sql知识~~。
 ## Active Record模式
 ### 常见的orm
 
@@ -43,3 +66,4 @@ tags:
 [^2]: [jmoiron/sqlx](https://github.com/jmoiron/sqlx)
 [^3]: [Active Record](https://guides.rubyonrails.org/active_record_basics.html)
 [^4]: [jinzhu/gorm](https://github.com/jinzhu/gorm)
+[^5]: [Object-relational mapping](https://en.wikipedia.org/wiki/Object-relational_mapping)
