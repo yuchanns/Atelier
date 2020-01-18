@@ -4,7 +4,7 @@ const markdownItFootnote = require('markdown-it-footnote')
 module.exports = {
   title: 'yuchanns\'Atelier',
 
-  description: '代码爱好者，半吊子码农',
+  description: '代码爱好者，信仰编程',
 
   theme: 'yuchanns',
 
@@ -41,6 +41,15 @@ module.exports = {
     ['@vuepress/pwa', {
       serviceWorker: true,
       updatePopup: true
+    }],
+    ['seo', {
+      description: $page => {
+        if ('description' in $page.frontmatter) {
+          return $page.frontmatter.description
+        } else {
+          return $page.title
+        }
+      }
     }]
   ],
 
@@ -84,6 +93,11 @@ module.exports = {
       next: '下一篇',
       more: 'More',
       createdAt: '创建于'
+    },
+
+    author: {
+      name: 'yuchanns',
+      twitter: '@Airamusume'
     },
 
     pagination: {
