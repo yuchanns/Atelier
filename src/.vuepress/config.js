@@ -13,7 +13,7 @@ module.exports = {
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'keywords', content: 'Atelier,yuchanns,PHP,Python,Golang,Go,Go语言,Scheme,Lisp,码农,程序猿,炼金工坊,vuepress' }],
     ['meta', { name: 'google-site-verification', content: 'K1weNq67k6Udp1q4Jr7AZahSmfHcaYXBnYHHCxPgh_I' }],
-    ['meta', { name: 'baidu-site-verification', content: '9lgARl7WOZ' }],
+    ['meta', { name: 'baidu-site-verification', content: 'o24pKRlUdn' }],
   ],
 
   locales: {
