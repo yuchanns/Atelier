@@ -92,7 +92,8 @@ module.exports = {
       prev: '上一篇',
       next: '下一篇',
       more: 'More',
-      createdAt: '创建于'
+      createdAt: '创建于',
+      updatedAt: '更新于'
     },
 
     author: {
