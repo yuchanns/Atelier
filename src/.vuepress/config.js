@@ -2,7 +2,7 @@ const markdownItCenterText = require('markdown-it-center-text')
 const markdownItFootnote = require('markdown-it-footnote')
 
 module.exports = {
-  title: 'yuchanns\'Atelier',
+  title: 'yuchanns\' Atelier',
 
   description: '代码爱好者，信仰编程',
 
