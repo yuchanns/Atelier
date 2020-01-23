@@ -83,18 +83,7 @@ module.exports = {
   },
 
   themeConfig: {
-    lang: {
-      home: 'Home',
-      navigation: 'Navigation',
-      categories: 'Category',
-      tags: 'Tags',
-      archive: 'Archive',
-      prev: '上一篇',
-      next: '下一篇',
-      more: 'More',
-      createdAt: '创建于',
-      updatedAt: '更新于'
-    },
+    lang: 'zh-CN',
 
     author: {
       name: 'yuchanns',

@@ -5299,10 +5299,10 @@ pkg-up@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-popper.js@^1.15.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.0.tgz#2e1816bcbbaa518ea6c2e15a466f4cb9c6e2fbb3"
-  integrity sha512-+G+EkOPoE5S/zChTpmBSSDYmhXJ5PsW8eMhH8cP/CQHMFPBG/kC9Y5IIw6qNYgdJ+/COf0ddY2li28iHaZRSjw==
+popper.js@^1.16.0:
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
+  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
 
 portfinder@^1.0.13, portfinder@^1.0.25:
   version "1.0.25"
@@ -7148,12 +7148,12 @@ v-lazy-image@^1.3.2:
   integrity sha512-yZYMLoy95S4K9mWE/2DMZcwvaWnGiAHGXcKRruyrFvAdFm2fsnfyL0yj2UwXEGliNZO7I4mRy9/RB7J4CT0HAQ==
 
 v-tooltip@^2.0.0-rc.32:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/v-tooltip/-/v-tooltip-2.0.2.tgz#8610d9eece2cc44fd66c12ef2f12eec6435cab9b"
-  integrity sha512-xQ+qzOFfywkLdjHknRPgMMupQNS8yJtf9Utd5Dxiu/0n4HtrxqsgDtN2MLZ0LKbburtSAQgyypuE/snM8bBZhw==
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/v-tooltip/-/v-tooltip-2.0.3.tgz#34fd64096656f032b1616567bf62f6165c57d529"
+  integrity sha512-KZZY3s+dcijzZmV2qoDH4rYmjMZ9YKGBVoUznZKQX0e3c2GjpJm3Sldzz8HHH2Ud87JqhZPB4+4gyKZ6m98cKQ==
   dependencies:
-    lodash "^4.17.11"
-    popper.js "^1.15.0"
+    lodash "^4.17.15"
+    popper.js "^1.16.0"
     vue-resize "^0.4.5"
 
 vary@~1.1.2:
@@ -7417,10 +7417,10 @@ vuepress-plugin-zooming@^1.1.7:
   dependencies:
     zooming "^2.1.1"
 
-vuepress-theme-yuchanns@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-0.0.6.tgz#9e103e306ffa52a522d9968ad481797c8c22dd6c"
-  integrity sha512-7QReBzEzBYT9Q7ScgJD5EyPGNVM3zxZnUDN6nXMXEXlxySd91jJzroltIHeuZ4FZdjy3llrcSbQ5TYlRfx1o9Q==
+vuepress-theme-yuchanns@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-0.0.7.tgz#286048987e740fe9d826b5fdc23fd3a6dfbc68e1"
+  integrity sha512-vygwh8SX7aYnABqzwdGxupjodI3jnt1lfgi1Jj9U3Kh/DJ0mgsBK3W5MrmaW/7hVY9F2IZAAMbWR7Wd92CrMWA==
   dependencies:
     "@vuepress/plugin-back-to-top" "^1.0.0-rc.1"
     "@vuepress/plugin-blog" "^1.8.0"
