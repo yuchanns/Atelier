@@ -114,6 +114,7 @@ module.exports = {
       学习笔记: { color: '#e34c26', desc: 'study of sicp' },
       lisp: { color: '#c065db', desc: '学着玩儿！', logo: '/images/categories/lisp.png' },
       简单易懂的现代魔法: { color: '#4C0168', desc: '编程，即现代魔法；程序员，即现代法师。想要发挥出火球术的威力，还需探究和分析好法术的实现原理', logo: '/images/categories/codingwizard.png' },
+      计划: { color: '#F3BD42', desc: '首先定下一个小目标，比如说赚他一个亿！', logo: '/images/categories/plan.jpg' },
     },
   },
 }
