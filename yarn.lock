@@ -948,7 +948,7 @@
   dependencies:
     lodash.debounce "^4.0.8"
 
-"@vuepress/plugin-blog@^1.8.0":
+"@vuepress/plugin-blog@^1.9.2":
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/@vuepress/plugin-blog/-/plugin-blog-1.9.2.tgz#d463a218bf54b51a07b87eb703dc1cc9eddeef3c"
   integrity sha512-1y4C7miuJyhP2YV9+8SGPzcwbyNqQWB1WQQf1AYdWvlAK/QrFdTXOtFyBKoViJppHxIkLLz+45bvOm5sIqjv6w==
@@ -7417,13 +7417,13 @@ vuepress-plugin-zooming@^1.1.7:
   dependencies:
     zooming "^2.1.1"
 
-vuepress-theme-yuchanns@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-0.0.7.tgz#286048987e740fe9d826b5fdc23fd3a6dfbc68e1"
-  integrity sha512-vygwh8SX7aYnABqzwdGxupjodI3jnt1lfgi1Jj9U3Kh/DJ0mgsBK3W5MrmaW/7hVY9F2IZAAMbWR7Wd92CrMWA==
+vuepress-theme-yuchanns@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-0.0.8.tgz#170b6858b4dcefd517486a731e0a73ca05648f4b"
+  integrity sha512-wwx22JoYcqSKyzxsp+vk6Znkx7o48rCUbNpDD/LLV+bANV9CwiH3NF9vhoJX0DCLv3k7pWtDbQ4Yriomz3wDsg==
   dependencies:
     "@vuepress/plugin-back-to-top" "^1.0.0-rc.1"
-    "@vuepress/plugin-blog" "^1.8.0"
+    "@vuepress/plugin-blog" "^1.9.2"
     "@vuepress/plugin-last-updated" "^1.2.0"
     date-fns "^2.8.1"
     lodash "^4.17.15"
