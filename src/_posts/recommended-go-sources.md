@@ -4,6 +4,7 @@ date: 2020-01-25 23:00:00
 category: golang
 tags:
   - 学习资源
+description: go awesome,go 学习资源
 ---
 推荐一些笔者收集的go学习资源，干货，有深度——
 <!-- more -->
