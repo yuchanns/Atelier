@@ -91,7 +91,7 @@ module.exports = {
     },
 
     pagination: {
-      lengthPerPage: 10,
+      lengthPerPage: 5,
     },
 
     sns: {
