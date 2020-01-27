@@ -10,6 +10,8 @@ tags:
 关联仓库[yuchanns/gobyexample](https://github.com/yuchanns/gobyexample/tree/master/newbee_traps)(包含测试用例)
 <!-- more -->
 
+-><lazy-image src="/images/defer.jpg" /><-
+
 [[toc]]
 
 ## 初级篇
