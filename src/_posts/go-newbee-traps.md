@@ -95,6 +95,8 @@ func main() {
 ```
 ### 字符串是不可改变的
 字符串是只读的二进制slice，无法通过访问索引的方式更改个别字符。如果想要更改，需要转化成`[]byte`类型。
+
+对于<mark>UTF8</mark>字符串，实际上应该转换为`[]rune`类型，避免出现字节更新错误。
 ```go
 package main
 
@@ -105,6 +107,11 @@ func main() {
   xbytes := []byte(x)
   xbytest[0] = 'T'
 
+  y := "s界"
+  yrunes := []rune(y)
+  yrunes[0] = '世'
+
   fmt.Println(string(xbytes))
+  fmt.Println(string(yrunes))
 }
 ```
