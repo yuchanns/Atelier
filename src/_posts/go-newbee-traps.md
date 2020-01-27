@@ -5,7 +5,7 @@ category: golang
 tags:
   - chore
 ---
-节选自[《50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs》](http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/)，仅摘录一些作者比较在意的片段。
+节选自[《50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs》](http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/)，仅摘录一些笔者比较在意的片段。
 
 关联仓库[yuchanns/gobyexample](https://github.com/yuchanns/gobyexample/tree/master/newbee_traps)(包含测试用例)
 <!-- more -->
