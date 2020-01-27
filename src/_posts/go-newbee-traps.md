@@ -96,7 +96,7 @@ func main() {
 ### 字符串是不可改变的
 字符串是只读的二进制slice，无法通过访问索引的方式更改个别字符。如果想要更改，需要转化成`[]byte`类型。
 
-对于<mark>UTF8</mark>字符串，实际上应该转换为`[]rune`类型，避免出现字节更新错误。
+对于**UTF8**字符串，实际上应该转换为`[]rune`类型，避免出现字节更新错误。
 ```go
 package main
 
@@ -113,5 +113,122 @@ func main() {
 
   fmt.Println(string(xbytes))
   fmt.Println(string(yrunes))
+}
+```
+### 判断字符串是否为utf8文本以及获取字符串长度
+字符串的内容并不一定是合法utf8文本，可以是任意字节，可以用`unicode/utf8`包的<mark>ValidString</mark>方法判断。
+
+直接用内建的<mark>len</mark>方法获取的是字符串的byte数，同样可以使用`unicode/utf8`包的<mark>RuneCountInString</mark>来获取字符长度
+```go
+package main
+
+import (
+  "fmt"
+  "unicode/utf8"
+)
+
+func main() {
+  data := "♥"
+  fmt.Println(utf8.ValidString(data))
+  fmt.Println(len(data))
+  fmt.Println(utf8.RuneCountInString(data))
+}
+```
+### 使用值为nil的通道
+向值为nil的通道发送和接收信息会永远阻塞，造成死锁。利用这个特性可以在select中动态的打开和关闭case语句块。
+```go
+package main
+
+import "fmt"
+
+func main() {
+  inCh := make(chan int)
+  outCh := make(chan int)
+
+  go func() {
+    var in <-chan int = inCh
+    var out chan<- int
+    var val int
+
+    for {
+      select {
+      case out <- val:
+        println("--------")
+        out = nil
+        in = inCh
+      case val = <-in:
+        println("++++++++++")
+        out = outCh
+        in = nil
+      }
+    }
+  }()
+
+  go func() {
+    for r := range outCh {
+      fmt.Println("Result: ", r)
+    }
+  }()
+
+  time.Sleep(0)
+  inCh <- 1
+  inCh <- 2
+  time.Sleep(3 * time.Second)
+}
+```
+:::tip 分析执行逻辑
+1. 首先令变量`in`和`out`分别为单向输出和单向输入通道(这里原作者对in和out的意思定义和我似乎相反：我认为输入才是in，输出才是out😓)。
+2. 然后对通道`inCh`输入第一个数字1，这时候单向输出通道in有值输出，而out为nil——对于select来说，此时只有一个`case val = <-in:`的选项。于是执行打印++++++++++并将out赋值为outCh，令in值为nil。
+3. 此时对于select来说，内部又变成了`case out <- val:`选项。内部执行了和2步骤相似的操作。
+4. 以此类推第二个数字。需要注意的是打印协程的输出实机视具体的运行平台而定。
+:::
+
+## 中级篇
+### json数字解码为interface
+如果像笔者这样直接使用结构体和<mark>Gin</mark>接收和发送json数据，很容易忽视这点而踩坑里：
+> 默认情况下，go会将json中的数字解成`float64`类型的变量，这会导致panic
+
+解决办法有：1.先转成int再使用；2.使用`Decoder`类型明确指定值类型；3.使用结构体(也就是笔者通常用的方法)
+```go
+package main
+
+import(
+  "bytes"
+  "encoding/json"
+  "fmt"
+  "log"
+)
+
+func main() {
+  var data = []byte(`{"status": 200}`)
+  var result map[string]interface{}
+
+  if err := json.Unmarshal(data, &result); err != nil {
+    log.Fatalln(err)
+  }
+
+  var status1 = uint64(result["status"].(float64)) // 第一种方法，先转成uint64再使用
+  fmt.Println("Status value:", status1)
+
+  var decoder = json.NewDecoder(bytes.NewReader(data))
+  decoder.UseNumber()
+
+  if err := decoder.Decode(&result); err != nil {
+    log.Fatalln(err)
+  }
+
+  var status2, _ = result["status"].(json.Number).Int64() // 第二种方法，使用Decoder明确指定数字类型
+  fmt.Println("Status value:", status2)
+
+  var resultS struct {
+    Status uint64 `json:"status"`
+  }
+
+  if err := json.NewDecoder(bytes.NewReader(data)).Decode(&result); err != nil {
+    log.Fatalln(err)
+  }
+
+  var status3 = resultS.Status // 第三种方法，使用结构体
+  fmt.Println("Status value:", status3)
 }
 ```
