@@ -5,12 +5,9 @@ category: golang
 tags:
   - chore
 ---
-:::warning 未完成
-本文还在编写中...
-:::
 节选自[《50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs》](http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/)，仅摘录一些作者比较在意的片段。
 
-关联仓库[yuchanns/gobyexample](https://github.com/yuchanns/gobyexample/tree/master/newbee_traps)
+关联仓库[yuchanns/gobyexample](https://github.com/yuchanns/gobyexample/tree/master/newbee_traps)(包含测试用例)
 <!-- more -->
 
 [[toc]]
@@ -184,6 +181,61 @@ func main() {
 :::
 
 ## 中级篇
+### json使用Encode和Marshal的区别
+两者都是把数据结构转化为json格式，但是两者的结果并不相等。
+
+原因在于<mark>Encode</mark>是为了流准备的方法，它会在转换结果末尾自动添加一个换行符——这是流式json通信中用于换行分隔另一个json对象的符号。
+```go
+package main
+
+import (
+  "fmt"
+  "encoding/json"
+  "bytes"
+)
+
+func main() {
+  data := map[string]int{"key": 1}
+  
+  var b bytes.Buffer
+  json.NewEncoder(&b).Encode(data)
+
+  raw,_ := json.Marshal(data)
+  
+  if b.String() == string(raw) {
+    fmt.Println("same encoded data")
+  } else {
+    fmt.Printf("'%s' != '%s'\n",raw,b.String())
+  }
+}
+```
+这是一个规范的结果，不是错误，但是需要注意这个细节差异。
+
+笔者通常使用`Marshal`方法，确实没注意到这个细节😅。
+### json自动转义html关键字行为
+json包默认任何html关键字都会进行自动转义，这有时候和使用者的预期不符：
+
+有可能第三方提出不能进行转义的奇葩要求，有可能你想表达的意思并非是html关键字代表的意思。
+```go
+package main
+
+func main() {
+  data := "x < y" // 使用者想表达的是x比y小这个意图
+  
+  raw, _ := json.Marshal(data)
+  fmt.Println(string(raw)) // 结果被转义成"x \u003c y"
+
+  var b1 bytes.Buffer
+  _ = json.NewEncoder(&b1).Encode(data)
+  fmt.Println(b1.String()) // 和上面一样的结果
+
+  var b2 bytes.Buffer
+  enc := json.NewEncoder(&b2)
+  enc.SetEscapeHTML(false)
+  _ = enc.Encode(data)
+  fmt.Println(b2.String()) // 这才是想表达的意思"x < y"
+}
+```
 ### json数字解码为interface
 如果像笔者这样直接使用结构体和<mark>Gin</mark>接收和发送json数据，很容易忽视这点而踩坑里：
 > 默认情况下，go会将json中的数字解成`float64`类型的变量，这会导致panic
@@ -192,7 +244,7 @@ func main() {
 ```go
 package main
 
-import(
+import (
   "bytes"
   "encoding/json"
   "fmt"
@@ -224,11 +276,119 @@ func main() {
     Status uint64 `json:"status"`
   }
 
-  if err := json.NewDecoder(bytes.NewReader(data)).Decode(&result); err != nil {
+  if err := json.NewDecoder(bytes.NewReader(data)).Decode(&resultS); err != nil {
     log.Fatalln(err)
   }
 
   var status3 = resultS.Status // 第三种方法，使用结构体
   fmt.Println("Status value:", status3)
+}
+```
+虽然是个小细节，笔者很少用到第三种以外的方法，仍然值得注意。
+
+值得一提的是，当struct遇到字段类型不固定时(事实上在对接第三方接口的时候很有可能会遇到这种难受的事情)，可以使用json.RawMessage来接收并根据情况解码为不同类型的变量。
+```go
+pakcage main
+
+import (
+  "fmt"
+  "log"
+)
+
+func main() {
+  records := [][]byte{
+    []byte(`{"status": 200, "tag": "one"}`),
+    []byte(`{"status": "ok", "tag": "two"}`),
+  }
+
+  for _, record := range records {
+    var result struct {
+      StatusCode uint64          `json:"-"`
+      StatusName string          `json:"-"`
+      Status     json.RawMessage `json:"status"`
+      Tag        string          `json:"tag"`
+    }
+
+    if err := json.NewDecode(bytes.NewReader(record)).Decoder(&result); err != nil {
+      log.Fatalln(err)
+    }
+
+    var name string
+    var code uint64
+    if err := json.Unmarshal(result.Status, &name); err == nil {
+      result.StatusName = name
+    } else if err := json.Unmarshal(result.Status, &code); err == nil {
+      result.StatusCode = code
+    }
+
+    fmt.Printf("result => %+v\n", result)
+  }
+}
+```
+### slice中隐藏的容量
+从`slice`中切出新的slice时，底层指向的都是同一个数组。如果原slice非常大，尽管后来切分的新的slice只有一小部分数据，但是cap仍然会和原有的slice一样大。这样会导致难以预料的内存消耗。
+
+正确的做法是使用<mark>copy</mark>方法复制临时的slice数据到一个指定了内存分配的变量中。
+
+也可以使用完整的切片表达式，<mark>input[low:hight:max]</mark>，这样容量就变成`max-low`了。
+
+上面两种做法的结果是新的slice底层指向的是新的数组。
+```go
+package main
+
+import "fmt"
+
+func main() {
+  raw := make([]byte, 10000)
+  fmt.Println(len(raw), cap(raw), &raw[0])
+  rawNew := raw[:3]
+  fmt.Println(len(rawNew), cap(rawNew), &rawNew[0])
+  rawCopy := make([]byte, 3)
+  copy(rawCopy, raw[:3])
+  fmt.Println(len(rawCopy), cap(rawCopy), &rawCopy[0])
+  rawFull := raw[:3:3]
+  fmt.Println(len(rawFull), cap(rawFull), &rawFull[0])
+}
+```
+### defer执行时机
+`defer`执行的时间不是在语句块结束后，而是在函数体执行结束后。
+
+如果在main中直接使用defer，结果只有当main结束时defer才会调用。
+
+在如下的循环体中，如果需要每次循环都执行defer里的操作，应该创建一个函数来执行循环中的操作。常见于批量读取文件需要关闭文件之类的场景中。
+
+同时可以注意另一个小细节：**每次循环的变量v应该通过赋值或者作为函数参数的方式来使用，否则循环中会指向最后一个值**。
+```go
+package main
+
+import "fmt"
+
+func main() {
+  a := []int{1, 2, 3}
+
+  for _, v := range a {
+    func(v int) {
+      fmt.Println(v)
+      defer fmt.Println("defer execution")
+      // defer在这个匿名函数执行完毕之后立即调用
+    }(v) // v作为函数传值
+  }
+}
+```
+## 高级篇
+### 值为nil的interface
+`interface`类变量只有在类型和值均为`nil`的时候才与nil相等。
+
+尤其需要注意当返回值类型为interface时，应明确返回nil，才能用是否为nil来判断。
+```go
+func main() {
+    var data *byte
+    var in interface{}
+
+    fmt.Println(data, data == nil)
+    fmt.Println(in, in == nil)
+
+    in = data
+    fmt.Println(in, in == nil)
 }
 ```
