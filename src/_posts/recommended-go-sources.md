@@ -5,6 +5,7 @@ category: golang
 tags:
   - 学习资源
 description: go awesome,go 学习资源
+pinned: 1
 ---
 推荐一些笔者收集的go学习资源，干货，有深度——
 <!-- more -->
