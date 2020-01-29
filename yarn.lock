@@ -7429,10 +7429,10 @@ vuepress-plugin-zooming@^1.1.7:
   dependencies:
     zooming "^2.1.1"
 
-vuepress-theme-yuchanns@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-0.0.10.tgz#6afa8a131c6cfb109054bc4c57396ca892065df6"
-  integrity sha512-tV/adKBSrhEoR7suTI4PzOHj2EKTP9xUDFrj9uZGtOFAwt8LSF4bcJeMD/xnO/oLdDuiwtaR8eME3MovHWvwTA==
+vuepress-theme-yuchanns@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-0.0.12.tgz#9b4b2faaf7e678f8d5a8a1641353a64e32f1d100"
+  integrity sha512-Jx9lWNdLF3oY3kUw7Qno5CGhhkRb0438Y1L6DUKi4ARaPE175+9mgRh3/4rnNVmda409y7FFd/nIewMZLUraPw==
   dependencies:
     "@vuepress/plugin-back-to-top" "^1.0.0-rc.1"
     "@vuepress/plugin-blog" "^1.9.2"
