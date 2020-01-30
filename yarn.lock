@@ -674,6 +674,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@github/details-menu-element@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@github/details-menu-element/-/details-menu-element-1.0.8.tgz#bb9b3175862582e1e28f56dd87a199c34e78ca57"
+  integrity sha512-zwVrfKtDZ3bAe4GLoxHnt/NJ6npg2veieRqHeuwv6wtumvOYf+nSVMvpaMfCeHTEARJwpfwfHI9/lcp+RXtjRg==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -7429,11 +7434,12 @@ vuepress-plugin-zooming@^1.1.7:
   dependencies:
     zooming "^2.1.1"
 
-vuepress-theme-yuchanns@^0.0.15:
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-0.0.15.tgz#23d56946933762b3ce2804e78ade279588c2b692"
-  integrity sha512-tqCv4vw/pOq0bZjxQPi8x5bOuXKwfRY5lVO3iVSRYo6oue2AIPn8zYjfivfJ18SwmTwjEKGV6Ok76QH1xtpJuw==
+vuepress-theme-yuchanns@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-0.0.16.tgz#8207ed2297497698b9afe552738d302942630c7c"
+  integrity sha512-KRdTEWjtYlCfBuI5c3RP7tBqG0Lb7mYievSHaO5GeKe10qpyuyjwa7Dkb3AAkwq0SMtYwefBxdtYDIwnR8ENlA==
   dependencies:
+    "@github/details-menu-element" "^1.0.8"
     "@vuepress/plugin-back-to-top" "^1.0.0-rc.1"
     "@vuepress/plugin-blog" "^1.9.2"
     "@vuepress/plugin-last-updated" "^1.2.0"
