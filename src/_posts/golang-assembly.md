@@ -3,12 +3,8 @@ title: go编译工具的使用之汇编
 date: 2020-01-31 15:50:59
 category: golang
 tags:
-  - chore
-  - tool
+  - go tool
 ---
-:::warning 未完成
-施工中...
-:::
 有时候我们想要知道写出来的代码是怎么编译执行的，这时候`go tool compile`就是一个很好用的工具。
 
 本文相关代码[yuchanns/gobyexample](https://github.com/yuchanns/gobyexample/tree/master/assembly)
@@ -616,7 +612,72 @@ for _, v := range arr {
 
 然后我们跳回源码第八行，现在寻找对`.autotmp_10`变量进行比较的代码，于是找到了`0x0109`。如果循环次数大于CX，就跳转到`0x0204`，也就是源码第11行，开始了另一个循环，这里暂不管。可以看到CX在上一行由`.autotmp_11`赋值，可知这个变量存储了数组的长度。
 
-接下来，我们看到汇编代码对寄存器的操作有些令人迷惑的地方，`(CX)`和`CX`、`(DX)`等等：~~加了括号的实际上表示的是硬件寄存器，而没有加括号的表示的是由go汇编虚拟出来的伪寄存器~~。`0x012e`一行，将`"".&v+192(SP)`赋值给了`DX`，并且在第`0x0139`行，我们看到了`"".&v+192(SP)`还赋值给了
+接下来，我们看到汇编代码对寄存器的操作有些令人迷惑的地方，`(CX)`和`CX`、`(DX)`等等：加了括号表示取CX的内存地址，不加则表示取值。
+
+`0x012e`一行，将`"".&v+192(SP)`赋值给了`DX`。往上寻找，我们可以看到`0x00b4`行该变量产生的过程：`8(SP)`这个变量的内存地址赋值给了`"".&v+192(SP)`，而往下进行循环的过程中`"".&v+192(SP)`这个变量没有再被赋值的操作，因此我们得出结论，每次循环过程中`"".&v+192(SP)`一直都是同一个值，也就是说，在源码第九行中`&v`一直指向同一个地址，即`8(SP)`。
+
+事情逐渐明了，因为`&v`一直指向同一个地址，所以源码中的`newArr`三个值都记录了同一个地址。
+
+接下来我们可以继续追踪`8(SP)`的最终值，但是这样下去太过复杂艰深(~~我不想写了，头疼~~)。我们已经知道原因，并且我们也知道v的最后一次值就是数组的最后一个数字，因此`newArr`打印出来的自然就是三个3。
+
+这样的研究并非没有意义：go的`for _, v := range arr`写法容易让人误以为每次的v都是一个全新变量(因为`if err := somefunc(); err == nil`就是这样的)，而我们通过查看汇编代码得知了实际上v这一变量的值实际上是通过`&v`指向的地址获取的，真正被重新赋值的变量另有其物(就是`8(SP)`)。
+
+### 扩展
+在上面这段源码中，其实还有其他地方可以关注，比如`arr := []int{1, 2, 3}`这个切片声明的实现过程。
+
+从`0x0032`到`0x007c`正好对应源码第六行。
+
+我们知道，一个切片实际上是由一个指针、两个整型组成的结构体[^9]：
+```go
+type slice struct {
+    array unsafe.Pointer
+    len   int 
+    cap   int 
+}
+```
+那么在声明的时候需要赋予`slice.len`和`slice.cap`值——对应于在`0x0070`和`0x007c`，而它的底层指向数组指针`slice.array`则是`0x0068`完成。但是这段汇编中，匿名数组是怎么生成的我们并不知道，所以我们再写一段源码，内容是生成一个数组，然后对其进行切片操作：
+```go
+package assembly
+
+func ArraySlice() {
+	arr := [3]int{1, 2, 4}
+	sl := arr[:]
+	_ = sl
+}
+```
+输出汇编为：
+```go{22-24}
+"".ArraySlice STEXT nosplit size=97 args=0x0 locals=0x38
+        0x0000 00000 (arr_slice.go:3)        TEXT    "".ArraySlice(SB), NOSPLIT|ABIInternal, $56-0
+        0x0000 00000 (arr_slice.go:3)        SUBQ    $56, SP
+        0x0004 00004 (arr_slice.go:3)        MOVQ    BP, 48(SP)
+        0x0009 00009 (arr_slice.go:3)        LEAQ    48(SP), BP
+        0x000e 00014 (arr_slice.go:3)        FUNCDATA        $0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+        0x000e 00014 (arr_slice.go:3)        FUNCDATA        $1, gclocals·54241e171da8af6ae173d69da0236748(SB)
+        0x000e 00014 (arr_slice.go:3)        FUNCDATA        $2, gclocals·9fb7f0986f647f17cb53dda1484e0f7a(SB)
+        0x000e 00014 (arr_slice.go:4)        PCDATA  $0, $0
+        0x000e 00014 (arr_slice.go:4)        PCDATA  $1, $0
+        0x000e 00014 (arr_slice.go:4)        MOVQ    $0, "".arr(SP)
+        0x0016 00022 (arr_slice.go:4)        XORPS   X0, X0
+        0x0019 00025 (arr_slice.go:4)        MOVUPS  X0, "".arr+8(SP)
+        0x001e 00030 (arr_slice.go:4)        MOVQ    $1, "".arr(SP)
+        0x0026 00038 (arr_slice.go:4)        MOVQ    $2, "".arr+8(SP)
+        0x002f 00047 (arr_slice.go:4)        MOVQ    $4, "".arr+16(SP)
+        0x0038 00056 (arr_slice.go:5)        PCDATA  $0, $1
+        0x0038 00056 (arr_slice.go:5)        LEAQ    "".arr(SP), AX
+        0x003c 00060 (arr_slice.go:5)        TESTB   AL, (AX)
+        0x003e 00062 (arr_slice.go:5)        JMP     64
+        0x0040 00064 (arr_slice.go:5)        PCDATA  $0, $0
+        0x0040 00064 (arr_slice.go:5)        MOVQ    AX, "".sl+24(SP)
+        0x0045 00069 (arr_slice.go:5)        MOVQ    $3, "".sl+32(SP)
+        0x004e 00078 (arr_slice.go:5)        MOVQ    $3, "".sl+40(SP)
+        0x0057 00087 (arr_slice.go:7)        MOVQ    48(SP), BP
+        0x005c 00092 (arr_slice.go:7)        ADDQ    $56, SP
+        0x0060 00096 (arr_slice.go:7)        RET
+```
+从下往上看，先看到`"".sl`这段内存的三个变量被赋予了值(`0x0040`~`0x004e`)。而`AX`由`"".arr(SP)`赋值(`0x0038`)，值为arr所在的内存地址。
+
+如果我们再添加一个`sl2 = sl[:]`则可以看到底层数组指针依旧是由`AX`赋值而成的，印证了网上所说的切片共享数组的说法(当然，通过查看源码也是可以知道的)。
 
 [^1]: [for和range的实现|Go语言的设计和实现](https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-for-range/)
 [^2]: [Common Mistakes|Go](https://github.com/golang/go/wiki/CommonMistakes)
@@ -626,3 +687,4 @@ for _, v := range arr {
 [^6]: [A Manual for the Plan 9 assembler](https://9p.io/sys/doc/asm.html)
 [^7]: [plan9 汇编入门|No Headback](https://xargin.com/plan9-assembly/)
 [^8]: [teh-cmc/go-internals](https://github.com/teh-cmc/go-internals/blob/master/chapter1_assembly_primer/README.md#splits)
+[^9]: [golang/go](https://github.com/golang/go/blob/master/src/runtime/slice.go#L13-L17)
