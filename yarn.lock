@@ -753,7 +753,7 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
 
-"@vssue/api-github-v3@^1.1.2":
+"@vssue/api-github-v3@^1.1.2", "@vssue/api-github-v3@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@vssue/api-github-v3/-/api-github-v3-1.4.0.tgz#ab944c7d96173c2716d333693a451d441b3ec66e"
   integrity sha512-lT8n1WQDjgZM/i0baIG6JVUCxxqlNMgCQiElo+DGV5/kH5vbxbgdinL8jitqe5mW4obZowWceeCCvD//X4euEA==
@@ -769,7 +769,7 @@
     date-fns "^1.29.0"
     qs "^6.6.0"
 
-"@vssue/vuepress-plugin-vssue@^1.2.0":
+"@vssue/vuepress-plugin-vssue@^1.2.0", "@vssue/vuepress-plugin-vssue@^1.4.2":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@vssue/vuepress-plugin-vssue/-/vuepress-plugin-vssue-1.4.2.tgz#9cea4ec24ba0da2e1b0b516fb9f7d20e91c7ef45"
   integrity sha512-FO+w3B7q48y5uDUjkY7NJORkq4cREavKL6YXJ1ohEeeXL06Fv9Db0FUY1fwSraFSiA1l+zTarImf9vzqMl+HMw==
@@ -947,9 +947,9 @@
     lodash.debounce "^4.0.8"
 
 "@vuepress/plugin-back-to-top@^1.0.0-rc.1":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.2.0.tgz#f6bb2f57317e94a6b0b6854719f3088481f2c0dd"
-  integrity sha512-QGFT5llXnqs/nrUmNql4jZuqo5VTKx/hsK9j1uNRdGBkyiqMs6h+brSpwTKtUqh/XwsCGn7FGPZLaYNkw7Oi8w==
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.3.0.tgz#0193858287d6c18b30e31c4730ecaecef7c8d7b5"
+  integrity sha512-YuJEYaxPRAJScoqiq4uEcqdVt+vBOpdTDhepxtmN0vDRatvOqwJctwi5xqHcII2ziB7ddhOsibk8fhYwc/42ww==
   dependencies:
     lodash.debounce "^4.0.8"
 
@@ -2462,15 +2462,10 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-date-fns@^1.29.0:
+date-fns@^1.29.0, date-fns@^1.30.1:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
-
-date-fns@^2.8.1:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.9.0.tgz#d0b175a5c37ed5f17b97e2272bbc1fa5aec677d2"
-  integrity sha512-khbFLu/MlzLjEzy9Gh8oY1hNt/Dvxw3J6Rbc28cVoYWQaC1S3YI4xwkF9ZWcjDLscbZlY9hISMr66RFzZagLsA==
 
 dayjs@^1.8.19:
   version "1.8.19"
@@ -5925,11 +5920,6 @@ readdirp@^2.2.1:
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
 
-reading-time@1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/reading-time/-/reading-time-1.1.3.tgz#47de143074245be6f65e2b3c9b63b78d9ab8ec7a"
-  integrity sha512-SYy+cuoGy1MTLjIbgwTZ+DkDiDq/dE1OnqBQFYytXgNWRZROuqtBdu7HoJ+HbGMnoAinOHnHnqbEUYnpSho5aA==
-
 reduce@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/reduce/-/reduce-1.0.2.tgz#0cd680ad3ffe0b060e57a5c68bdfce37168d361b"
@@ -7389,13 +7379,6 @@ vuepress-plugin-reading-progress@^1.0.8:
   resolved "https://registry.yarnpkg.com/vuepress-plugin-reading-progress/-/vuepress-plugin-reading-progress-1.0.8.tgz#92c1b6c150548fe59e71ef30a00fe3a962bcaad0"
   integrity sha512-a/ZqA9zH4Xl7fELAfIln2h1nrFPVZtUXAzT9StAexTtQEol3G5tkVe1yN99fIm5fVD4BsWT0wwifLQGzkVGyuA==
 
-vuepress-plugin-reading-time@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/vuepress-plugin-reading-time/-/vuepress-plugin-reading-time-0.1.1.tgz#3ea3dcded424a00c1d5175a50af8d5694899f1ea"
-  integrity sha512-j94utmn4nojYWyOVqfUF3eLWOMTAmZpR0G1gUlmast6KFu/VLevJvxFgJfa6DVaSlTpUH1DMLYspcjLv5pHhDw==
-  dependencies:
-    reading-time "1.1.3"
-
 vuepress-plugin-seo@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/vuepress-plugin-seo/-/vuepress-plugin-seo-0.1.2.tgz#132e656274bfaffce72e816fb8450951f3f6cc13"
@@ -7434,22 +7417,23 @@ vuepress-plugin-zooming@^1.1.7:
   dependencies:
     zooming "^2.1.1"
 
-vuepress-theme-yuchanns@^0.0.16:
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-0.0.16.tgz#8207ed2297497698b9afe552738d302942630c7c"
-  integrity sha512-KRdTEWjtYlCfBuI5c3RP7tBqG0Lb7mYievSHaO5GeKe10qpyuyjwa7Dkb3AAkwq0SMtYwefBxdtYDIwnR8ENlA==
+vuepress-theme-yuchanns@^0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-0.0.18.tgz#dbd1cdd527956d21c81b5e3bb3a4625d501e7d19"
+  integrity sha512-qbbRDl6Qb9lNygCCTRQE85NnAtz42+cIrNJpEBCk03+FkD99McDZs75J8FmgiY3nsKZ8aUfjzvXDySDDWaHYOg==
   dependencies:
     "@github/details-menu-element" "^1.0.8"
+    "@vssue/api-github-v3" "^1.4.0"
+    "@vssue/vuepress-plugin-vssue" "^1.4.2"
     "@vuepress/plugin-back-to-top" "^1.0.0-rc.1"
     "@vuepress/plugin-blog" "^1.9.2"
     "@vuepress/plugin-last-updated" "^1.2.0"
-    date-fns "^2.8.1"
+    date-fns "^1.30.1"
     lodash "^4.17.15"
     markdown-it-checkbox "^1.1.0"
     vue-calendar-heatmap "^0.8.4"
     vuepress-plugin-container "^2.1.2"
     vuepress-plugin-nprogress "^1.1.4"
-    vuepress-plugin-reading-time "^0.1.1"
     vuepress-plugin-smooth-scroll "^0.0.9"
     vuepress-plugin-table-of-contents "^1.1.5"
 
