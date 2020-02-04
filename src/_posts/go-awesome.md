@@ -1,9 +1,9 @@
 ---
-title: go学习资源
+title: go-awesome
 date: 2020-01-25 23:00:00
 category: golang
 tags:
-  - 学习资源
+  - awesome
 description: go awesome,go 学习资源
 pinned: 1
 ---
