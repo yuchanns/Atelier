@@ -1,5 +1,5 @@
 ---
-title: 推荐的go学习资源
+title: go学习资源
 date: 2020-01-25 23:00:00
 category: golang
 tags:
@@ -16,6 +16,7 @@ pinned: 1
 * [《Go语言学习笔记》](https://github.com/qyuhen/book) by 雨痕 | [实体书链接](https://item.jd.com/11944267.html)
 * [《Go语言设计与实现》](https://draveness.me/golang/) by draveness
 * [《Go语言原本》](https://changkun.de/golang) by 欧长坤
+* [teh-cmc/go-internals](https://github.com/teh-cmc/go-internals) by Clement Rey
 
 ## 博客资源
 * [面向信仰编程](https://draveness.me/)

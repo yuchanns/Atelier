@@ -3,7 +3,7 @@ title: go编译工具的使用之汇编
 date: 2020-01-31 15:50:59
 category: golang
 tags:
-  - go tool
+  - go-internals
 ---
 有时候我们想要知道写出来的代码是怎么编译执行的，这时候`go tool compile`就是一个很好用的工具。
 
