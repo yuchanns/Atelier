@@ -5,6 +5,8 @@ category: golang
 tags:
   - chore
 ---
+-><lazy-image src="/images/gopher_json.min.svg" /><-
+
 [`json-iterator`](https://github.com/json-iterator/go)是由滴滴开源的第三方json编码库，它同时提供<mark>Go</mark>和<mark>Java</mark>两个版本。
 <!-- more -->
 
