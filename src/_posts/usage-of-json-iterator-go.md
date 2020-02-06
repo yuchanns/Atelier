@@ -1,0 +1,173 @@
+---
+title: json-iterator/go使用笔记
+date: 2020-02-06 19:10:00
+category: golang
+tags:
+  - chore
+---
+[`json-iterator`](https://github.com/json-iterator/go)是由滴滴开源的第三方json编码库，它同时提供<mark>Go</mark>和<mark>Java</mark>两个版本。
+<!-- more -->
+
+[[toc]]
+
+## 为什么使用
+这个库具有很多优点。最常被人称道的就是性能高于充满反射的官方提供的编码库——据说在编码结构体时候，Go版本的效率是`encoding/json`的6倍，而Java版本的效率是官方的3倍。
+
+同时这个库还完全兼容官方库的**api**，替换官方库的方式不需要那么**hack**。
+```go
+import jsoniter "github.com/json-iterator/go"
+
+type Student struct {
+  ID       uint     `json:"id"`
+  Age      uint8    `json:"age"`
+  Gender   uint8    `json:"gender"`
+  Name     string   `json:"name"`
+  Location Location `json:"location"`
+}
+
+type Location struct {
+  Country  string
+  Province string
+  City     string
+  District string
+}
+
+var s = Student{
+  ID:     1,
+  Age:    27,
+  Gender: 1,
+  Name:   "yuchanns",
+  Location: Location{
+    Country:  "China",
+    Province: "Guangdong",
+    City:     "Shenzhen",
+    District: "Nanshan",
+  },
+}
+
+func Marshal() {
+  // 使用ConfigCompatibleWithStandardLibrary完全兼容官方库
+  json := jsoniter.ConfigCompatibleWithStandardLibrary
+  result, _ := json.Marshal(&s)
+  println(result)
+  // output: {"id":1,"age":27,"gender":1,"name":"yuchanns","location":{"Country":"China","Province":"Guangdong","City":"Shenzhen","District":"Nanshan"}}
+}
+```
+对于<mark>gin-gonic/gin</mark>，官方提供[^1]`$ go build -tags=jsoniter .`命令在编译时替换编码库。
+
+对于一些没有提供替换接口的库，也可以通过monkey补丁[^2]来简单粗暴的替换掉官方编码库。
+```go
+// 使用go get -u "bou.ke/monkey"获取猴子补丁库
+import (
+  "bou.ke/monkey"
+  "encoding/json"
+  jsoniter "github.com/json-iterator/go"
+)
+
+func MonkeyPatch() ([]byte, error) {
+  monkey.Patch(json.Marshal, func(v interface{}) ([]byte, error) {
+    println("via monkey patch")
+    return jsoniter.Marshal(v)
+  })
+
+  sjson, err := json.Marshal(&s)
+
+  if err == nil {
+    println(string(sjson))
+  }
+}
+```
+**注意**，该补丁只需在main函数中定义一次就可以到处使用。
+## 自定义编码解码器
+当然，如果只是这些，并不值得我专门写一篇笔记来记录。值得一提的是`json-iterator/go`还提供了一个十分好用的**自定义解码编码功能**。
+
+### 问题
+对于写惯了`php orm`的笔者而言，在使用go编写web业务过程中，最让我困惑的问题之一就是输出替换。
+```php
+$user = Db::name("user")->where("name", "yuchanns")
+    ->field("id, name, created_at, updated_at")
+    ->find();
+$user.created_at = date("Y-m-d H:i:s", $user.created_at);
+echo json($user);
+```
+简单看上面这个例子，在`$user`对象中，`created_at`原本是一个**int**类型的字段(因为在表中这个字段对应int)。但是在使用api提供**json**格式输出给前端时，一般会将这个字段替换成`ISO 8601`[^3]的日期格式，提供人性化阅读。
+
+这么做在<mark>php</mark>这类可随意变更变量/字段类型的动态语言中当然没有问题，但是在<mark>golang</mark>这种确定了变量类型之后不可变更的语言里就大有问题了。
+### 旧的解决方案
+这个问题我和使用go语言开发的朋友们讨论过，自己也想出了一种解决方法，不过不是很满意。
+
+这个解决方案就是通过结构体`tag`和多余字段来进行转换。
+
+以下这段代码完整版可以参考笔者的代码库[yuchanns/gobyexample](https://github.com/yuchanns/gobyexample/blob/master/gorm/model/order.go#L53-L54)。
+```go
+type User struct {
+  ID          uint   `json:"id" gorm:"primary_key"`
+  Name        string `json:"name"`
+  CreatedAt   int64  `json:"-"`
+  UpdatedAt   int64  `json:"-"`
+  CreatedTime string `json:"created_at" gorm:"-"`
+  UpdatedTime string `json:"updated_at" gorm:"-"`
+}
+
+func (u *User) AfterFind() {
+  const ISO8601 = "2006-01-02 15:04:05"
+  u.CreatedTime = time.Unix(u.CreatedAt, 0).Format(ISO8601)
+  u.UpdatedTime = time.Unix(u.UpdatedAt, 0).Format(ISO8601)
+}
+```
+结合<mark>jinzhu/gorm</mark>[^4]对应的钩子函数，在**CURD**之后将`CreatedTime`和`CreatedAt`字段做转化，并使用tag令json输出或者gorm交互sql过程中忽视不必要的字段和更改字段名。
+
+这样做有一定的记忆负担，使用者需要记得哪个字段是`int64`类型哪个是`string`类型以及该修改哪个字段，并且在各个钩子中写上一大堆转化代码。
+### 使用RegisterTypeEncoder/RegisterTypeDecoder解决
+而在`json-iterator/go`中有一个更优的解法，不需要在原有的结构体中添加多余的字段，也不需要在钩子函数中写一堆重复代码，使用者也不需要记忆修改哪个字段。
+
+光是查阅`RegisterTypeEncoder/RegisterTypeDecoder`这两个方法的源码的注释，可能会一时间摸不着头脑，幸好官方中`extra.timeAsInt64Codec`使用了这两个方法可供我们参考[^5]。
+```go
+func RegisterTypeEncoder(typ string, encoder ValEncoder) {
+  typeEncoders[typ] = encoder
+}
+
+type ValEncoder interface {
+  IsEmpty(ptr unsafe.Pointer) bool
+  Encode(ptr unsafe.Pointer, stream *Stream)
+}
+```
+首先这个注册函数接受两个参数，第一个参数为`string`类型，用来指定生效的类型，支持自定义类型；第二个字段是一个接口类型参数，也就是提供使用者进行自定义的入口。用户所需要做的就是实现这个`jsoniter.ValEncoder`接口，提供需要的方法，然后将接口的实现实例使用这个函数进行注册。
+```go
+type locationAsStringCodec struct{}
+
+func (locationAsStringCodec) IsEmpty(ptr unsafe.Pointer) bool {
+  lc := *((*Location)(ptr))
+
+  return lc.Country == "" && lc.Province == "" && lc.District == "" && lc.City == ""
+}
+
+func (locationAsStringCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+  lc := *((*Location)(ptr))
+
+  stream.WriteString(strings.Join([]string{lc.Country, lc.Province, lc.City, lc.District}, " "))
+}
+
+func RegisterEncoder() {
+  jsoniter.RegisterTypeEncoder("json_iterator.Location", &locationAsStringCodec{})
+  sjson, err := jsoniter.Marshal(&s)
+
+  if err == nil {
+    println(string(sjson))
+    // output: {"id":1,"age":27,"gender":1,"name":"yuchanns","location":"China Guangdong Shenzhen Nanshan"}
+  }
+}
+```
+如上，笔者使用`locationAsStringCodec`实现了`jsoniter.ValEncoder`接口。代码清晰易懂，只是涉及到了业务层不常用的`unsafe.Pointer`。
+
+`unsafe.Pointer`类型的变量用于获取传入的值，然后我们就可以在`Encode`方法中对字段的值进行任意的组合，最后使用`*jsoniter.Stream`写入到转化后的json中就可以了。在这个例子中笔者把location字段从Location结构类转化为一个字符串，前面小节提到的日期同理。
+
+读者可以尝试自行实现`jsoniter.ValDecoder`接口。
+
+本文相关代码[yuchanns/gobyexample](https://github.com/yuchanns/gobyexample/tree/master/json-iterator)
+
+[^1]: [文档/jsoniter](https://gin-gonic.com/zh-cn/docs/jsoniter/)
+[^2]: [bouk/monkey](https://github.com/bouk/monkey)
+[^3]: [wiki/ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
+[^4]: [jinzhu/gorm](https://github.com/jinzhu/gorm)
+[^5]: [extra/time_as_int64_codec.go](https://github.com/json-iterator/go/blob/master/extra/time_as_int64_codec.go#L10-L31)
