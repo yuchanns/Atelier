@@ -55,7 +55,7 @@ func Marshal() {
   // output: {"id":1,"age":27,"gender":1,"name":"yuchanns","location":{"Country":"China","Province":"Guangdong","City":"Shenzhen","District":"Nanshan"}}
 }
 ```
-对于<mark>gin-gonic/gin</mark>，官方提供[^1]`$ go build -tags=jsoniter .`命令在编译时替换编码库。
+对于<mark>gin-gonic/gin</mark>，官方提供[^1]`$ go build -tags=jsoniter .`命令在编译时替换编码库。更多信息请看文后[补充](#补充)
 
 对于一些没有提供替换接口的库，也可以通过monkey补丁[^2]来简单粗暴的替换掉官方编码库。
 ```go
@@ -166,10 +166,73 @@ func RegisterEncoder() {
 
 读者可以尝试自行实现`jsoniter.ValDecoder`接口。
 
-本文相关代码[yuchanns/gobyexample](https://github.com/yuchanns/gobyexample/tree/master/json-iterator)
+## 补充
+<mark>gin-gonic/gin</mark>，官方提供编译时替换编码库，每次在build中添加tags并不是很方便(当然也可以通过脚本控制)，此外在写测试样例的时候也需要添加这个命令。
+
+笔者使用**Goland**作为IDE，测试样例通常使用IDE的快捷功能进行。当读者也是如此情况，替换json编码库有两种选择：
+* 在IDE测试设置中添加`Go tool arguments`参数
+* 在`pkg_test.go`的头部添加`build prama`[^6]
+
+第一种方法的缺陷在于每个使用这段代码库的人都需要对IDE作出同样设置才能生效。
+
+第二种方法则与IDE无关，编译指示写在了文件之中，所有获得这份代码的人都可以得到同样的设置。只不过使用IDE的时候进行测试方便一点。下面是`pkg_test.go`：
+```go
+// +build jsoniter
+
+package json_iterator
+
+import (
+  "github.com/stretchr/testify/assert"
+  "net/http"
+  "net/http/httptest"
+  "testing"
+)
+
+func TestSetupRouter() {
+  router := SetupRoter()
+
+  w := httptest.NewRecorder()
+  req, _ := http.NewRequest("GET", "/jsoniter", nil)
+
+  router.ServeHTTP(w, req)
+
+  assert.Equal(t, http.StatusOK, w.Code)
+  assert.Equal(t, fmt.Sprintln(`{"code":0,"data":{"id":1,"age":27,"gender":1,"name":"yuchanns","location":"China Guangdong Shenzhen Nanshan"}}`), w.Body.String())
+}
+```
+以及对gin官方文档测试案例的稍微更改[^7]：
+```go
+package json_iterator
+
+import (
+  "github.com/gin-gonic/gin"
+  jsoniter "github.com/json-iterator/go"
+  "net/http"
+)
+
+func SetupRoter() *gin.Engine {
+  // to build with jsoniter, a build pragma should be in the main.go file
+  // such as "// +build jsoniter"
+  jsoniter.RegisterTypeEncoder("json_iterator.Location", &locationAsStringCodec{})
+  r := gin.Default()
+  r.GET("/jsoniter", func(c *gin.Context) {
+    c.JSON(http.StatusOK, gin.H{
+      "code": 0,
+      "data": &s,
+    })
+  })
+
+  return r
+}
+```
+同理正式编译时只需把上述编译指示放在`main.go`中即可。
+
+本文相关代码[yuchanns/gobyexample](https://github.com/yuchanns/gobyexample/tree/master/json-iterator)。
 
 [^1]: [文档/jsoniter](https://gin-gonic.com/zh-cn/docs/jsoniter/)
 [^2]: [bouk/monkey](https://github.com/bouk/monkey)
 [^3]: [wiki/ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 [^4]: [jinzhu/gorm](https://github.com/jinzhu/gorm)
 [^5]: [extra/time_as_int64_codec.go](https://github.com/json-iterator/go/blob/master/extra/time_as_int64_codec.go#L10-L31)
+[^6]: [build constraints](https://golang.org/pkg/go/build/#hdr-Build_Constraints)
+[^7]: [文档/test](https://gin-gonic.com/zh-cn/docs/testing/)
