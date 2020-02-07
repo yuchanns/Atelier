@@ -227,6 +227,11 @@ func SetupRoter() *gin.Engine {
 ```
 同理正式编译时只需把上述编译指示放在`main.go`中即可。
 
+## 补充二
+与`jsoniter.RegisterTypeEncoder`类似功能的函数还有`jsoniter.RegisterFieldEncoder`。它接受三个参数，分别是结构体类型(`string`)、结构体字段名(`string`)和自定义编码入口(`jsoniter.ValEncoder`)。
+
+在上面的演示中，虽然我们成功地在输出`Student`结构体时把结构体中的`Location`转化成了一个字符串，但是这样一来单独输出Location结构体也会受到影响，所以正确的做法就是使用`jsoniter.RegisterFieldEncoder`。结果是只有在Student结构体输出时才会把Location结构体转化为一个字符串，其他地方则不受影响。
+
 本文相关代码[yuchanns/gobyexample](https://github.com/yuchanns/gobyexample/tree/master/json-iterator)。
 
 [^1]: [文档/jsoniter](https://gin-gonic.com/zh-cn/docs/jsoniter/)
