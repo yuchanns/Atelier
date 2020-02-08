@@ -2,16 +2,16 @@ const markdownItCenterText = require('markdown-it-center-text')
 const markdownItFootnote = require('markdown-it-footnote')
 
 module.exports = {
-  title: 'yuchanns\' Atelier',
+  title: '代码炼金工坊',
 
-  description: '代码爱好者，信仰编程',
+  description: 'yuchanns\'Atelier',
 
   theme: 'yuchanns',
 
   head: [
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
-    ['meta', { name: 'keywords', content: 'Atelier,yuchanns,PHP,Python,Golang,Go,Go语言,Scheme,Lisp,码农,程序猿,炼金工坊,vuepress' }],
+    ['meta', { name: 'keywords', content: 'golang,go,yuchanns,Atelier' }],
     ['meta', { name: 'google-site-verification', content: 'K1weNq67k6Udp1q4Jr7AZahSmfHcaYXBnYHHCxPgh_I' }],
     ['meta', { name: 'baidu-site-verification', content: 'o24pKRlUdn' }],
   ],
