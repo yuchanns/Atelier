@@ -4,6 +4,7 @@ date: 2020-02-06 19:10:00
 category: golang
 tags:
   - chore
+  - jsoniter
 ---
 -><lazy-image src="/images/gopher_json.min.svg" /><-
 
