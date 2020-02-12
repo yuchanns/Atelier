@@ -7417,10 +7417,10 @@ vuepress-plugin-zooming@^1.1.7:
   dependencies:
     zooming "^2.1.1"
 
-vuepress-theme-yuchanns@^0.0.24:
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-0.0.24.tgz#a528167195e4014ff37e7cc3c30542436292afbf"
-  integrity sha512-23PloQmsz2pa6AtnHASthienIp02jyt+lM4J607x/EFYpFGPtLxGI5+KaDugs4qAboyNj1gKXGdPySQjqk5wxA==
+vuepress-theme-yuchanns@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-yuchanns/-/vuepress-theme-yuchanns-1.0.0.tgz#5679937c63f45d12d1bc7235a97e5256436e1e87"
+  integrity sha512-8cDzD6byuZLMKygC/NPW8DDdo8Swp8XLw2yM5ISnodNpfuhIX0g0lYya8Fj8Uv0ExTu+1yeeVnZPshTis+wZOw==
   dependencies:
     "@github/details-menu-element" "^1.0.8"
     "@vssue/api-github-v3" "^1.4.0"
