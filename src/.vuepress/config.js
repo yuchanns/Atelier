@@ -102,6 +102,13 @@ module.exports = {
 
     sitemap: {
       hostname: 'https://yuchanns.org',
+      urls: [
+        { url: '/', priority: 1.00, changefreq: 'always' },
+        { url: '/posts/2020/02/06/usage-of-json-iterator-go/', priority: 0.80, changefreq: 'monthly' },
+        { url: '/posts/2020/01/31/golang-assembly/', priority: 0.80, changefreq: 'monthly' },
+        { url: '/posts/2020/01/25/go-newbee-traps/', priority: 0.80, changefreq: 'monthly' },
+        { url: '/categories/golang/', priority: 0.80, changefreq: 'weekly' },
+      ],
     },
 
     pagination: {
