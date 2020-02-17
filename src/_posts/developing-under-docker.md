@@ -6,7 +6,7 @@ category: 简单易懂的现代魔法
 tags:
   - docker
 ---
--><lazy-image src="/images/docker-friends.png" /><-
+![](/images/docker-friends.png)
 
 > 2017，我曾写过关于利用虚拟机如何搭建开发环境的[文章](/posts/2018/08/27/deploy-php/)。
 <!-- more -->
@@ -23,7 +23,7 @@ tags:
 
 当我使用Anaconda/Miniconda安装的python环境开发项目中的一个桌面客户端时，又因为目标用户环境复杂的系统而挠头不已。
 
-虽然我日常使用Mac作为私人开发环境，并且十分讨厌使用Windows开发（因为Windows安装各种扩展麻烦，并且生产环境实际也是Linux），但上班这种外力因素也逼迫你不得不与windows打交道——我曾冲动之下把公司系统换成Ubuntu，结果工作中交流常用QQ和微信也要为此开启一个装了Windows的虚拟机十分痛苦！~~腾讯不给我使用网页版微信我一点也不生气<lazy-image src="/images/doge.png" />~~
+虽然我日常使用Mac作为私人开发环境，并且十分讨厌使用Windows开发（因为Windows安装各种扩展麻烦，并且生产环境实际也是Linux），但上班这种外力因素也逼迫你不得不与windows打交道——我曾冲动之下把公司系统换成Ubuntu，结果工作中交流常用QQ和微信也要为此开启一个装了Windows的虚拟机十分痛苦！~~腾讯不给我使用网页版微信我一点也不生气![](/images/doge.png)~~
 
 :::tip 吐槽
 实际上Mac对开发人员，尤其是C用户也不太友善。选择它只不过是因为同时兼具类Unix环境和便利使用的聊天软件而已。
@@ -43,7 +43,7 @@ Docker最大的优点就是标准化——如同集装箱一般、将各种类�
 
 再结合Docker-compose这一编排利器，我们就可以轻松地将一系列Dockerfile编写的软件集成起来随心所欲地开箱即用。极小的体积方便云端存储随处读取，无论在什么系统中只要安装好了Docker就都是我们熟悉的舞台。
 
-> -><lazy-image src="/images/stolen.jpg" /><-
+> ![](/images/stolen.jpg)
 > 我超喜欢Dockerfile，里面的大兄弟们个个都是人才，写起来又标准方便，部署起来又省时省力，就像回到了家里开发一样。
 
 所以在三年后的今天，我决定更新一下我关于搭建开发环境的笔记。
@@ -196,10 +196,10 @@ docker-compose rm -f
 
 一键命令启动docker容器，使用`docker ps -s`来查看容器信息，可以看到，整个lnmp环境大小才600MB左右，其中大部分是mysql的体积(占据了400+)。
 
--><lazy-image src="/images/lnmp-size.png" /><-
+![](/images/lnmp-size.png)
 
 绝妙的地方就是，我写完了这一系列Dockerfile，将其上传到我的github仓库中，那么下次我可以在任意安装了Docker的环境中轻松快速构建标准化的我熟悉的开发环境。
 
--><lazy-image src="/images/docker-lnmp-dev.png" /><-
+![](/images/docker-lnmp-dev.png)
 
 而每当我写一些小demo进行演示时，想要让别人立即获得我展示的效果。那么我也可以将其配置为一个`docker-compose.yml`文件，随着demo源代码上传到仓库中。这样，别人克隆了源码之后，可以准确地复现演示，避免了各种环境不同造成的困惑尴尬局面！

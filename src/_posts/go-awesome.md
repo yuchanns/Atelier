@@ -10,7 +10,7 @@ pinned: 1
 推荐一些笔者收集的go学习资源，干货，有深度——
 <!-- more -->
 
--><lazy-image src="/images/goawesome.png" /><-
+![](/images/goawesome.png)
 
 ## 书籍资源
 * [《Go语言学习笔记》](https://github.com/qyuhen/book) by 雨痕 | [实体书链接](https://item.jd.com/11944267.html)

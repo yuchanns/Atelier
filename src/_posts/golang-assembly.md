@@ -59,7 +59,7 @@ func RangeClause() {
 <summary>避免错误的写法</summary>
 
 将`&v`替换成`&arr[i]`
-```go{8-9}
+```go
 package assembly
 
 import "fmt"
@@ -312,7 +312,7 @@ go使用的汇编叫做`plan9汇编`。最初go是在plan9系统上开发的，�
 
 关于plan9汇编的入门，推荐看这个视频[^3]：
 
--><lazy-video src="//player.bilibili.com/player.html?aid=46494102&cid=81455226&page=1" /><-
+<lazy-video src="//player.bilibili.com/player.html?aid=46494102&cid=81455226&page=1" />
 
 其中一些汇编知识是通用的[^4]，**GoDoc**也提供了go汇编的快速引导[^5]，另外也有一部分可以参考plan9汇编手册[^6]。
 ### 寄存器
@@ -427,7 +427,7 @@ func Add() {
 }
 ```
 汇编结果：
-```go{2,23}
+```go
 "".Add STEXT nosplit size=32 args=0x0 locals=0x18
         0x0000 00000 (add.go:3)      TEXT    "".Add(SB), ABIInternal, $24-0
         0x0000 00000 (add.go:3)      MOVQ    (TLS), CX
@@ -498,7 +498,7 @@ func VariableAdd(a, b int) {
 }
 ```
 汇编结果：
-```go{14-16}
+```go
 "".VariableAdd STEXT size=90 args=0x10 locals=0x18
         0x0000 00000 (variable_add.go:3)     TEXT    "".VariableAdd(SB), ABIInternal, $24-16
         0x0000 00000 (variable_add.go:3)     MOVQ    (TLS), CX
@@ -540,7 +540,7 @@ func VariableAdd(a, b int) {
 
 ### 分析range
 那么，经过对go汇编知识的简单了解和初步练习，现在我们可以回到对range的分析上了。
-```go{46}
+```go
 // 源码第八行
 for _, v := range arr {
 // 汇编结果
@@ -646,7 +646,7 @@ func ArraySlice() {
 }
 ```
 输出汇编为：
-```go{22-24}
+```go
 "".ArraySlice STEXT nosplit size=97 args=0x0 locals=0x38
         0x0000 00000 (arr_slice.go:3)        TEXT    "".ArraySlice(SB), NOSPLIT|ABIInternal, $56-0
         0x0000 00000 (arr_slice.go:3)        SUBQ    $56, SP

@@ -11,7 +11,7 @@ Workerman源码阅读·一
 :::tip 介绍
 [**Workerman**](https://github.com/walkor/Workerman)是一个异步php socket 即时通讯框架，是php程序员研究socket编程的一个好的着手点。
 :::
--><lazy-image src="/images/TCP:IPmodel.jpg" /><-
+![](/images/TCP:IPmodel.jpg)
 
 Workerman可以创建websocket、http等应用层服务，实际上这些都是对**tcp**的封装，属于应用层。
 
@@ -160,7 +160,7 @@ protected static $_availableEventLoops = array(
 ```
 Workerman可使用的事件循环类包括Libevent、Event、Swoole以及默认的Select。前三者取决于php环境是否安装了对应的扩展。
 :::tip libevent扩展和event扩展的关系
--><lazy-image src="/images/libevent.png" /><-
+![](/images/libevent.png)
 
 两个扩展均依赖于[**libevent库**](https://github.com/libevent/libevent)（*注：这里说的不是扩展*）。event扩展具有稳定版，而libevent扩展一直处于beta状态。
 :::

@@ -6,14 +6,14 @@ category: golang
 要使用一种语言实现一个项目，对项目结构的规划是首中之重。
 <!-- more -->
 
--><lazy-image src="/images/gin-gonic.jpg" /><-
+![](/images/gin-gonic.jpg)
 
 我们作为后来者，加入一个已经成型的项目，那么不管对项目的结构有什么天大的意见，自然还是要按照此前的规范来——而本文探讨的是当创建一个全新的项目时，应该如何合理规划项目的结构。
 
 ## 整体结构
 经过对github上的一些开源项目的调研，我整理出了一份整体结构图，尽量合理地分配各个模块的功能。
 
--><lazy-image src="/images/webstructure.png" /><-
+![](/images/webstructure.png)
 
 如图，一个app被分为6部分：
 :::tip app structure

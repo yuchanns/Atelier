@@ -8,7 +8,7 @@ tags:
 ---
 记录了gorm在业务场景下简单常用的功能
 <!-- more -->
--><lazy-image src="/images/golang_tutorial_coverage.jpg" /><-
+![](/images/golang_tutorial_coverage.jpg)
 
 [[TOC]]
 

@@ -13,7 +13,7 @@ tags:
 事实上标准库也是这么做的。
 <!-- more -->
 
--><lazy-image src="/images/strong_hamster.jpg" /><-
+![](/images/strong_hamster.jpg)
 
 [本文由笔者一边思考写就，可能语言不够简练，留待日后修整]
 

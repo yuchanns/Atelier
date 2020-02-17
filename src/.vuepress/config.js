@@ -1,12 +1,11 @@
-const markdownItCenterText = require('markdown-it-center-text')
 const markdownItFootnote = require('markdown-it-footnote')
 
 module.exports = {
-  title: '代码炼金工坊',
+  title: 'yuchanns\'Atelier',
 
-  description: 'yuchanns\'Atelier',
+  description: 'Coding to die',
 
-  theme: 'yuchanns',
+  theme: 'hermit',
 
   head: [
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
@@ -18,11 +17,9 @@ module.exports = {
 
   locales: {
     '/': {
-      lang: 'zh-CN',
-    },
+      lang: 'en-US'
+    }
   },
-
-  evergreen: true,
 
   plugins: [
     ['mathjax', {
@@ -32,9 +29,8 @@ module.exports = {
       },
     }],
     ['vuepress-plugin-zooming', {
-      selector: '.content__default img',
+      selector: '.content img',
     }],
-    'reading-progress',
     ['@vuepress/pwa', {
       serviceWorker: true,
       updatePopup: true
@@ -53,7 +49,6 @@ module.exports = {
   markdown: {
     lineNumbers: false,
     extendMarkdown: md => {
-      md.use(markdownItCenterText)
       md.use(markdownItFootnote)
     },
   },
@@ -80,62 +75,56 @@ module.exports = {
   },
 
   themeConfig: {
-    lang: 'zh-CN',
+    lang: 'en-US',
 
     author: {
       name: 'yuchanns',
-      avatar: '/yuchanns.jpg',
-      desc: '面向Github编程',
-      job: '后端工程师',
-      location: '深圳',
-      email: 'airamusume@gmail.com',
-      link: 'github.com/yuchanns'
+      url: 'https://yuchanns.org'
     },
 
-    vssue: {
-      platform: 'github',
+    nav: [
+      { text: 'Awesome', link: '/awesome/' },
+      { text: 'YuC\'s', link: 'http://yuc.wiki/' }
+    ],
+
+    sns: [
+      // { type: 'codepen', url: 'https://codepen.io/' },
+      // { type: 'facebook', url: 'https://www.facebook.com' },
+      { type: 'github', url: 'https://github.com/yuchanns' },
+      // { type: 'gitlab', url: 'https://gitlab.com/yuchanns' },
+      // { type: 'instagram', url: 'https://www.instagram.com/' },
+      // { type: 'linkedin', url: 'https://www.linkedin.com/' },
+      // { type: 'slack', url: 'https://slack.com/' },
+      // { type: 'stackoverflow', url: 'https://stackoverflow.com/users/10038512/yuchanns?tab=profile' },
+      // { type: 'telegram', url: 'https://telegram.org/' },
+      // { type: 'twitch', url: 'https://www.twitch.tv/' },
+      { type: 'twitter', url: 'https://twitter.com/Airamusume' },
+      // { type: 'youtube', url: 'https://www.youtube.com/' },
+      { type: 'email', url: 'mailto:airamusume@gmail.com' },
+      // { type: 'dribbble', url: 'https://dribbble.com/' },
+      // { type: 'behance', url: 'https://www.behance.net/' },
+      // { type: 'freepik', url: 'https://www.freepik.com/' },
+      // { type: 'adobestock', url: 'https://stock.adobe.com/' },
+      // { type: 'shutterstock', url: 'https://www.shutterstock.com/' },
+      // { type: '123rf', url: 'https://www.123rf.com/' },
+      // { type: 'dreamstime', url: 'https://www.dreamstime.com/' },
+      // { type: 'paypal', url: 'https://www.paypal.com/' }
+    ],
+
+    pagination: {
+      lengthPerPage: 10
+    },
+
+    comment: {
+      service: 'vssue',
       owner: 'yuchanns',
-      repo: 'Atelier',
+      repo: 'vuepress-theme-hermit',
       clientId: '779fd70f4ac32b536176',
       clientSecret: '3ca68e15fd0ff7e5f0fd2679e7aa2dc56fb54009'
     },
 
-    sitemap: {
-      hostname: 'https://yuchanns.org',
-      urls: [
-        { url: '/', priority: 1.00, changefreq: 'always' },
-        { url: '/posts/2020/02/06/usage-of-json-iterator-go/', priority: 0.80, changefreq: 'monthly' },
-        { url: '/posts/2020/01/31/golang-assembly/', priority: 0.80, changefreq: 'monthly' },
-        { url: '/posts/2020/01/25/go-newbee-traps/', priority: 0.80, changefreq: 'monthly' },
-        { url: '/categories/golang/', priority: 0.80, changefreq: 'weekly' },
-      ],
-    },
-
-    pagination: {
-      lengthPerPage: 5,
-    },
-
-    sns: {
-      github: {
-        account: 'yuchanns',
-        link: 'https://github.com/yuchanns',
-      },
-      twitter: {
-        account: 'airamusume',
-        link: 'https://twitter.com/airamusume',
-      },
-    },
-
-    categories: {
-      Vue: { color: '#2c3e50', logo: '/images/vue.png', desc: 'Vue.js is a JavaScript framework for building interactive web applications.' },
-      Document: { color: '#e34c26', desc: 'Document is a guidebook for users.' },
-      golang: { color: '#00ADD8', desc: 'go语言学习使用笔记', logo: '/images/categories/golang.jpeg' },
-      python: { color: '#3572A5', desc: '人生苦短，我选py！', logo: '/images/categories/python.png' },
-      php: { color: '#4F5D95', desc: '世界上最好的语言！', logo: '/images/categories/php.png' },
-      学习笔记: { color: '#e34c26', desc: 'study of sicp' },
-      lisp: { color: '#c065db', desc: '学着玩儿！', logo: '/images/categories/lisp.png' },
-      简单易懂的现代魔法: { color: '#4C0168', desc: '编程，即现代魔法；程序员，即现代法师。想要发挥出火球术的威力，还需探究和分析好法术的实现原理', logo: '/images/categories/codingwizard.png' },
-      计划: { color: '#F3BD42', desc: '首先定下一个小目标，比如说赚他一个亿！', logo: '/images/categories/plan.jpg' },
-    },
-  },
+    feed: {
+      canonical_base: 'https://yuchanns.org'
+    }
+  }
 }

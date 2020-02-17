@@ -12,7 +12,7 @@ tags:
 > 创造一样新的事物固然了不起，拥有毅力、勇气和热情去推动它的发展更为难能可贵。
 
 <!-- more -->
--><lazy-image title="xorm" src="/images/xorm.jpg" /><-
+![](/images/xorm.jpg)
 ## 前言
 事情的起因是前不久，我在网上看到的一篇文章[^1]。
 

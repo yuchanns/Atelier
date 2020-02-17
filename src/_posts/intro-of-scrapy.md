@@ -6,7 +6,7 @@ tags:
  - 爬虫
 category: python
 ---
--><lazy-image src="https://scrapy.org/img/scrapylogo.png" /><-
+![](https://scrapy.org/img/scrapylogo.png)
 
 [[toc]]
 
@@ -153,7 +153,7 @@ class PostItem(scrapy.Item):
 
 为了方便，我们可以使用Chrome打开爬取的网页，在DevTools的Elements选项卡中，选中要处理的字段，右键，复制 > 复制XPath，获得XPath：
 
--><lazy-image src="https://i.imgur.com/s3vcPdk.jpg" /><-
+![](https://i.imgur.com/s3vcPdk.jpg)
 ```python
 # ./yuchanns/spiders/post_spider.py
 # @Author yuchanns@www.yuchanns.xyz
