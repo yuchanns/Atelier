@@ -1,8 +1,10 @@
 ---
 title: 使用CircleCI发布版本
 date: 2020-02-18 21:05:00
+img: /images/circleci.jpg
 tags:
   - devops
+  - 应用
 ---
 最近我写了两个博客皮肤。
 <!-- more -->
