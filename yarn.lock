@@ -3493,6 +3493,11 @@ github-markdown-css@^3.0.1:
   resolved "https://registry.yarnpkg.com/github-markdown-css/-/github-markdown-css-3.0.1.tgz#d08db1060d2e182025e0d07d547cfe2afed30205"
   integrity sha512-9G5CIPsHoyk5ObDsb/H4KTi23J8KE1oDd4KYU51qwqeM+lKWAiO7abpSgCkyWswgmSKBiuE7/4f8xUz7f2qAiQ==
 
+github-syntax-light@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/github-syntax-light/-/github-syntax-light-0.5.0.tgz#17466fdd3c08d756ce3f016ed18a2a1343ce0729"
+  integrity sha1-F0Zv3TwI11bOPwFu0YoqE0POByk=
+
 glob-parent@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
@@ -4380,6 +4385,11 @@ javascript-stringify@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/javascript-stringify/-/javascript-stringify-2.0.1.tgz#6ef358035310e35d667c675ed63d3eb7c1aa19e5"
   integrity sha512-yV+gqbd5vaOYjqlbk16EG89xB5udgjqQF3C5FAORDg4f/IS1Yc5ERCv5e/57yBcfJYw05V5JyIXabhwb75Xxow==
+
+jquery@^3.3.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
+  integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
 
 js-levenshtein@^1.1.3:
   version "1.1.6"
@@ -7617,6 +7627,13 @@ vue-disqus@^3.0.5:
   resolved "https://registry.yarnpkg.com/vue-disqus/-/vue-disqus-3.0.5.tgz#8d0dd5cabdba7c47f82d129d2907a64366842fa8"
   integrity sha512-T3Y68lXf5W2lYt6j4Y3kZ4opLPH0EAzqriy11MS4D4Q2+UN0tFuUXeYP1MxfvdyaCEboXSM6CUswxsULuNV70Q==
 
+vue-embed-gist@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vue-embed-gist/-/vue-embed-gist-1.0.2.tgz#92e27759769a0c15325f891a9050bd272d0eef48"
+  integrity sha512-qODOTTA933OfX9oLvfw3z4OmKtpZTHZ3mMv8bVU2GA+1WIBcN7TenR+riUjj8CiMtta/XpP01LnOjW6my72fbw==
+  dependencies:
+    jquery "^3.3.1"
+
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
@@ -7689,6 +7706,11 @@ vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
+
+vue-tweet-embed@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/vue-tweet-embed/-/vue-tweet-embed-2.4.0.tgz#8707efd49b519fd2201200ea1ba68881c35d886d"
+  integrity sha512-bjViatv0priR1dTEPJpRyWigWGUTUC28VT/sWTaZE+RBWuj/XZvOU5Hzk+O8Mue2dBCAHJrRpoO1VKlcgmHohg==
 
 vue@^2.6.10:
   version "2.6.11"
@@ -7802,16 +7824,19 @@ vuepress-plugin-zooming@^1.1.7:
   dependencies:
     zooming "^2.1.1"
 
-vuepress-theme-hermit@^1.0.0-alpha.2:
-  version "1.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-hermit/-/vuepress-theme-hermit-1.0.0-alpha.2.tgz#672f8471d38c46463ddfc123a2e7954b76d1246f"
-  integrity sha512-vWo+UHE4+kwf6lwX8cb2ntNMmZnQBTK1OHVqhtExWO1g/av4qy6qHzbE3MlMNYuQKbN/zoajERbqCtapPCKJnw==
+vuepress-theme-hermit@^1.0.0-alpha.3:
+  version "1.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-hermit/-/vuepress-theme-hermit-1.0.0-alpha.3.tgz#a91ddeb3286ace3cb23da09ccd724091e394aad9"
+  integrity sha512-o4M0HFRhpBxrCyNe7EBlo/IBgh4XaSsdC7Znh9SSh4v/BseyMsMlVsNcRjxV1caeG1uH2JX7B9wyC6CRYvqm0Q==
   dependencies:
     "@vuepress/plugin-blog" "^1.9.2"
     animate.css "^3.7.2"
     date-fns "^1.30.1"
+    github-syntax-light "^0.5.0"
     v-lazy-image "^1.3.2"
+    vue-embed-gist "^1.0.2"
     vue-lazyload "^1.3.3"
+    vue-tweet-embed "^2.4.0"
     vuepress-plugin-smooth-scroll "^0.0.9"
     vuepress-plugin-table-of-contents "^1.1.5"
 
