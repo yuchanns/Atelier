@@ -7,7 +7,7 @@ category: 学习笔记
 ---
 最近赶项目进度，几乎没什么精力学习研究了，但是就算加班也不能阻止我发文！
 <!-- more -->
-![](/images/huixiangdou.jpg)
+![](/images/huixiangdou2.jpg)
 :::tip 前言
 KMP算法是什么，为什么叫这个名字，我就不再重复了，反正网上一搜一大把。原理也一搜一大把。
 
