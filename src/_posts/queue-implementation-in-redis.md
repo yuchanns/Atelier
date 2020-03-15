@@ -618,6 +618,8 @@ func (q *Queue) InitReceiver(ctx context.Context, msg IMessage, number int) func
 再次运行代码，现在单位时间的消费能力提升了。
 
 ## 思考
+文中的源码可以在[yuchanns/gobyexample](https://github.com/yuchanns/gobyexample/tree/master/queue)中找到。
+
 本文到这里结束，我们经历了——
 * redis原生用法调研
 * 结合具体语言设计队列和消息的结构
