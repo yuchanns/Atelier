@@ -31,10 +31,10 @@ module.exports = {
     ['vuepress-plugin-zooming', {
       selector: '.content img',
     }],
-    ['@vuepress/pwa', {
-      serviceWorker: true,
-      updatePopup: true
-    }],
+    // ['@vuepress/pwa', {
+    //   serviceWorker: true,
+    //   updatePopup: true
+    // }],
     ['seo', {
       description: $page => {
         if ('description' in $page.frontmatter) {
