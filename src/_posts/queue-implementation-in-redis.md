@@ -481,16 +481,16 @@ func main() {
     // 创建一个父上下文
     ctx := context.Background()
     // 传递给队列方法
-	  cancelFunc := queue.InitReceiver(ctx, msg)
+    cancelFunc := queue.InitReceiver(ctx, msg)
     // 省略代码
     for {
-		    switch <-quit {
+        switch <-quit {
         case syscall.SIGINT:
             // 通知协程取消
-			      cancelFunc()
-			      return
-		}
-	}
+            cancelFunc()
+            return
+        }
+    }
 }
 ```
 > queue.go
