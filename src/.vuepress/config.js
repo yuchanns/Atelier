@@ -84,6 +84,7 @@ module.exports = {
 
     nav: [
       { text: 'Awesome', link: '/awesome/' },
+      { text: 'About', link: '/about/' },
       { text: 'YuC\'s', link: 'http://yuc.wiki/' }
     ],
 
