@@ -43,7 +43,8 @@ module.exports = {
           return $page.title
         }
       }
-    }]
+    }],
+    ['flowchart']
   ],
 
   markdown: {
