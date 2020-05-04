@@ -147,6 +147,25 @@ self(path2, right)->e
                 mount --make-runbindable mountpoint
   ```
   在mount命令中添加`--make-private`参数就可以避免宿主受到影响。当然，不止是/proc，我们期待所有的mount操作都与外部隔离，那么还可以使用`--make-rprivate`参数，该参数从指定的路径开始递归地作用于各级子目录。
+* execve
+  ```sh
+  EXECVE(2)                                  EXECVE(2)
+  NAME
+        execve - execute program
+  SYNOPSIS
+        #include <unistd.h>
+
+        int execve(const char *pathname, char *const argv[],
+                    char *const envp[]);
+  DESCRIPTION
+        execve() executes the program referred to by pathname.  This causes
+        the program that is currently being run by the calling process to be
+        replaced with a new program, with newly initialized stack, heap, and
+        (initialized and uninitialized) data segments.
+  ```
+  > execve执行路径引用的程序，将当前的执行程序替换为新的程序，包括初始化的堆栈和数据片段
+
+  在容器中，我们通过调用这个方法替换初始化所使用的进程，同时可以获取到对方的pid=1。
 
 ### 实现
 书中使用Golang实现了Namespace隔离，笔者此处不赘述，可以参考[yuchanns/toybox](https://github.com/yuchanns/toybox)。
