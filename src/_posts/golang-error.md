@@ -281,5 +281,7 @@ func virtualErr() error {
 	return errors.WithStack(&whateverErr{msg: "this is a whatever error"})
 }
 ```
+
+<lazy-video src="https://play.studygolang.com/p/kADirIoGULT" />
 ---
 未完待续
