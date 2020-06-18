@@ -90,11 +90,11 @@ sudo install minikube /usr/local/bin/ # 配置环境可用
 
 首先使用docker拉取基础镜像`kicbase`：
 ```sh
-docker pull kicbase/stable:v0.0.11
+docker pull kicbase/stable:v0.0.10
 ```
 然后使用minikube指定基础镜像创建集群：
 ```sh
-minikube start --base-image="kicbase/stable:v0.0.11" –image-mirror-country=cn
+minikube start --base-image="kicbase/stable:v0.0.10" –image-mirror-country=cn
 ```
 启动时可配置更多参数，使用`minikube start --help`查看。
 
@@ -131,16 +131,18 @@ k proxy --address='0.0.0.0' --disable-filter=true
 ### 部署一个简单的镜像
 通过镜像部署一个简单的echoServer，然后使用ssh设置转发，方便局域网访问。
 
-同样的，我将官网的例子替换成了dockerhub上的镜像(实际上自己build也行，但是我还不了解部署应用的事情)。
+同样的，我将官网的例子替换成了阿里云上的镜像(实际上自己build也行，但是我还不了解部署应用的事情)。
 ```sh
 # create用于创建一系列资源，可以通过yml、json，具体查看k create --help
 # deployment是一个二级指令，可以通过指定镜像创建一个自定义名称的deployment，具体查看k create deployment --help
-k create deployment hello-minikube --image=jmalloc/echo-server
+k create deployment hello-minikube --image=registry.cn-hangzhou.aliyuncs.com/google_containers/echoserver:1.4
 # deployment.apps/hello-minikube created
 k get pod # 查看pod状态
 # NAME                              READY   STATUS    RESTARTS   AGE
 # hello-minikube-789df8546f-qfrnn   1/1     Running   0          81s
 ```
+值得一提的是，官方文档的例子使用的是`k8s.gcr.io/echoserver:1.4`，而我们可以替换成`registry.cn-hangzhou.aliyuncs.com/google_containers/echoserver:1.4`，换句话说，带`k8s.gcr.io`开头的都可以替换成阿里云镜像地址。
+
 部署完成功后，为了能够访问，需要暴露为Service：
 ```sh
 # 指定Service类型为NodePort，并且指定服务端口为8080
