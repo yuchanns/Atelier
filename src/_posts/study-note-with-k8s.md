@@ -94,11 +94,11 @@ docker pull kicbase/stable:v0.0.11
 ```
 然后使用minikube指定基础镜像创建集群：
 ```sh
-minikube start --base-image="kicbase/stable:v0.0.11"
+minikube start --base-image="kicbase/stable:v0.0.11" –image-mirror-country=cn
 ```
 启动时可配置更多参数，使用`minikube start --help`查看。
 
-> 如果你看官方文档或者通过网络途径查看其他人描述的安装心得体会，往往会看到他们说，“设置--image-repository和--image-mirror-country就可以下载”，事实上这两个flag目前并不是那么好使[#7447](https://github.com/kubernetes/minikube/issues/7447)。
+> 如果你看官方文档或者通过网络途径查看其他人描述的安装心得体会，往往会看到他们说，“设置--image-repository和--image-mirror-country就可以下载”，事实上这两个flag并不是用来拉取base image的，在minikube内部拉取镜像时就有作用了。
 
 启动成功后，可以使用kubectl查看集群状况：
 ```sh
