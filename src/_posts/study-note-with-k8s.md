@@ -185,5 +185,59 @@ minikube stop
 # 删除集群
 minikube delete
 ```
+## 命名空间演练
+命名空间(Namespace)用于逻辑上隔离上下文，方便不同的团队在同一个集群不同作用域中互不干扰的进行作业。
+
+> Kubernetes 命名空间 有助于不同的项目、团队或客户去共享 Kubernetes 集群。
+>
+> 命名空间命名空间是 Kubernetes 为了在同一物理集群上支持多个虚拟集群而使用的一种抽象。
+>
+> 名字空间通过以下方式实现这点：
+>
+> 为名字设置作用域.
+> 为集群中的部分资源关联鉴权和策略的机制。
+
+* 创建命名空间
+* 为命名空间绑定集群和用户，创建上下文作用域
+* 使用上下文切换到对应的命名空间
+
+### 创建命名空间
+```yaml
+# dev.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development
+  labels:
+    name: development
+```
+编写yaml配置文件，然后使用kubectl读取文件创建，或者也可以直接用命令创建：
+```sh
+# 读取配置文件
+k create -f dev.yaml
+# 或者直接用命令创建
+k create namespace development 
+```
+创建完可以通过`k get namespace`查看拥有的命名空间
+### 创建上下文并绑定物理集群，指定权限用户
+这里使用的是minikube集群，可以通过`k config get clusters`查看。
+> ❯ k config get-clusters
+> NAME
+> 
+> minikube
+
+然后使用`set-context`命令绑定该集群，指定用户。
+```sh
+k config set-context dev --namespace=development \
+  --cluster=minikube \
+  --user=minikube
+```
+当然也可以先创建上下文绑定到了命名空间之后使用`set-cluster`来绑定到物理集群。关于用户的后面再提。
+
+使用`k config view`查看物理集群和上下文的信息。
+### 切换上下文到对应命名空间
+使用`k config current-context`可以查看当前所处上下文，使用`k config use-context dev`将上下文切换到dev中。
+
+在不同的上下文中，创建的资源彼此隔离不可见。当然通信办法是存在的，并且我们可以通过`/proc/$(pid)/ns`来确认lxc命名空间的一些改变。接下来开始学习创建资源的部分，同时可以观察到不同上下文下的隔离性和通信方式。
 ---
 先写一点点，未完待续...
