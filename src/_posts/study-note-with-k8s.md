@@ -239,5 +239,53 @@ k config set-context dev --namespace=development \
 使用`k config current-context`可以查看当前所处上下文，使用`k config use-context dev`将上下文切换到dev中。
 
 在不同的上下文中，创建的资源彼此隔离不可见。当然通信办法是存在的，并且我们可以通过`/proc/$(pid)/ns`来确认lxc命名空间的一些改变。接下来开始学习创建资源的部分，同时可以观察到不同上下文下的隔离性和通信方式。
+### 网络策略
+minkube使用`flag:--network-plugin`启用对NetworkPolicy的支持[#528](https://github.com/kubernetes/minikube/issues/528)：
+```sh
+minikube start --network-plugin=cni --enable-default-cni
+```
+然后安装网络规则驱动，可以选的包括**Calico、Cilium、Kube-router**等。由于笔者使用的k8s版本是1.18.3，前两者还未支持(折腾了两三个小时:sob:)，因此选择[Kube-router](https://github.com/cloudnativelabs/kube-router/blob/master/docs/kubeadm.md)，选择kubeadm安装方式即可：
+```sh
+k apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
+```
+接下来验证效果：
+```sh
+# 首先创建一个nginx的deployment，暴露成80端口服务
+k create deployment nginx --image=nginx
+k expose deployment nginx --port=80
+# 并使用临时容器busybox访问这个服务
+k run busybox --rm -it --image=busybox -- wget --spider --timeout=1 nginx
+# Connecting to nginx (10.110.208.165:80)
+# remote file exists
+```
+使用`k describe deployment nginx`来观察镜像nginx创建的容器携带有`app=nginx`的Label。
+
+针对此标签创建一个网络策略yaml文件：
+```yaml
+# access-nginx.yaml
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: access-nginx
+spec:
+  podSelector:
+    matchLabels:
+      app: nginx # 规则对访问app=nginx标签的pod生效
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          access: "true" # 规则允许带有access=true标签的pod通过
+```
+使用`k apply -f access-nginx.yaml`应用规则，再次使用busybox访问发现`wget: download timed out`超时失败。
+
+修改busybox临时容器，使其带有标签`access=true`，再次访问即成功：
+```sh
+❯ k run busybox --rm -it --labels="access=true" --image=busybox /bin/sh
+If you don't see a command prompt, try pressing enter.
+/ # wget --spider --timeout=1 nginx
+Connecting to nginx (10.110.208.165:80)
+remote file exists
+```
 ---
 先写一点点，未完待续...
